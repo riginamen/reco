@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
+
+body {
+  font-family: "Syne Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 80px 10px;
+}
+
+.linqcall-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.videos-container {
+  display: flex;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 455.3px) {
+  #remoteVideo {
+    position: relative;
+    display: block;
+    height: 300px;
+    width: 400px;
+    background-image: url(../img/linq/Linq_Logo_Blue_1.png);
+  }
+  
+  #webcamVideo {
+    position: absolute;
+    display: block;
+    height: 120px;
+    width: 90px;
+    background-image: url(../img/linq/Linq_Logo_Green_1.png);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 455.3px) {
+  #remoteVideo {
+    position: relative;
+    display: block;
+    height: 400px;
+    width: 300px;
+    background-image: url(../img/linq/Linq_Logo_Blue_1.png);
+  }
+  
+  #webcamVideo {
+    position: absolute;
+    display: block;
+    height: 140px;
+    width: 120px;
+    background-image: url(../img/linq/Linq_Logo_Green_1.png);
+    z-index: 1;
+  }
+}

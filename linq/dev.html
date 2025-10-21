@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>LinqDev™</title>
+
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!----jQuery---->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/dev.css" />
+  <link rel="stylesheet" href="/css/linq.css" />
+  <link rel="stylesheet" href="/css/one.css" />
+  <link rel="stylesheet" href="/css/side_menu_style.css" />
+
+</head>
+
+<body>
+<div class="home_background"></div>
+  <div class="side_nav" id="side_nav" @click>
+    <a href="/linq.html">
+      <img id="img_side_nav" src="/img/icons/menu_back_green.png">
+    </a>
+  </div>
+
+  <section class="showcase" id="showcase">
+
+    <div class="linq-tabs-container" id="linq-tabs-container">
+      <div class="linq" id="linq"></div>
+
+      <div class="tabs">
+        <div class="tabs_1">Press</div>
+        <div class="tabs_2">Licence</div>
+        <div class="tabs_3">Credits</div>
+      </div>
+
+      <div class="credits-title-container" style="display: none;">
+
+        <div class="credits-btn_1">
+          <i class='bx bxs-info-circle'></i>
+        </div>
+
+        <div class="credits-btn_2">
+          <i class='bx bx-code-alt'></i>
+        </div>
+
+        <div class="credits-btn_3">
+          <i class='bx bxs-image'></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-container">
+
+      <div class="flow-main-content">
+
+        <div class="post_container">
+
+          <div class="post-container">
+            <div class="post-row">
+              <div class="post-title-container">
+                <img class="img-linq-profile" src="../linq/img/linq/Linq_Logo_Green_0.png">
+                <div>
+                  <p class='post-linq-name'>Linq Linq</p>
+                  <span class='post-date' >December 24 2015, 00:00</span>
+                </div>
+              </div>
+              <a href="#"><i class='bx bx-dots-vertical-rounded'></i></i></a>
+            </div>
+
+            <p class="post-text">Being primarily student focused, Linq initially promotes student communities
+              efficiently providing effective solutions & assisting members with projects <a
+                href="https://www.instagram.com/p/_r3EudqP_G/?utm_source=ig_web_copy_link">#Linq</a></p>
+            <img src="/img/dev/10727335_823333154451834_716201577_n.jpg" class="post-img">
+
+            <div class="linq_posts_tag_container">
+              <ul class="linq_posts_tag">
+                <li><span class="science-filter">#Science</span></li>
+                <li><span class="biology-filter">#Biology</span></li>
+                <li><span class="maths-filter">#Maths</span></li>
+                <li><span class="physics-filter">#Physics</span></li>
+                <li><span class="english-filter">#English</span></li>
+                <li><span class="biology-filter">#Biology</span></li>
+                <li><span class="music-filter">#Music</span></li>
+                <li><span class="geography-filter">#Geography</span></li>
+              </ul>
+            </div>
+
+            <div class="post-row">
+              <div class="activity-icons-8" style="display: flex;">
+                <div class="likeCount8">99+</div>
+                <i class='bx bx-heart'></i>
+              </div>
+  
+              <div class="comment8" id="comment8" style="display: flex;">
+                <div class="commentCount8">9</div>
+                <i class='bx bxl-twitter'></i>
+              </div>
+  
+              <div class="post-save-icon-8">
+                <i class='bx bx-bookmark'></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="post-container">
+            <div class="post-row">
+              <div class="user-profile">
+                <img id="img_linq_post_1" src="../linq/img/linq/Linq_Logo_Green_0.png">
+                <div>
+                  <p id='post_linq_name_1'>Linq Linq</p>
+                  <span>Month Date 2010, 00:00</span>
+                </div>
+              </div>
+              <a href="#"><i class='bx bx-dots-vertical-rounded'></i></i></a>
+            </div>
+
+            <p class="post-text">The flow of a user scenario using Linq was to realize 'student' projects</p>
+            <img src="/img/dev/WP_20160825_15_17_55_Pro.jpg" class="post-img">
+
+            <div class="post-row">
+              <div class="activity-icons">
+                <div>0<img src="/src/assets/bxs-like.svg"></div>
+                <div>0<img src="/src/assets/bxs-comment.svg"></div>
+                <div>0<img src="/src/assets/bxs-share-alt.svg"></div>
+              </div>
+              <div class="post-profile-icon">
+                <img src="/src/assets/bxs-bookmark.svg">
+              </div>
+            </div>
+          </div>
+
+          <div class="post-container">
+            <div class="post-row">
+              <div class="user-profile">
+                <img id="img_linq_post_1" src="../linq/img/linq/Linq_Logo_Green_0.png">
+                <div>
+                  <p id='post_linq_name_1'>Linq Linq</p>
+                  <span>Month Date 2010, 00:00</span>
+                </div>
+              </div>
+              <a href="#"><i class='bx bx-dots-vertical-rounded'></i></i></a>
+            </div>
+
+            <p class="post-text">The ideation of Linq finds its root in the projects (Student Exchange Programme) that
+              were solving local problems</p>
+            <img src="/img/dev/404907_10150439160577266_1617611497_n.jpg" class="post-img">
+
+            <div class="post-row">
+              <div class="activity-icons">
+                <div>0<img src="/src/assets/bxs-like.svg"></div>
+                <div>0<img src="/src/assets/bxs-comment.svg"></div>
+                <div>0<img src="/src/assets/bxs-share-alt.svg"></div>
+              </div>
+              <div class="post-profile-icon">
+                <img src="/src/assets/bxs-bookmark.svg">
+              </div>
+            </div>
+          </div>
+
+          <div class="post-container">
+            <div class="post-row">
+              <div class="user-profile">
+                <img id="img_linq_post_2" src="../linq/img/linq/Linq_Logo_Green_0.png">
+                <div>
+                  <p id='post_linq_name_2'>Linq Linq</p>
+                  <span>Month Date 2009, 00:00</span>
+                </div>
+              </div>
+              <a href="#"><i class='bx bx-dots-vertical-rounded'></i></i></a>
+            </div>
+
+            <p class="post-text">The ideation of Linq finds its root in the projects (Interscholastic Debate) that were
+              solving local problems</p>
+            <img src="/img/dev/1934366_145995060773_1147458_n.jpeg" class="post-img">
+
+            <div class="post-row">
+              <div class="activity-icons">
+                <div>0<img src="/src/assets/bxs-like.svg"></div>
+                <div>0<img src="/src/assets/bxs-comment.svg"></div>
+                <div>0<img src="/src/assets/bxs-share-alt.svg"></div>
+              </div>
+              <div class="post-profile-icon">
+                <img src="/src/assets/bxs-bookmark.svg">
+              </div>
+            </div>
+          </div>
+
+          <div class="post-container">
+            <div class="post-row">
+              <div class="user-profile">
+                <img id="img_linq_post_3" src="../linq/img/linq/Linq_Logo_Green_0.png">
+                <div>
+                  <p id='post_linq_name_3'>Linq Linq</p>
+                  <span>Month Date 2008, 00:00</span>
+                </div>
+              </div>
+              <a href="#"><i class='bx bx-dots-vertical-rounded'></i></i></a>
+            </div>
+
+            <p class="post-text">The ideation of Linq finds its root in the projects (Interscholastic Science Fair) that
+              were solving local problems</p>
+            <img src="/img/dev/Scan_20180528.jpg" class="post-img">
+
+            <div class="post-row">
+              <div class="activity-icons">
+                <div>0<img src="/src/assets/bxs-like.svg"></div>
+                <div>0<img src="/src/assets/bxs-comment.svg"></div>
+                <div>0<img src="/src/assets/bxs-share-alt.svg"></div>
+              </div>
+              <div class="post-profile-icon">
+                <img src="/src/assets/bxs-bookmark.svg">
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="credits_container" style="display: none;">
+
+          <div class="credits_img_container" id="credits_img_container" style="display: none;">
+            
+            <div class="my_linq_img_container_0" id="my_linq_img_container_0">
+            </div>          
+            
+            <!--
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq"
+                src="/src/assets/photo-1566400628146-ae8f27849e90.jpeg"></img>
+
+            </div>
+
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq" src="/src/assets/mango_bunch.jpeg"></img>
+
+            </div>
+
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq" src="/src/assets/solo-frutta-attilio-speciani.jpeg"></img>
+
+            </div>
+
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq" src="/src/assets/mint.jpeg"></img>
+
+            </div>
+
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq" src="/src/assets/mint_2.png"></img>
+
+            </div>
+-->
+          </div>
+
+          <div class="credits_code_container" id="credits_code_container" style="display: none;">
+
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq" src="/src/assets/BlueBerry_Portrait.jpeg"></img>
+
+            </div>
+
+          </div>
+
+          <div class="credits_about_container" id="credits_about_container" style="display: none;">
+
+            <div class="my_linq_img_container">
+              <img class="my_img_my_linq" id="my_img_my_linq" src="https://source.unsplash.com/R1pSImcJ1JU"></img>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    </div>
+    </div>
+
+    <div class="footer_b" id="footer_b">Linq © 2024</div>
+
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script src="/js/firebase.js"></script>
+  <script src="/js/dev.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Linq™</title>
+
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!----jQuery---->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../linq/css/one.css" />
+  <link rel="stylesheet" href="../linq/css/linq.css" />
+  <link rel="stylesheet" href="../linq/css/chat.css" />
+  <link rel="stylesheet" href="../linq/css/side_menu_style.css" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+  <link rel="stylesheet" href="../linq/css/font-awesome.css">
+  <link rel="stylesheet" href="../linq/css/cal.css">
+
+  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js";></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+
+  <!--Calendar-->
+
+</head>
+
+<!-- ToDo: Update naming convension for class & id -->
+<body>
+
+  <div class="linq" id="linq"></div>
+
+  <section class="home-section">
+
+    <div class="sidebar" id="sidebar" style="display: none;">
+
+      <div class="logo-details" id="logo-details">
+        <img class="sidebar_linq_img" id="sidebar_linq_img" src="../linq/img/linq/Linq_Logo_Green_0.png" />
+        <div class="name_job">
+          <div class="name" id="sidebar_linq_name">Linq Linq</div>
+          <div class="job">Linq</div>
+          <i class='bx bx-menu' id="btn"></i>
+        </div>
+      </div>
+
+      <ul class="nav-list" style="overflow-y: scroll;">
+
+        <li>
+          <i class='bx bx-search'></i>
+          <input type="text" placeholder="Search...">
+          <span class="tooltip">Search</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='bx bx-user' id='bx-linq'></i>
+            <span class="links_name">Linq</span>
+          </a>
+          <span class="tooltip">Linq</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-chat' id='bx-chat'></i>
+            <span class="links_name">Chat</span>
+          </a>
+          <span class="tooltip">Chat</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-calendar' id='bx-calendar'></i>
+            <span class="links_name">Cal</span>
+          </a>
+          <span class="tooltip">Cal</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-folder'></i>
+            <span class="links_name">Docs</span>
+          </a>
+          <span class="tooltip">Docs</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='bx bx-grid-alt'></i>
+            <span class="links_name">Plus</span>
+          </a>
+          <span class="tooltip">Plus</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='bx bx-bookmark'></i>
+            <span class="links_name">Note</span>
+          </a>
+          <span class="tooltip">Note</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='bx bxs-cog'></i>
+            <span class="links_name">Set</span>
+          </a>
+          <span class="tooltip">Set</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='bx bx-code-alt' id="bx-dev"></i>
+            <span class="links_name">Dev</span>
+          </a>
+          <span class="tooltip">Dev</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='bx bx-log-out' id="bx-log-out"></i>
+            <span class="links_name">Out</span>
+          </a>
+          <span class="tooltip">Out</span>
+        </li>
+
+        </li>
+      </ul>
+    </div>
+
+    <div class="side_nav" id="side_nav">
+      <img id="img_side_nav" src="../linq/img/icons/menu_green.png">
+    </div>
+
+    <img class="home_background" id="home_background"></img>
+
+    <div class="my-linq" id="my-linq" style="display: none;">
+      <div class="my_linq_main_container">
+
+        <input class="file-input" id="file-input" type="file" name='files[]' accept='image/*' style="display: none;">
+
+        <div class="my_linq_display" style="display: none;">
+          <div class="my-linq-heading-container">
+            <div class="my-linq-heading">My Linq</div>
+            <i class='bx bx-cog'></i>
+            <i class='bx bxs-info-circle'></i>
+          </div>
+
+          <div class="my_linq_img_container">
+            <img class="my_linq_img" id="my_linq_img" src="../linq/img/linq/Linq_Logo_Green_0.png"
+              style="pointer-events: none;"></img>
+          </div>
+
+          <div class="my_linq_name" id="my_linq_name">Linq</div>
+
+          <div class="my_linq_bio_container">
+            <div class="my_linq_bio" id="my_linq_bio">Hand of God</div>
+          </div>
+
+          <div class="activitiesProjects_container">
+            <div class="activitiesTitle">
+              <i class='bx bx-globe'></i>
+            </div>
+            <div class="projectsTitle">
+              <i class='bx bx-line-chart'></i>
+            </div>
+            <div class="plusTitle">
+              <i class='bx bx-refresh'></i>
+            </div>
+          </div>
+
+          <div class="my_linq_description_container" id="my_linq_description_container">
+          </div>
+
+          <div class="my-linq-posts-view-container">
+            
+            <div class="btn-my-linq-posts-list" id="btn-my-linq-posts-list">
+              <i class='bx bx-list-ul'></i>
+            </div>
+
+            <div class="btn-my-linq-posts-grid" id="btn-my-linq-posts-grid">
+              <i class='bx bxs-grid'></i>
+            </div>
+          </div>
+
+          <div class="my-linq-posts-filters-container">            
+            <ul class="my-linq-posts-filters" id="my-linq-posts-filters">
+              <div class="all-filter">All</div>
+          </div>
+        </div>
+
+        <div class="my_linq_edit" style="display: none;">
+          <div class="my-linq-heading-container">
+            <div class="my-linq-heading">Editing My Linq</div>
+            <i class='bx bxs-save'></i>
+          </div>
+
+          <div class="my_linq_img_container">
+            <div class="img_edit_icon">
+              <i class='bx bxs-image-add'></i>
+            </div>
+            <img class="my_linq_img_edit" id="my_linq_img_edit" src="../linq/img/linq/Linq_Logo_Green_0.png"></img>
+
+          </div>
+
+          <div class="linqInSetTitle_edit">LinqIn' Setup</div>
+
+          <div class="emailPassword-container">
+
+            <div class="my_linq_changeEmail" id="my_linq_changeEmail">linq@linq.eco</div>
+            <div class="my_linq_changePassword" id="my_linq_changePassword">Change Password</div>
+
+          </div>
+
+          <div class="my_linq_username-input-container">
+            <input type="input" placeholder="Change Username" id="my_linq_username-input"></input>
+            <div class="refresh-username-icon">
+              <i class='bx bx-refresh'></i>
+            </div>
+          </div>
+
+          <div class="fullnameTitle_edit">My Full Name</div>
+
+          <div class="my_linq_firstname-input-container">
+            <input type="input" placeholder="Change First Name" id="my_linq_firstname-input"></input>
+            <div class="refresh-firstname-icon">
+              <i class='bx bx-refresh'></i>
+            </div>
+          </div>
+
+          <div class="my_linq_middlename-input-container">
+            <input type="input" placeholder="Change Middle Name" id="my_linq_middlename-input"></input>
+            <div class="refresh-middlename-icon">
+              <i class='bx bx-refresh'></i>
+            </div>
+          </div>
+
+          <div class="my_linq_lastname-input-container">
+            <input type="input" placeholder="Change Last Name" id="my_linq_lastname-input"></input>
+            <div class="refresh-lastname-icon">
+              <i class='bx bx-refresh'></i>
+            </div>
+          </div>
+
+          <div class="bioTitle_edit">Short Description of Me</div>
+
+          <div class="my_linq_bio-input-container">
+            <input type="input" placeholder="Who Are You?" id="my_linq_bio-input"></input>
+            <div class="refresh-bio-icon">
+              <i class='bx bx-refresh'></i>
+            </div>
+          </div>
+
+          <div class="whatWhereTitle_edit">My Activities</div>
+
+          <div class="my-linq-edit-description-container" id="my-linq-edit-description-container"></div>
+
+          <div class="my-linq-add-description-container" id="my-linq-add-description-container" style="display: flex;">
+            <div class="my-linq-add-description" id="my-linq-add-description">What Do You Do? & Where?</div>
+            <div class="btn-add-description">
+              <i class='bx bxs-plus-circle'></i>
+            </div>
+          </div>
+
+          <div class="interestsTitle_edit">My Interests</div>
+          <div class="linq_interests_container" id="linq_interests_container">
+            <div class="linq_interests" id="linq_interests">
+              
+            </div>
+          </div>
+
+          <div class="my_linq_add-interests_container">
+            <div class="my_linq_add-interests" id="my_linq_add-interests">What are you interested in?</div>
+            <div class="add-interestBtn_a">
+              <i class='bx bxs-plus-circle'></i>
+            </div>
+          </div>
+
+          <div class="flavorsTitle_edit">Flavors</div>
+          <div class="flavorsBtnContainer" id="flavorsBtnContainer"></div>
+          <div class="flavorsImgContainer" id="flavorsImgContainer"></div>
+
+          <div class="description-popup-container" id="description-popup-container" style="display: none;">
+            <div class="desc-popup">
+
+              <div class="desc-popup-title"> What Do You Do & Where?</div>
+
+              <div class="what-where-container">
+                <div class="what-container">
+                  <div class="dropdown-container-what" id="dropdown-container-what" style="display: flex;">
+                    <input type="text" placeholder="What Do You Do?" id="edit-text-what" autocomplete="off">
+
+                    <div class="select-what" id="select-what">
+                      <i class='bx bxs-down-arrow'></i>
+                    </div>
+                  </div>
+
+                  <ul class="menu-what" id="menu-what" style="display: none;">
+                    <li>Student</li>
+                    <li>Teacher</li>
+                    <li>Instructor</li>
+                    <li class="active">Swimmer</li>                    
+                  </ul>
+                </div>
+
+                <div class="dropdown-container-where" id="dropdown-container-where" style="display: flex;">
+                  <input type="text" placeholder="Where?" id="edit-text-where" autocomplete="off">
+
+                  <div class="select-where" id="select-where">
+                    <i class='bx bxs-down-arrow'></i>
+                  </div>
+                </div>
+
+                <div class="where-menu-container" id="where-menu-container" style="display: none;">
+                  
+                </div>
+              </div>
+              <div class="btn-desc">
+                <div class="btn-add-desc" id="btn-add-desc" style="display: block;">Add</div>
+                <div class="btn-del-desc" id="btn-del-desc">Delete</div>
+                <div class="btn-cancel-desc">Close</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-linq-posts-container" id="my-linq-posts-container" style="display: none;">
+
+        <div class="my-linq-posts-list" id="my-linq-posts-list"></div>
+
+        <div class="my-linq-posts-grid" id="my-linq-posts-grid" style="display: none;">
+          
+          <div class="card-post">
+            <div class="card-note">
+              <i class='bx bxs-bookmark'></i>
+            </div>
+
+            <img src="../linq/img/others/11429711_871422166282967_2141664453_n.jpg" alt="">
+
+            <div class="card-title">Courage To Continue</div>
+
+            <div class="card-info-container">
+
+              <div class="card-info">
+                <div class="card-media-type">
+                  <i class='bx bxs-file-doc'></i>
+                </div>
+
+                <div class="card-likes">
+                  <div class="card-likes-count">99+</div>
+                  <i class='bx bx-heart'></i>
+                </div>
+
+                <div class="card-comments">
+                  <div class="card-comments-count">99+</div>
+                  <i class='bx bxl-twitter'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-post">
+
+            <img src="../linq/img/others/11429711_871422166282967_2141664453_n.jpg" alt="">
+
+            <div class="card-title">Courage To Continue</div>
+
+            <div class="card-info-container">
+
+              <div class="card-info">
+                <div class="card-media-type">
+                  <i class='bx bxs-file-doc'></i>
+                </div>
+
+                <div class="card-likes">
+                  <div class="card-likes-count">99+</div>
+                  <i class='bx bx-heart'></i>
+                </div>
+
+                <div class="card-comments">
+                  <div class="card-comments-count">99+</div>
+                  <i class='bx bxl-twitter'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-post">
+
+            <img src="../linq/img/others/11429711_871422166282967_2141664453_n.jpg" alt="">
+
+            <div class="card-title">Courage To Continue</div>
+
+            <div class="card-info-container">
+
+              <div class="card-info">
+                <div class="card-media-type">
+                  <i class='bx bxs-file-doc'></i>
+                </div>
+
+                <div class="card-likes">
+                  <div class="card-likes-count">99+</div>
+                  <i class='bx bx-heart'></i>
+                </div>
+
+                <div class="card-comments">
+                  <div class="card-comments-count">99+</div>
+                  <i class='bx bxl-twitter'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-post">
+
+            <img src="../linq/img/others/11429711_871422166282967_2141664453_n.jpg" alt="">
+
+            <div class="card-title">Courage To Continue</div>
+
+            <div class="card-info-container">
+
+              <div class="card-info">
+                <div class="card-media-type">
+                  <i class='bx bxs-file-doc'></i>
+                </div>
+
+                <div class="card-likes">
+                  <div class="card-likes-count">99+</div>
+                  <i class='bx bx-heart'></i>
+                </div>
+
+                <div class="card-comments">
+                  <div class="card-comments-count">99+</div>
+                  <i class='bx bxl-twitter'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-post">
+
+            <img src="../linq/img/others/11429711_871422166282967_2141664453_n.jpg" alt="">
+
+            <div class="card-title">Courage To Continue</div>
+
+            <div class="card-info-container">
+
+              <div class="card-info">
+                <div class="card-media-type">
+                  <i class='bx bxs-file-doc'></i>
+                </div>
+
+                <div class="card-likes">
+                  <div class="card-likes-count">99+</div>
+                  <i class='bx bx-heart'></i>
+                </div>
+
+                <div class="card-comments">
+                  <div class="card-comments-count">99+</div>
+                  <i class='bx bxl-twitter'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    
+    <button data-modal-target="#modal" style="display: none;">Open Modal</button>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        Taste
+      </div>
+      <div class="modal-body">
+        Apply this Flavor?
+      </div>
+      <div class="btnConfirmModal">
+        <div data-close-button id="modalCancel">
+          <i class='bx bx-x-circle'></i>
+        </div>
+        <div id="modalYes">
+          <i class='bx bxs-check-circle'></i>
+        </div>
+      </div>
+    </div>
+    <div id="overlay"></div>
+
+    <div class="flow-container" id="flow-containter">
+      <!---------------flow-content------------------->
+      <div class="flow-content">
+
+        <div class="flow-top-container" id="flow-top-container;">
+          <div class="flow-top-gallery" id="flow-top-gallery">
+            <div class="btn-add-flow-container">
+              <div class="btn-add-flow-plus"><i class='bx bxs-plus-circle'></i></div>
+              <div class="btn-add-flow-text" id="btn-add-flow-text">Flow</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="write-post-containter" id="write-post-containter" style="display: none;">
+          <div class="user-profile">
+            <img id="img_linq_post_0" src="../linq/img/linq/Linq_Logo_Green_0.png" style="height: 40px; width: 40px;">
+            <div>
+              <p id='post_linq_name_0'>Linq Linq</p>
+              <small>Public <i class='bx bx-caret-down'></i></small>
+            </div>
+          </div>
+
+          <div class="post-input-container">
+            <textarea id='post-input' rows="3" placeholder="What do you think Jesus?"></textarea>
+            <div class="add-post-links" style="justify-content:space-between;">
+              <div class='btn-add-post-live'><i class='bx bxs-video-plus'></i></div>
+              <div class='btn-add-post-img'><i class='bx bxs-image-add'></i></div>
+              <div class='btn-add-post-act'><i class='bx bx-link' style="transform: rotateY(180deg);"></i></div>
+            </div>
+          </div>
+
+          <div class="addFlowBtn">
+            <button type="submit" class="btn" onclick="closeForm()">Add</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </div>
+        </div>
+
+        <div class="weatherUpdate" style="display: none">
+
+          <div class="weather-main">
+
+            <div class="weather-input-container" style="display: block;">
+              <input type="input" placeholder="Enter any city..." id="weather_input">
+              <input type="submit" value="Submit" placeholder="submit" id="weather_submit"></input>
+            </div>
+
+            <div class="weather-display-container">
+              <h2 id="cityoutput"></h2>
+              <p id="description"></p>
+              <p id="temp"></p>
+              <p id="wind"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="public-posts-container" id="public-posts-container" style="display: none;"></div>
+
+        <!-- Chat -->
+        <div class="conversations-container" id="conversations-container" style="display: none"></div>
+
+        <div class="chat-container" id="chat-container" style="display: none">
+
+          <!-- client -->
+          <div class="recipient-username" id="recipient-username">linq</div>
+
+          <!-- chat box -->
+          <div class="chat-box" id="chat-box"></div>
+
+          <!-- Message Input -->
+          <div class="message-input-container" id="message-input-container"></div>
+
+        </div>
+
+        <!--Calendar-->
+        <div class="calendar-container" id="calendar-container" style="display: none;">
+
+          <div class="light">
+            <div class="calendar" style="display: block;">
+              <div class="calendar-header">
+                <span class="month-picker" id="month-picker">February</span>
+                <div class="year-picker">
+                  <span class="year-change" id="prev-year">
+                    <pre></pre>
+                  </span>
+                  <span id="year">2021</span>
+                  <span class="year-change" id="next-year">
+                    <pre>></pre>
+                  </span>
+                </div>
+              </div>
+              <div class="calendar-body">
+                <div class="calendar-week-day">
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+                <div class="calendar-days"></div>
+              </div>
+              <div class="calendar-footer" style="display: none;">
+                <div class="toggle">
+                  <span>Dark Mode</span>
+                  <div class="dark-mode-switch">
+                    <div class="dark-mode-switch-ident"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="month-list"></div>
+            </div>
+          </div>
+
+          <div class="main-container">
+            <div class="header">
+              <div class="clear">
+                <i class="fa fa-calendar-o"></i>
+              </div>
+              <div id="date"></div>
+            </div>
+
+            <div class="main-buttons-container">
+              <div class="button-tasks" id="button-tasks">Tasks</div>
+              <div class="button-activities" id="button-activities">Activities</div>              
+              <div class="button-projects" id="button-projects">Projects</div>
+            </div>
+
+            <div class="content-container">
+              <div class="activities-content">
+                <ul id="list-activities">
+                  <!--
+                <li class="item">
+                    <i class="fa fa-circle-thin co" job="complete" id="0"></i>
+                    <p class="text">Drink Coffee</p>
+                    <i class="fa fa-trash-o de" job="delete" id="0"></i> 
+                </li> -->
+                </ul>
+              </div>
+
+              <div class="tasks-content" style="display: none;">
+                <ul id="list-tasks">
+                  <!--
+            <li class="item-tasks">
+                <i class="fa fa-circle-thin co" job="complete" id="0"></i>
+                <p class="text">Drink Tea</p>
+                <i class="fa fa-trash-o de" job="delete" id="0"></i> 
+            </li> -->
+                </ul>
+              </div>
+
+              <div class="projects-content" style="display: none;">
+                <ul id="list-projects">
+                  <!--
+        <li class="item-projects">
+            <i class="fa fa-circle-thin co" job="complete" id="0"></i>
+            <p class="text">Drink Choco</p>
+            <i class="fa fa-trash-o de" job="delete" id="0"></i> 
+        </li> -->
+                </ul>
+              </div>
+            </div>
+
+            <div class="add-to-do">
+              <i class="fa fa-plus-circle"></i>
+              <input type="text" class="calendar_add" id="calendar_add" placeholder="Add a to-do">
+            </div>
+          </div>
+        </div>
+
+        <!--Linq-->
+        <div class="linqs-container" id="linqs-container" style="display: none;">
+          <ul id="linqs-list" style="display: block;"></ul>          
+        </div>
+
+      </div>
+      <div class="flow-footer" style="display: none;">
+        <div class="footer-left">
+          <div class="left_text">Made in</div>
+          <div class="left_img"></div>
+        </div>
+        <div class="footer-right">© <br> 2022</div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../linq/js/in.js"></script>
+  <script src="../linq/js/one.js"></script>
+  <script src="../linq/js/cal.js"></script>
+  <script src="../linq/js/chat.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../linq/js/firebase-messaging-sw.js');
+      });
+    }
+  </script>
+
+</body>
+
+</html>

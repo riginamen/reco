@@ -1,0 +1,150 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Linq™</title>
+
+    <!----jQuery---->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../linq/css/in.css" />
+    <link rel="stylesheet" href="../linq/css/linq.css" />
+
+    <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script src="../linq/js/in.js"></script>
+    <!-- <script src="../linq/js/one.js"></script> -->
+
+</head>
+
+<body>
+
+    <div class="info_background" id="info_background"></div>
+
+    <div class="linq" id="linq"></div>
+
+    <div class="side_nav" id="side_nav" onclick="sideNav()">
+        <img id="img_side_nav" src="../linq/img/icons/menu_back_green.png">
+    </div>
+
+    <div class="linqin-container">
+    <div id="linqin" class="linqin" style="opacity: 1; display: flex;">
+
+        <div class="linqin_container " style="margin: 0 0 30px 0;">
+
+            <div id="linqin_user_name_container" style="display:none; color:white; font-weight: bold;">
+                <div class="linqin_user_name-label">
+                    <label for="linqin_user_name">Username</label>
+                </div>
+
+                <input autocomplete="off" class="linqin_user_name" type="text" name="user_name" id="linqin_user_name"
+                    value="" placeholder="" data-validate="" data-key="linqin_user_name">
+            </div>
+
+            <div id="linqin_user_email_container" class="linqin_user_email_container" data-key="linqin_user_email">
+                <div style="color: white; font-weight: bold;" class="linqin_user_email-label">
+                    <label for="linqin_user_email">E-mail Address</label>
+                </div>
+                <input autocomplete="off" class="linqin_user_email" type="text" name="linqin_user_email"
+                    id="linqin_user_email" value="public@rigin.eco" placeholder="public@rigin.eco" data-validate="unique_email"
+                    data-key="linqin_user_email">
+            </div>
+
+            <div id="linqin_user_password_container" class="linqin_user_password_container" data-key="user_password">
+                <div style="color: green; font-weight: bold;" class="linqin_user_password-label">
+                    <label for="linqin_user_password">Password</label>
+                </div>
+                <input autocomplete="off" class="linqin_user_password" type="password" name="linqin_user_password"
+                    id="linqin_user_password" value="public123" placeholder="public123" data-validate="unique_email"
+                    data-key="linqin_user_password">
+            </div>
+
+            <div class="linqinBtn_container">
+                <button class="linqInBtn" id="linqInBtn" onclick="linqIn()">Linq In</button>
+
+                <p class="joinText_a">Forgot Password?</p>
+            </div>
+
+            <div class="linqJoin_a">
+                <p class="linqInText_b">Not yet a Linq? Then</p>
+
+                <button type="button" class="joinBtn_a" id="joinBtn_a">Join</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="join" class="join" style="opacity: 1; display:none">
+        <div class="join_container " style="margin: 0 0 30px 0;">
+
+            <div id="user_name_container" style="color: white; font-weight: bold;">
+                <div class="user_name-label">
+                    <label for="user_name">Username</label>
+                </div>
+
+                <input autocomplete="off" class="user_name" type="text" name="user_name" id="user_name" value=""
+                    placeholder="" data-validate="" data-key="user_name">
+            </div>
+
+            <div id="first_name_container" style="color: white; font-weight: bold;">
+                <div class="first_name-label">
+                    <label for="first_name">First Name</label>
+                </div>
+
+                <input autocomplete="off" class="first_name" type="text" name="first_name" id="first_name" value=""
+                    placeholder="" data-validate="" data-key="first_name">
+            </div>
+
+            <div id="last_name_container" style="color: white; font-weight: bold;">
+                <div class="last_name-label">
+                    <label for="last_name">Last Name</label>
+                </div>
+
+                <input autocomplete="off" class="last_name" type="text" name="last_name" id="last_name" value=""
+                    placeholder="" data-validate="" data-key="last_name">
+            </div>
+
+            <div id="user_email_container" class="user_email_container" data-key="user_email">
+                <div style="color: green; font-weight: bold;" class="user_email-label">
+                    <label for="user_email">E-mail Address</label>
+                </div>
+                <input autocomplete="off" class="user_email" type="text" name="user_email" id="user_email" value=""
+                    placeholder="" data-validate="unique_email" data-key="user_email">
+            </div>
+
+            <div id="user_password_container" class="user_password_container" data-key="user_password">
+                <div style="color: green; font-weight: bold;" class="user_password-label">
+                    <label for="user_password">Password</label>
+                </div>
+                <input autocomplete="off" class="user_password" type="password" name="user_password" id="user_password"
+                    value="" placeholder="" data-validate="" data-key="user_password">
+            </div>
+
+            <div id="confirm_user_password_container">
+                <div style="color: green; font-weight: bold;" class="confirm_user_password-label">
+                    <label for="confirm_user_password">Confirm Password</label>
+                </div>
+                <input class="confirm_user_password" type="password" name="confirm_user_password"
+                    id="confirm_user_password" value="" placeholder="Confirm Password" data-validate=""
+                    data-key="confirm_user_password">
+            </div>
+
+            <button type="button" class="joinBtn_b" id="joinBtn_b" onclick="join()">Join</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

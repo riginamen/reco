@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="assets/icons/Eagle_green.png" type="image/x-icon">
+
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/reco.css" />
+  <link rel="stylesheet" href="assets/css/cv.css" />
+  <link rel="stylesheet" href="assets/css/contact.css" />
+
+  <!-- Metro UI -->
+  <!-- <link rel="stylesheet" href="https://cdn.metroui.org.ua/current/metro.css"> -->
+
+  <!----jQuery---->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <title>RECO™</title>
+</head>
+
+<body>
+  <div class="background" id="background"></div>
+  <div class="background-1" id="background-1"></div>
+
+  <!-- <div class="side_nav" id="side_nav">
+        <img id="img_side_nav" src="/img/icons/menu_back_green.png">
+    </div> -->
+
+    <!-- <div class="metro-container" id="metro-container" data-tilt> -->
+    <div class="metro-container" id="metro-container">
+    <div class="metro" id="metro" style="display: none;">
+      <div class="metro-title" id="metro-title">
+        <img class="reco-logo" id="reco-logo">
+        <div class="metro-title-text" id="metro-title-text"></div>
+
+        <div class="info_c">
+          <i class="bx bx-info-circle" id="bx-info-circle"></i>
+          <i class="bx bxs-cog" id="bxs-cog"></i>
+        </div>
+      </div>
+
+      <div class="tiles-container" id="tiles-container"></div>
+
+      <div class="footer">
+        <div class="info_a">
+          <div class="text_a">Made in</div>
+          <img src="assets/img/caricom_flag.png" id="img_info_a" />
+        </div>
+
+        <div class="info_b">© <br /> 2025</div>
+      </div>
+    </div>
+    <div class="games-container" id="games-container" style="display: none;">
+      <div class="games-top">
+        <i class='bx bx-left-arrow-circle' id="games-left-arrow-circle"></i>
+        <div class="games-title" id="games-title">Games</div>
+        <img src="assets/linqs/Linq_Logo_White_1.png" class="games-linq-btn" id="games-linq-btn"></i>
+      </div>
+      <div class="games-option-container" id="games-option-container"></div>
+    </div>
+
+    <div class='cv-container' id="cv-container" style="display: none;">
+      <div class="cv-top">
+        <i class='bx bx-left-arrow-circle' id="cv-left-arrow-circle"></i>
+        <div class="cv-title" id="cv-title">
+        </div>
+        <img src="assets/linqs/Linq_Logo_White_1.png" class="cv-linq-btn" id="cv-linq-btn"></i>
+      </div>
+      <div class="banner" id="banner" style="display: none;">
+        <div class="slider" id="slider"></div>
+      </div>
+      <div class="activity-option-container" id="activity-option-container" style="display: none;"></div>
+
+      <!--More CV-->
+      <div class="cv-flow-container" id="cv-flow-container" style="display: none;"></div>
+    </div>
+  </div>
+
+  <button data-modal-target="#modal" style="display: none;">Open Modal</button>
+  <div class="modal" id="modal">
+    <div class="modal-header" id="modal-header"></div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-body-1" id="modal-body-1" style="display: none;"></div>
+    <div class="modal-body-2" id="modal-body-2" style="display: none;"></div>
+
+    <iframe class="iframe" id="iframe" src="" frameborder="0" style="display: none;"></iframe>
+
+    <video id='main-video' style="display: none;">
+      <img id="vid-loader-img" src="/assets/img/load_wait_process.gif" alt=""
+        style="height: 200px; width: auto; border-radius: 50%;">
+    </video>
+
+    <!--Contact Us-->
+    <div class="contact-container" id="contact-container" style="display: none;">
+
+      <form action="" class="contact-form" id="contact-form">
+        <div class="contact-form-title">
+          <h2>Linq with Us</h2>
+          <hr>
+        </div>
+        <input type="text" name="name" placeholder="Your Name" class="contact-inputs" id="contact-name" required>
+        <input type="email" name="email" placeholder="Your Email" class="contact-inputs" id="contact-email" required>
+        <input type="subject" name="subject" placeholder="Message Subject" class="contact-inputs" id="contact-subject"
+          required>
+        <textarea name="message" placeholder="The Message" class="contact-inputs" id="contact-message"
+          required></textarea>
+      </form>
+      <button type="submit" class="contact-message-submit" id="contact-message-submit">
+        <img src="assets/linqs/Linq_Logo_Green_1.png" alt="">
+      </button>
+    </div>
+
+    <!--Settings-->
+    <div class="settings-container" id="settings-container" style="display: none;">
+
+      <div class="location-weather-container">
+        <div class="location-weather-title"></div>
+
+        <div class="location-container">
+          <input type="text" id="location-input" placeholder="Enter Location Here">
+        </div>
+
+        <div class="separator" id="separator-0"></div>
+
+        <div class="weather-container">
+          <div class="weather-options-container" style="display: flex;">
+            <h3>Temperature in: </h3>
+            <label for="weather-celcius-btn" class="radio">
+              <input type="radio" id="weather-celcius-btn" class="celcius--input">
+              <div class="radio-celcius"></div>
+              °C
+            </label>
+            <label for="weather-fahrenheit-btn" class="radio">
+              <input type="radio" id="weather-fahrenheit-btn" class="fahrenheit--input">
+              <div class="radio-fahrenheit"></div>
+              °F
+            </label>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="separator" id="separator-1"></div>
+
+      <div class="ui-design-container">
+        <div class="ui-design-title"> User Interface Design</div>
+        <div class="ui-design-options-container">
+          <div class="ui-design-options">
+            <i class='bx bxl-apple' id="bxl-apple"></i>
+            <i class='bx bxl-microsoft' id="bxl-metro"></i>
+            <i class='bx bxl-android' id="bxl-android"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="separator" id="separator-2"></div>
+
+      <div class="language-container">
+        <div class="language-options-container" style="display: flex;">
+          <h3>Language: &emsp;🇯🇵 日本語</h3>
+          <i class='bx bxs-down-arrow'></i>
+        </div>
+      </div>
+
+      <div class="separator" id="separator-3" style="display: none;"></div>
+
+    </div>
+
+    <!--Credit-->
+    <div class="credit-container" id="credit-container"
+      style="display:none; width:450px; height: auto; justify-content: space-between; ">
+
+      <div class="credit-container-top">
+        <div class="credit-title-top" style="display: flex; align-items: center; justify-content: space-between;">
+          <div class="credit-logo-container" id="credit-logo-container">
+            <img id="credit-logo" src="assets/icons/credit.png" style="height: 55px; width: 60px;" alt="">
+          </div>
+          <div class="credit-title" style="top: 15%">Gratitude & Acknowledgements</div>
+          <i class="bx bx-info-circle" id="credit-info-top"></i>
+        </div>
+        <div class="credit-disclaimer-body"
+          style="display: flex; justify-content: space-between; padding: 2%; background-color: red; color: white; font-weight: bold;">
+          <div class="credit-disclaimer-text">No Copyright Infringment Intended!</div>
+          <i class="bx bx-info-circle" id="credit-info-disclaimer"></i>
+        </div>
+      </div>
+
+      <div class="credit-info-container">
+        <div class="credit-info-container-top" style="display: flex; justify-content: space-between; padding: 2%;">
+          <div class="credit-btn" id="credit-info-btn">Info</div>
+          <div class="credit-btn" id="credit-media-btn">Media</div>
+          <div class="credit-btn" id="credit-code-btn">Code</div>
+        </div>
+
+        <div class="credit-body">
+
+          <div id="credit-info-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;"></div>
+          <div id="credit-media-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;"></div>
+          <div id="credit-code-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;"></div>
+        </div>
+      </div>
+
+      <div class="credit-bottom" style="background-color: yellow; padding: 2%;">
+        <div class="credit-bottom-text">Any Concern ⚠️ Contact Us ➡️ legal@rigin.eco</div>
+      </div>
+
+    </div>
+
+    <div class="linq-linq-container" id="linq-linq-container" style="display: none"></div>
+
+    <div class="motto" id="motto"
+      style="display: none; text-align: center; font-weight: bold; border: 2px solid green; margin-top: 1%;">☀️
+      Empowering You To Achieve Greatness 🦅</div>
+
+    <div class="btnConfirmModal" style="display: none;">
+      <div data-close-button id="modalCancel" style="cursor: pointer">
+        <i class='bx bx-x-circle' style="display: block;"></i>
+      </div>
+      <div class="modelYes" id="modalYes" style="cursor: pointer">
+        <i class='bx bxs-check-circle' style="display: block;"></i>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <!-- <script type="text/javascript" src="assets/js/reco.js"></script> -->
+  <script data-main="assets/js/config" src="assets/js/require.js"></script>
+
+  <script>
+    require(['config'], function () {
+      require(['reco', 'cv', 'data']);
+      //  require(['cv'])
+    });
+  </script>
+  <!--EmailJs-->
+  <!-- <script src="https://kit.fontawesome.com/595a890311.js" crossorigin="anonymous"></script> -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "SBPKSlkuS4pGvzbNj",
+      });
+    })();
+  </script>
+  <!--End EmailJs-->
+
+  <!-- <script type="text/javascript" src="assets/js/vanilla-tilt.js"></script> -->
+
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1a0f6a96-0b2c-41ee-a9ec-73b539b3f1fe"
+    type="text/javascript"></script>
+
+  <!-- Metro UI -->
+  <!-- <script src="https://cdn.metroui.org.ua/current/metro.js"></script> -->
+</body>
+
+</html>

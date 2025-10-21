@@ -1,0 +1,2213 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --body-color: #efefef;
+  --nav-color: #1876f2;
+  --bg-color: #fff;
+}
+.dark-theme {
+  --body-color: #0a0a0a;
+  --nav-color: #000;
+  --bg-color: #000;
+}
+
+body {
+  background: var(--body-color);
+  transition: background 0.3s;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--nav-color);
+  padding: 5px 5%;
+  position: sticky;
+  
+  z-index: 100;
+}
+.logo {
+  margin-right: 45px;
+}
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+.nav-left ul li {
+  list-style: none;
+  display: inline-block;
+}
+.nav-left ul li img {
+  width: 28px;
+  margin: 0 15px;
+}
+.nav-user-icon img {
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.nav-user-icon {
+  margin-left: 20px;
+}
+.search-box {
+  background: #efefef;
+  width: 250px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+.search-box img {
+  width: 18px;
+}
+.search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 10px;
+  outline: none;
+  border: 0;
+}
+
+.left-sidebar {
+  flex-basis: 25%;
+  position: sticky;
+  top: 70px;
+  align-self: flex-start;
+  height: 100vh;
+}
+.right-sidebar {
+  flex-basis: 25%;
+  position: sticky;
+  top: 70px;
+  align-self: flex-start;
+  background: var(--bg-color);
+  padding: 20px;
+  border-radius: 4px;
+  color: #626262;
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.right-sidebar h4 {
+  font-weight: 600;
+  font-size: 16px;
+}
+.sidebar-title a {
+  text-decoration: none;
+  color: #1876f2;
+  font-size: 12px;
+}
+
+.flow-container {
+  display: block;
+  position: relative;
+  width: 455.3px;
+  align-items: center; 
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+}
+
+.flow-content {
+  position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+
+.flow-top-container{
+  display: block;
+  position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+
+.flow-top-gallery {
+  position: relative;
+  width: 100%;  
+  display: flex;
+  margin: 10px;
+  overflow-x: scroll;
+}
+
+.btn-add-flow-container {
+  display: block;
+  position: relative;
+  height: 170px;
+  width: 100px;
+  margin: 0.5%;
+  padding-top: 2%;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0)),
+    url(../img/linq/Linq_Logo_Green_0.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  justify-content: center;
+  
+}
+
+.btn-add-flow-plus {
+  display: block;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  color: white;
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+
+.btn-add-flow-text {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.flow-main-container {
+  display: block;
+  position: relative;
+  height: 170px;
+  width: 100px;
+  background-position: center;
+  background-size: cover;
+  margin: 0.5%;
+  border: 3px solid green;
+  border-radius: 1rem;
+  justify-content: center;
+  overflow: hidden;
+}
+.flow-img {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+  border: 5px solid #1876f2;
+  object-fit: cover;
+  cursor: pointer;
+}
+.flow-bg {
+  position: absolute;
+  height: 170px;
+  width: 100px;
+  object-fit: cover;
+}
+.flow-username {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.write-post-containter {
+  width: auto;
+  background: var(--bg-color);
+  color: #626262;
+  margin: 4%;
+}
+
+/*Add Flow*/
+.loginPopup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.formPopup {
+  display: none;
+  position: fixed;
+  width: 95%;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, 5%);
+  border: 3px solid green;
+  z-index: 9;
+  border-radius: 5px;
+}
+
+.formContainer {
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.addFlowBtn {
+  display: flex;
+}
+
+.formContainer input[type="text"],
+.formContainer input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  border: none;
+  background: #eee;
+}
+
+.formContainer input[type="text"]:focus,
+.formContainer input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.formContainer .btn {
+  padding: 12px 20px;
+  border: none;
+  background-color: #8ebf42;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.formContainer .cancel {
+  background-color: #cc0000;
+}
+
+.formContainer .btn:hover,
+.openButton:hover {
+  opacity: 1;
+}
+/* End Add Flow*/
+
+/* Weather */
+.weatherUpdate {
+  width: 95%;
+  background: var(--bg-color);
+  border-radius: 10px;
+  padding: 10px;
+  color: green;
+  margin: 10px;
+}
+
+#weather-main {
+  display: flex;
+  width: 100%;
+}
+
+.weather-input-container {
+  display: flex;
+  background: white;
+}
+
+.weather-input-container #weather_input {
+  height: 40px;
+  width: 70%;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: transparent;
+  border: 2px solid #c2c2c2;
+  border-radius: 4px;
+  margin: 4px;
+}
+.weather-input-container #weather_submit {
+  height: 2.2rem;
+  width: 4.5rem;
+  background: green;
+  font-weight: bold;
+  color: white;
+  font-size: 1rem;
+  margin-left: 8px;
+  margin-top: 8px;
+  border-radius: 10px;
+}
+
+.weather-display-container {
+  padding: 10px;
+  text-align: center;
+}
+
+.wrapper h2 {
+  padding: 5px;
+  text-align: center;
+  background: green;
+  color: white;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  color: #9beefb;
+}
+.wrapper p {
+  margin: 10px;
+  text-align: left;
+  color: #04214c;
+  font-size: 1em;
+}
+
+.wrapper h2 span {
+  font-size: 0.8em;
+  color: #9beefb;
+}
+.wrapper p span {
+  color: #90006e;
+  font-size: 1em;
+  text-align: right;
+}
+
+/* Post */
+.public-posts-container {
+  position: relative;
+  margin-right: 0;
+  margin-left: 0;
+  justify-content: center;
+}
+
+.post-title-container {
+  display: flex;
+  width: 100%;
+}
+.img-linq-profile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+.post-linq-name {
+  margin-bottom: -5%;
+  font-weight: 500;
+  color: #626262;
+}
+.post-date {
+  font-size: 12px;
+}
+.post-menu {
+  position: absolute;
+  right: 10%;
+}
+
+.post-input-container {
+  padding-left: 5px;
+  padding-top: 20px;
+}
+.post-input-container textarea {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  resize: none;
+}
+.add-post-links {
+  display: flex;
+  margin-top: 10px;
+}
+.add-post-links a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #626262;
+  margin-right: 30px;
+  font-size: 13px;
+}
+.add-post-links a img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.post-container {
+  position: relative;
+  width: 95%;
+  background: var(--bg-color);
+  border-radius: 10px;
+  padding: 15px 15px 10px 15px;
+  color: #626262;
+  border: 2px solid;
+  margin: 10px;
+}
+
+.post-container span {
+  font-size: 13px;
+  color: #9a9a9a;
+}
+.post-text {
+  color: #9a9a9a;
+  margin: 15px 0;
+  font-size: 15px;
+}
+.post-text span {
+  color: #626262;
+  font-weight: 500;
+}
+.post-text a {
+  color: #1876f2;
+  text-decoration: none;
+}
+.post-img {
+  width: 100%;
+  border-radius: 4px;
+  height: 360px;
+  object-fit: cover;
+}
+.post-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.activity-icons div img {
+  width: 18px;
+  margin-left: 5px;
+}
+.activity-icons div {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.post-profile-icon {
+  display: flex;
+  align-items: center;
+}
+.post-profile-icon img {
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.post-row a {
+  color: #9a9a9a;
+}
+
+.post-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: -10px;
+  justify-content: space-between;
+}
+.post-row-8 a {
+  color: #9a9a9a;
+}
+
+/* Add Comment */
+.commentContainer {
+  width: 100%;
+}
+
+.comment-input-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  background: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-input {
+  position: relative;
+  height: 36px;
+  width: 79%;
+  min-width: 73%;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  background-color: transparent;
+  border: 2px solid #c2c2c2;
+  border-radius: 2rem;
+  margin-top: 5%;
+  margin-right: 1.5%;
+  margin-left: -3%;
+  padding-left: 2%;
+}
+
+.show-comments-container {
+  padding: 10px;
+  text-align: center;
+}
+.comment-add-icon {
+  display: flex;
+  align-items: center;
+  scale: 0.49;
+  margin-left: -5%;
+  padding: 2%;
+  border-radius: 3rem;
+  border: 2px solid green;
+
+  cursor: pointer;
+}
+
+.comment-send-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  text-align: right;
+  color: darkcyan;
+
+  cursor: pointer;
+}
+.comment-main {
+  display: block;
+  align-items: center;
+  margin-top: 10px;
+  background-color: lightgreen;
+  border-radius: 1.7rem;
+  padding: 0.7%;
+  justify-content: space-between;
+}
+.comment-container {
+  display: flex;
+  align-items: center;
+  padding: 1%;
+  justify-content: space-between;
+}
+
+.comment-author-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 1.5rem;
+  margin-right: 5px;
+  margin-top: -0.1%;
+  margin-bottom: 0.6%;
+
+  cursor: pointer;
+}
+
+.comment-text {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  color: gray;
+  margin-top: -13%;
+  margin-bottom: -7%;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.comment-linq {
+  height: 25px;
+  width: 25px;
+  margin-right: 1%;
+}
+
+.comment-linq-icon {
+  height: 25px;
+  width: 25px;
+  margin-right: 1%;
+}
+
+.comment-linq-edit {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  text-align: right;
+  color: grey;
+}
+
+.comment-reply-container {
+  padding-bottom: -4%;
+}
+
+.comment-reply-author-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 1.5rem;
+  margin-left: 1.2%;
+  margin-top: 0.5%;
+  font-size: 1.4rem;
+}
+
+.comment-reply-input {
+  position: relative;
+  height: 36px;
+  width: 75%;
+  min-width: 73%;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  background-color: white;
+  border: 2px solid #c2c2c2;
+  border-radius: 2rem;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+  padding-left: 2%;
+  margin-bottom: 0.5%;
+}
+
+.comment-reply-send-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  text-align: right;
+  color: darkcyan;
+
+  cursor: pointer;
+}
+
+.comment-activities-container {
+  display: flex;
+  margin-top: -7%;
+  margin-bottom: -2%;
+  margin-left: 6%;
+  justify-content: center;
+}
+
+.comment-like-icon {
+  margin-top: -10%;
+  margin-left: 5%;
+  font-size: 1.4rem;
+}
+
+.comment-like-count {
+  margin-top: 5%;
+}
+
+.comment-reply-count {
+  margin-top: 5%;
+}
+/* End Comment */
+
+.post-activities-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.post-like {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-like-count {
+  margin-bottom: 2px;
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+.bx-heart {
+  font-size: 1.4rem;
+
+  cursor: pointer;
+}
+.post-comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-comment-count {
+  margin-bottom: 2px;
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+.bxl-twitter {
+  font-size: 1.5rem;
+
+  cursor: pointer;
+}
+.post-save {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.post-profile-icon-8 {
+  display: flex;
+  align-items: center;
+}
+.likeCount,
+.commentCount {
+  font-size: 1.05rem;
+}
+
+.commentContainer {
+  height: 300px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+
+.commentContainer8::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.load-more-btn {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #9a9a9a;
+  background: transparent;
+  border-radius: 4px;
+}
+
+.footer {
+  text-align: center;
+  color: #9a9a9a;
+  padding: 10px 0 20px;
+  font-size: 13px;
+}
+
+.user-profile a {
+  font-size: 12px;
+  color: #1876f2;
+  text-decoration: none;
+}
+
+/* my linq _display*/
+.my-linq {
+  position: relative;
+  display: block;
+}
+
+.my_linq_main_container {
+  position: relative;
+  max-width: 455.3px;
+}
+
+.my_linq_img_container {
+  position: relative;
+  display: flex;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 300px;
+  justify-content: center;
+  z-index: 0;
+}
+
+.my-linq-heading-container {
+  display: flex;
+  margin-top: 30%;
+  margin-bottom: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  justify-content: space-around;
+}
+
+.my-linq-heading {
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+  justify-self: start;
+}
+
+.bx-cog {
+  font-size: 1.7rem;
+  text-align: right;
+  color: white;
+  justify-self: end;
+  z-index: 5;
+
+  cursor: pointer;
+}
+
+.bxs-info-circle {
+  font-size: 1.7rem;
+  text-align: right;
+  color: white;
+  justify-self: end;
+  z-index: 1;
+
+  cursor: pointer;
+}
+
+.my_linq_img {
+  position: relative;
+  display: block;
+  height: 90%;
+  width: 90%;
+  border-radius: 20%;
+  border: 2px solid green;
+  margin-bottom: 1%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.my_linq_name {
+  margin-top: 1%;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.my_linq_description_container {
+  display: block;
+  margin-top: 3%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.my_linq_description {
+  font-size: 18px;
+  color: green;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.my_linq_bio_container {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.my_linq_bio {
+  font-size: 18px;
+  color: green;
+  text-align: center;
+}
+
+.activitiesProjects_container {
+  position: relative;
+  display: flex;
+  margin-top: 1%;
+  justify-content: center;
+  line-height: 1px;
+}
+
+.activitiesTitle {
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 10px;
+  padding: 2px;
+  border-radius: 5px 0 0 5px;
+
+  cursor: pointer;
+}
+
+.projectsTitle {
+  color: gray;
+  background-color: white;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 10px;
+  padding: 2px;
+  border-right: 2px solid;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+
+  cursor: pointer;
+}
+
+.plusTitle {
+  color: gray;
+  background-color: white;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 10px;
+  padding: 2px;
+  border-right: 2px solid;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-radius: 0 5px 5px 0;
+
+  cursor: pointer;
+}
+
+.my-linq-posts-filters-container {
+  position: relative;
+  display: flex;
+  top: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: -15px;
+}
+
+.my-linq-posts-filters {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.my-linq-posts-filters .all-filter{
+  position: relative;
+  list-style-type: none;
+  background-color: white;
+  color: green;
+  padding: 5px 10px 5px 10px;
+  margin-right: 5px;
+  border-radius: 1rem;
+  vertical-align:middle;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.linq_posts_filter li {
+  position: relative;
+  list-style-type: none;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  margin-right: 5px;
+  border-radius: 15px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.my-linq-posts-view-container {
+  position: relative;
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  line-height: 1px;
+}
+
+.btn-my-linq-posts-grid {
+  background-color: white;
+  color: green;
+  font-size: 2.1rem;
+  border-radius: 0 5px 5px 0;
+
+  cursor: pointer;
+}
+
+.btn-my-linq-posts-list {
+  background-color: green;
+  color: white;
+  font-size: 2.1rem;
+  border-radius: 5px 0 0 5px;
+
+  cursor: pointer;
+}
+
+.my_linq_container {
+  display: block;
+  justify-content: space-between;
+  padding: 5px 1%;
+  margin: 1%;
+}
+
+.my-linq-post-container {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: var(--bg-color);
+  border-radius: 6px;
+  padding: 20px;
+  color: #626262;
+  margin: 20px 0;
+}
+
+.my-linq-posts-grid {
+  position: relative;
+  display: flex;
+  margin-top: 5%;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-post {
+  background-color: lightgray;
+  height: 250px;
+  width: 200px;
+  padding: 10px;
+  margin: 1%;
+  border-radius: 5px;
+}
+
+.card-post img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.card-info-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.card-media-type {
+  font-size: 2rem;
+}
+.card-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.card-info .card-likes-count {
+  font-size: 0.8rem;
+}
+
+.card-info .card-comments-count {
+  font-size: 0.8rem;
+}
+
+.card-note {
+  position: absolute;
+  top: -5px;
+  left: 38%;
+  font-size: 2rem;
+}
+
+/* my_linq_edit*/
+.my_linq_edit {
+  margin-bottom: 10%;
+  justify-content: center;
+}
+
+.bxs-save {
+  font-size: 1.7rem;
+  text-align: right;
+  color: white;
+  justify-self: end;
+  cursor: pointer;
+}
+
+.my_linq_img_container {
+  position: relative;
+  display: flex;
+}
+
+.my_linq_img_edit {
+  position: relative;
+  display: block;
+  height: 90%;
+  width: 90%;
+  right: 2%;
+  border-radius: 20%;
+  border: 2px solid green;
+  margin-bottom: 10px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.img_edit_icon {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.linqInSetTitle_edit {
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.emailPassword-container {
+  display: flex;
+  justify-content: center;
+}
+
+.my_linq_changeEmail {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  font-size: 1.1rem;
+  color: green;
+  text-align: center;
+  margin-right: 5%;
+  margin-left: 10%;
+  margin-bottom: 1%;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.my_linq_changePassword {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  font-size: 1rem;
+  color: green;
+  text-align: center;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 1%;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.my_linq_username-input-container {
+  display: flex;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+.my_linq_username-input-container #my_linq_username-input {
+  height: 40px;
+  width: 90%;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.refresh-username-icon {
+  display: flex;
+  font-size: 2rem;
+  color: red;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fullnameTitle_edit {
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.my_linq_firstname-input-container {
+  display: flex;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+.my_linq_firstname-input-container #my_linq_firstname-input {
+  height: 40px;
+  width: 90%;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.refresh-firstname-icon {
+  display: flex;
+  font-size: 2rem;
+  color: red;
+  align-items: center;
+  cursor: pointer;
+}
+
+.my_linq_middlename-input-container {
+  display: flex;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+.my_linq_middlename-input-container #my_linq_middlename-input {
+  height: 40px;
+  width: 90%;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.refresh-middlename-icon {
+  display: flex;
+  font-size: 2rem;
+  color: red;
+  align-items: center;
+  cursor: pointer;
+}
+
+.my_linq_lastname-input-container {
+  display: flex;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+.my_linq_lastname-input-container #my_linq_lastname-input {
+  height: 40px;
+  width: 90%;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.refresh-lastname-icon {
+  display: flex;
+  font-size: 2rem;
+  color: red;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bioTitle_edit {
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.my_linq_bio-input-container {
+  display: flex;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+.my_linq_bio-input-container #my_linq_bio-input {
+  height: 40px;
+  width: 90%;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.refresh-bio-icon {
+  display: flex;
+  font-size: 2rem;
+  color: red;
+  align-items: center;
+  cursor: pointer;
+}
+
+.my-linq-edit-description-container {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 2px;
+  justify-content: space-between;
+}
+
+.my-linq-edit-description {
+  position: relative;
+  margin-top: 1%;
+  font-size: 18px;
+  color: green;
+  text-align: start;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.delete-description {
+  position: absolute;
+  display: flex;
+  font-size: 2rem;
+  color: red;
+  align-items: center;
+  margin-left: 72%;
+  cursor: pointer;
+}
+
+.whatWhereTitle_edit {
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Interests */
+
+.interestsTitle_edit {
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  text-align: center;
+}
+
+.linq_interests_container {
+  position: relative;
+  display: flex;
+  top: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: -15px;
+}
+
+.linq_interests {
+  position: relative;
+  display: flex;
+  height: auto;
+  width: 100%;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.interest-container {
+  display: flex;
+  background-color: white;
+  padding: 2px 5px 2px 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.interest-item {
+  position: relative;
+  color: green;
+}
+
+.delete-interest {
+  position: relative;
+  margin-top: 5%;
+  font-size: 1.1rem;
+  color: red;
+  cursor: pointer;
+}
+
+.my_linq_add-interests_container {
+  position: relative;
+  display: flex;
+  margin-top: 7%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+  padding: 2px;
+  justify-content: space-between;
+}
+
+.my_linq_add-interests {
+  margin-top: 1%;
+  font-size: 18px;
+  color: green;
+  padding-left: 5px;
+}
+
+.add-interestBtn_a {
+  display: flex;
+  font-size: 2rem;
+  color: darkgreen;
+  align-items: center;
+  cursor: pointer;
+}
+
+.flavorsTitle_edit {
+  display: block;
+  position: relative;
+  margin-top: 3%;
+  color: white;
+  font-weight: bold;
+  background-color: #008000;
+  text-align: center;
+}
+
+.flavorsBtnContainer {
+  position: relative;
+  display: flex;
+  padding: 2%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-flavors {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+/* Add Desc */
+.my-linq-add-description-container {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 2px;
+  justify-content: center;
+}
+
+.my-linq-add-description {
+  margin-top: 1%;
+  font-size: 18px;
+  color: green;
+  text-align: center;
+  padding-left: 5px;
+}
+
+.btn-add-description {
+  display: flex;
+  font-size: 2rem;
+  color: darkgreen;
+  align-items: center;
+  cursor: pointer;
+}
+/* Fix centering */
+.description-popup-container {
+  position: fixed;
+  top: 30%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 5px;
+  max-height: 40vh;
+  max-width: 350px;
+  justify-content: center;
+}
+
+.desc-popup {
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  display: flex;
+  transform: translateX(13%);
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border: 3px solid green;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.desc-popup-title {
+  color: #008000;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.what-container {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+#edit-text-what {
+  width: 95%;
+  font: 1em sans-serif;
+}
+
+#edit-text-where {
+  width: 90%;
+  font: 1em sans-serif;
+  margin-left: 5px;
+}
+
+.desc-popup .select-what {
+  color: lightseagreen;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2px;
+  border-radius: 2em;
+  padding: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.select-what .select-click {
+  border: 2px limegreen solid;
+  box-shadow: 0 0 0.8em limegreen;
+}
+
+.select-what:hover {
+  background: limegreen;
+  color: white;
+}
+
+.desc-popup .select-where {
+  color: lightseagreen;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2px;
+  border-radius: 2em;
+  padding: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.select-where .select-click {
+  border: 2px limegreen solid;
+  box-shadow: 0 0 0.8em limegreen;
+}
+
+.select-where:hover {
+  background: limegreen;
+  color: white;
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: 0.3s;
+}
+
+.caret-rotate {
+  transform: rotate();
+}
+
+.menu-what {
+  position: absolute;
+  display: none;
+  top: 0.5em;
+  left: 50%;
+  max-height: 40vh;
+  width: 95%;
+  list-style: none;
+  padding: 0.2em 0.2em;
+  margin-bottom: 3%;
+  background: skyblue;
+  border: 1px turquoise solid;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: green;
+  transform: translateX(-52%);
+  opacity: 100;
+  transition: 0.2s;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+.menu-what li {
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.menu-what li:hover {
+  background: white;
+}
+
+.where-menu-container {
+  position: relative;
+  display: block;
+  top: 0.5em;
+  left: 52%;
+  max-height: 40vh;
+  width: 95%;
+  padding: 0.2em 0.2em;
+  margin-bottom: 3%;
+  background: skyblue;
+  border: 1px turquoise solid;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  transform: translateX(-52%);
+  opacity: 100;
+  transition: 0.2s;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+.menu-where {
+  position: relative;
+  display: block;
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  color: green;
+  cursor: pointer;
+}
+
+.where-menu-container :hover {
+  background: white;
+}
+
+.btn-desc {
+  display: flex;
+  width: 95%;
+}
+
+.desc-popup .btn-add-desc {
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #8ebf42;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.desc-popup .btn-del-desc {
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #cc0000;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.desc-popup .btn-cancel-desc {
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: grey;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.desc-popup .btn-cancel-desc:hover,
+.openButton:hover {
+  opacity: 1;
+}
+
+/* linq */
+.linqs-container {
+  position: fixed;  
+  width: 250px;
+  top: 20%;
+  transform: translateX(40%);
+  align-items: center;
+  justify-content: center;
+}
+
+.linq_main_container {
+  position: relative;
+}
+
+.linqs_list_item {
+  display: flex;
+  width: 90%;
+  margin: 10px;
+}
+
+.linqs_list_item .linq_linq_name {
+  color: green;
+  margin-top: 5px;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-left: 10%;
+}
+
+.linqs_list_item .linq-connect {
+  width: 30px;
+  height: 30px;
+  margin-left: 20%;
+}
+
+#img_linq_linq {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.linq_img_container {
+  position: relative;
+  display: flex;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 300px;
+  justify-content: center;
+  z-index: 0;
+}
+
+.img_my_linq {
+  position: relative;
+  display: flex;
+  border-radius: 25px;
+  border: 2px solid green;
+}
+
+.linq_img {
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  justify-content: space-between;
+  top: 5%;
+  width: 55%;
+  scale: 1.5;
+  color: green;
+}
+
+.linq_img .camera_plus {
+  display: none;
+}
+
+input[type="file"] {
+  position: relative;
+  display: flex;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.linq_name {
+  margin-top: 2%;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.linq_description_container {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.linq_description {
+  margin-top: 1%;
+  font-size: 18px;
+  color: green;
+  text-align: center;
+}
+
+.linq_posts_container {
+  display: block;
+  justify-content: space-between;
+  padding: 5px 1%;
+  margin: 1%;
+}
+
+.linq_post-container {
+  width: 100%;
+  background: var(--bg-color);
+  border-radius: 6px;
+  padding: 20px;
+  color: #626262;
+  margin: 20px 0;
+}
+
+.linq_post-container #post_img {
+  height: 360px;
+  object-fit: cover;
+}
+/* modal */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 250px;
+  width: 250px;
+  max-width: 80%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid green;
+  border-radius: 10rem;
+  z-index: 10;
+  background-color: white;
+  overflow: hidden;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: green;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.btnConfirmModal {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#modalCancel {
+  color: red;
+  font-size: 3rem;
+  margin: 10px;
+}
+#modalYes {
+  color: green;
+  font-size: 3rem;
+  margin: 10px;
+}
+
+@media (max-width: 455.3px) {
+.home-section{
+  overflow-x: hidden;
+}
+
+  .flow-footer {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    position: absolute;
+    left: -0.5%;
+    transform: scale(0.6);
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .left_text {
+    position: relative;
+    width: fit-content;
+    color: white;
+    font-size: 1.51rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .left_img {
+    position: relative;
+    height: 85px;
+    width: 100px;
+    background-image: url(/img/others/caricom_flag.png);
+    background-repeat: no-repeat;
+  }
+
+  .footer-right {
+    position: absolute;
+    right: 5%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .my_linq {
+    position: relative;
+    display: block;
+    justify-content: center;
+  }
+
+  .my_linq_main_container {
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .flow-container {
+    display: block;
+    position: relative;
+    width: 100%;
+    align-items: center; 
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+  }
+
+  .public-posts-container {
+    position: relative;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* linq */
+.linqs-container {
+  position: fixed;  
+  width: 84%;
+  top: 20%;
+  transform: translateX(10%);
+  align-items: center;
+  justify-content: center;
+}
+
+.linq_main_container {
+  position: relative;
+}
+
+.linqs_list_item {
+  display: flex;
+  width: 90%;
+  margin: 10px;
+}
+
+.linqs_list_item .linq_linq_name {
+  color: green;
+  margin-top: 5px;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-left: 10%;
+}
+
+.linqs_list_item .linq-connect {
+  width: 30px;
+  height: 30px;
+  margin-left: 20%;
+}
+
+#img_linq_linq {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.linq_img_container {
+  position: relative;
+  display: flex;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 300px;
+  justify-content: center;
+  z-index: 0;
+}
+
+.img_my_linq {
+  position: relative;
+  display: flex;
+  border-radius: 25px;
+  border: 2px solid green;
+}
+
+.linq_img {
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  justify-content: space-between;
+  top: 5%;
+  width: 55%;
+  scale: 1.5;
+  color: green;
+}
+
+.linq_img .camera_plus {
+  display: none;
+}
+
+input[type="file"] {
+  position: relative;
+  display: flex;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.linq_name {
+  margin-top: 2%;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.linq_description_container {
+  display: block;
+  margin-top: 2%;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.linq_description {
+  margin-top: 1%;
+  font-size: 18px;
+  color: green;
+  text-align: center;
+}
+
+.linq_posts_container {
+  display: block;
+  justify-content: space-between;
+  padding: 5px 1%;
+  margin: 1%;
+}
+
+.linq_post-container {
+  width: 100%;
+  background: var(--bg-color);
+  border-radius: 6px;
+  padding: 20px;
+  color: #626262;
+  margin: 20px 0;
+}
+
+.linq_post-container #post_img {
+  height: 360px;
+  object-fit: cover;
+}
+
+/* My Linq */
+
+.my-linq-heading-container {
+  position: relative;
+  display: flex;
+  margin-top: 32%;
+  margin-bottom: 8%;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  justify-content: space-around;
+}
+}
+
+@media (min-width: 455.3px) {
+  .my_linq {
+    display: block;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+  }
+
+  .my_linq_main_container {
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+  }
+
+  .my-linq-posts-container {
+    position: relative;
+    width: 455.3px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .my-linq-posts-grid {
+    position: relative;
+    display: flex;
+    margin-top: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 455.3px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-post {
+    background-color: lightgray;
+    height: 250px;
+    width: 200px;
+    padding: 10px;
+    margin: 1%;
+    border-radius: 5px;
+  }
+
+  .my_linq_edit {
+    margin-bottom: 10%;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .info_a {
+    position: absolute;
+    bottom: 0.2%;
+    left: 2%;
+    transform: scale(0.5);
+    justify-items: center;
+  }
+
+  .info_b {
+    position: absolute;
+    bottom: 3.5%;
+    right: 2%;
+    width: 10%;
+    color: white;
+    transform: scale(1);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .info_a .text_a {
+    position: relative;
+    width: 100%;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
