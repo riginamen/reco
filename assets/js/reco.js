@@ -492,7 +492,7 @@ function generateLinq(saved_UI, linqId, linqData, type) {
 
         localStorage.setItem("currentView", "linqLinq")
 
-        let url = '../linq/linq.html'
+        let url = 'linq/linq.html'
 
         let data = [{
           title: url
@@ -958,7 +958,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
       $('.metro').hide();
       let metro_bg_img = document.createElement('img');
       metro_bg_img.setAttribute('id', 'metro-bg-img')
-      metro_bg_img.src = '../assets/img/20241120_072550.jpg'
+      metro_bg_img.src = 'assets/img/20241120_072550.jpg'
       metro_bg_img.style.cssText = "object-fit: cover; background-repeat: no-repeat; z-index:0;"
 
       document.getElementById('metro-container').appendChild(metro_bg_img);
@@ -1257,7 +1257,7 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile0_card.style.backgroundColor = 'grey';
   }
   tile0_card.addEventListener("click", function () {
-    let url = '../linq/linq.html'
+    let url = 'linq/linq.html'
 
     let data = [{
       title: url
@@ -1277,7 +1277,7 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile1_card.style.backgroundColor = 'grey';
   }
   tile1_card.addEventListener("click", function () {
-    let url = '../linq/linq.html'
+    let url = 'linq/linq.html'
 
     let data = [{
       title: url
@@ -1297,7 +1297,7 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile2_card.style.backgroundColor = 'grey';
   }
   tile2_card.addEventListener("click", function () {
-    let url = '../linq/linq.html'
+    let url = 'linq/linq.html'
 
     let data = [{
       title: url
@@ -1318,7 +1318,7 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile3_card.style.backgroundColor = 'grey';
   }
   tile3_card.addEventListener("click", function () {
-    let url = '../linq/linq.html'
+    let url = 'linq/linq.html'
 
     let data = [{
       title: url
