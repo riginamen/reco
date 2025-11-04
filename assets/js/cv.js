@@ -232,7 +232,7 @@ function openModal(modal, type, data) {
   modal.classList.add('active')
   overlay.classList.add('active')
 
-  lastModal =[modal, type, data]
+  lastModal =[{modal: modal, type: type, data: data}]
 
 // let savedModal = JSON.parse(localStorage.getItem("last-modal"));
 
@@ -499,6 +499,19 @@ function openModal(modal, type, data) {
     $('.btnConfirmModal').hide();
 
     modal.style.cssText = `width: 680px; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`  
+  } else if (type == 'linqfin') {
+
+    $('.iframe').hide();
+
+    $('.modal-header').show();
+    $('.modal-header').text('LinqFin');
+
+    $('.modal-body').show();
+    $('.settings-container').hide();
+    $('.credit-container').hide();
+    $('.btnConfirmModal').hide();
+
+    modal.style.cssText = `width: auto; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`  
   }
 }
 // TODO: Design this better
@@ -534,7 +547,7 @@ function openImgModal(modal, orientation, url) {
   $('.modal-header').hide();
   $('.modal-body').hide();
   $('.btnConfirmModal').hide();
-
+  lastModal
   $('.credit-container').hide();
 
   let modal_ = document.getElementById('modal');
@@ -592,6 +605,9 @@ function modalYes(confirmation, type, data) {
 }
 
 function closeModal(modal) {
+
+  let saved_UI = localStorage.getItem('saved-UI');
+
   if (modal == null) return
   /*Reset*/
   $('.modal-header').hide();
@@ -615,8 +631,14 @@ function closeModal(modal) {
 
   document.getElementById('modal').style.cssText = "width: auto; max-width: 95%; height: auto; max-height: 95%; background-color: white; object-fit: contain; border-radius: 1rem;"
 
+  if (lastModal[0].type == 'img-fin'){
+    openModal(modal, 'linqfin', '')
+    generateLinqFin(saved_UI);
+    
+  } else if (lastModal[0]. type == 'video'){
   stopVideo();
   stopYT();
+}
 }
 
 const cvSliderDataImgCount =

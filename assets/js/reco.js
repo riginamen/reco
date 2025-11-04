@@ -1,5 +1,17 @@
 window.onload = function () {
 }
+//TODO: Check hosting location: GitHub | Firebase | Local
+let hosting = (function() {
+  if ((window.location.href).includes('localhost')){
+    return ''
+  } else if ((window.location.href).includes('github')){
+    return 'https://riginamen.github.io/reco/'
+  } else {
+    return ''
+  }
+})();
+
+//alert(hosting)
 
 //TODO: Fix Weather
 //let saved_Weather = localStorage.getItem('saved-Weather');
@@ -859,43 +871,54 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
   } else if (tile_data.tile_title == 'Games') {
 
     tile.onmouseover = function () {
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }
 
     metro.addEventListener("scroll", function () {
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }, true);
   } else if (tile_data.tile_title == 'CV') {
 
     tile.onmouseover = function () {
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }
 
     metro.addEventListener("scroll", function () {
       //tile_icon.src = ''
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }, true);
   } else if (tile_data.tile_title == 'RE') {
 
     tile.onmouseover = function () {
       //tile_icon.src = '';
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }
 
     metro.addEventListener("scroll", function () {
       //tile_icon.src = ''
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }, true);
   } else if (tile_data.tile_title == 'Eat') {
 
     tile.onmouseover = function () {
       //tile_icon.src = '';
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }
 
     metro.addEventListener("scroll", function () {
       //tile_icon.src = ''
-      startTileAnimation(tile, tile_data, tile_icon).then(stopTileAnimation(tile, tile_data, tile_icon))
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
+    }, true);
+  } else if (tile_data.tile_title == 'Fin') {
+
+    tile.onmouseover = function () {
+      //tile_icon.src = '';
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
+    }
+
+    metro.addEventListener("scroll", function () {
+      //tile_icon.src = ''
+      startTileAnimation(saved_UI, tile, tile_data, tile_icon).then(stopTileAnimation(saved_UI, tile, tile_data, tile_icon))
     }, true);
   }
 
@@ -927,7 +950,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
       generateLinq2(saved_UI);
 
     } else if (tile_data.tile_title == 'Time') {
-      let url = '../time/time.html';
+      let url = hosting + 'time/time.html';
 
       let data = [{
         title: url
@@ -993,7 +1016,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
       }
     } else if (tile_data.tile_title == 'ToDo') {
 
-      let url = 'to-do-list/index.html';
+      let url = hosting + 'to-do-list/index.html';
 
       let data = [{
         title: url
@@ -1003,7 +1026,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
 
     } else if (tile_data.tile_title == 'TextEditor') {
 
-      let url = 'rich-text-editor/index.html';
+      let url = hosting + 'rich-text-editor/index.html';
 
       let data = [{
         title: url
@@ -1013,7 +1036,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
 
     } else if (tile_data.tile_title == 'Earth') {
 
-      let url = 'earth/earth.html';
+      let url = hosting + 'earth/earth.html';
 
       let data = [{
         title: url
@@ -1042,8 +1065,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
       openModal(modal, 'site', data[0])
 
     } else if (tile_data.tile_title == 'Git') {
-      //window.open('https://github.com/riginamen', '_blank').focus();
-      window.location.href = 'https://github.com/riginamen';
+      window.open('https://github.com/riginamen', '_blank').focus();
     } else if (tile_data.tile_title == 'Dev') {
 
       openModal(modal, 'credit', '');
@@ -1059,15 +1081,40 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
       }]
 
       openImgModal(modal, data[0].orientation, data[0].imgURL);
+    } else if (tile_data.tile_title == 'Fin') {
+
+      openModal(modal, 'linqfin', '')
+
+      generateLinqFin(saved_UI);
     }
   });
   tiles_container.appendChild(tile_container);
 }
 
-function startTileAnimation(tile, tile_data, tile_icon) {
+let isFinAnim = true;
+
+function startTileAnimation(saved_UI, tile, tile_data, tile_icon) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
+      /* Preferred Style */
+  let UI = 'android'
+  //container radius
+  let c_r = '1em'
 
+  if (saved_UI == 'android') {
+    UI = saved_UI;
+    c_r = '1.4em'
+
+  } else if (saved_UI == 'metro') {
+    UI = saved_UI;
+    c_r = '0em'
+
+  } else if (saved_UI == 'apple') {
+    UI = saved_UI;
+    c_r = '0.5em'
+  } else {
+    UI = 'android'
+  }
       const err = false;
       if (!err) {
         let tile_title = tile_data.tile_title;
@@ -1089,6 +1136,9 @@ function startTileAnimation(tile, tile_data, tile_icon) {
 
           tile_icon.style.cssText = 'height: 100%; width: auto; object-fit: contain'
           tile_icon.src = 'assets/icons/fruit.gif'
+        } else if (tile_title == 'Fin'){
+          
+        startAnimFinTile(c_r, tile, tile_data, tile_icon, isFinAnim)
         }
         resolve();
       } else {
@@ -1098,9 +1148,81 @@ function startTileAnimation(tile, tile_data, tile_icon) {
   });
 }
 
-function stopTileAnimation(tile, tile_data, tile_icon) {
+//TODO: Fix This | Design This Better
+function startAnimFinTile (c_r, tile, tile_data, tile_icon, isFinAnim){
   return new Promise((resolve, reject) => {
     setTimeout(() => {
+      const err = false;
+      if (!err) {
+        generateFin_Y(c_r, tile, tile_data, tile_icon, isFinAnim)
+        resolve();
+      } else {
+        reject();
+      }
+    }, 1000)
+  });
+}
+
+function generateFin_Y(c_r, tile, tile_data, tile_icon, isFinAnim){
+
+  if (isFinAnim == true){
+  tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
+        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+        tile_icon.src = 'assets/icons/yen-regular-36.png';  
+  
+    setTimeout(() => {       
+      generateFin_E(c_r, tile, tile_data, tile_icon)
+      }, 1000)
+
+    } else if (isFinAnim == false){
+        return false
+      }
+}
+
+function generateFin_E(c_r, tile, tile_data, tile_icon){
+
+  tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
+        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+        tile_icon.src = 'assets/icons/euro-regular-36.png';  
+  
+    setTimeout(() => {       
+      generateFin_S(c_r, tile, tile_data, tile_icon)
+      }, 1000)
+}
+
+function generateFin_S(c_r, tile, tile_data, tile_icon){
+  
+  tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
+        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+        tile_icon.src = 'assets/icons/dollar-regular-36.png';  
+  
+    setTimeout(() => {       
+      generateFin_Y(c_r, tile, tile_data, tile_icon)
+      }, 1000)
+}
+
+function stopTileAnimation(saved_UI, tile, tile_data, tile_icon) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+       /* Preferred Style */
+  let UI = 'android'
+  //container radius
+  let c_r = '1.4em'
+
+  if (saved_UI == 'android') {
+    UI = saved_UI;
+    c_r = '1.4em'
+
+  } else if (saved_UI == 'metro') {
+    UI = saved_UI;
+    c_r = '0em'
+
+  } else if (saved_UI == 'apple') {
+    UI = saved_UI;
+    c_r = '0.5em'
+  } else {
+    UI = 'android'
+  }
 
       const err = false;
       if (!err) {
@@ -1122,6 +1244,13 @@ function stopTileAnimation(tile, tile_data, tile_icon) {
 
           tile_icon.style.cssText = 'width: auto; height: 88%; margin-top: 10%;'
           tile_icon.src = tile_data.icon
+        } else if (tile_title == 'Fin') {
+
+          tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
+        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+        tile_icon.src = 'assets/icons/dollar-regular-36.png';
+        
+        generateFin_Y(c_r, tile, tile_data, tile_icon, false)
         }
 
         resolve();
@@ -1191,7 +1320,7 @@ function generateGameType(type_data, type_icons) {
       openModal(modal, 'site', data[0])
 
     } else if (type_data.gameTitle == 'Pacman') {
-      let url = "games/pacman/pacman.html";
+      let url = hosting + "games/pacman/pacman.html";
 
       let data = [{
         title: url
@@ -1200,7 +1329,7 @@ function generateGameType(type_data, type_icons) {
       openModal(modal, 'site', data[0])
 
     } else if (type_data.gameTitle == 'Gravity') {
-      let url = "games/gravity/gravity.html";
+      let url = hosting + "games/gravity/gravity.html";
 
       let data = [{
         title: url
@@ -1209,7 +1338,7 @@ function generateGameType(type_data, type_icons) {
       openModal(modal, 'site', data[0])
 
     } else if (type_data.gameTitle == 'Balloon Pop') {
-      let url = "games/balloon/index.html";
+      let url = hosting + "games/balloon/index.html";
 
       let data = [{
         title: url
@@ -1218,7 +1347,7 @@ function generateGameType(type_data, type_icons) {
       openModal(modal, 'site', data[0])
 
     } else if (type_data.gameTitle == 'Raise Flag') {
-      let url = "games/flags/index.html";
+      let url = hosting + "games/flags/index.html";
 
       let data = [{
         title: url
@@ -1227,7 +1356,7 @@ function generateGameType(type_data, type_icons) {
       openModal(modal, 'site', data[0])
 
     } else if (type_data.gameTitle == 'Fruit Fall') {
-      let url = "games/fruit/index.html";
+      let url = hosting + "games/fruit/index.html";
 
       let data = [{
         title: url
@@ -1257,7 +1386,7 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile0_card.style.backgroundColor = 'grey';
   }
   tile0_card.addEventListener("click", function () {
-    let url = 'linq/linq.html'
+    let url = hosting + 'linq/linq.html'
 
     let data = [{
       title: url
@@ -1369,6 +1498,11 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile_container.appendChild(tile1_card);
     tile_container.appendChild(tile2_card);
 
+  } else if (tile_data.id == '12') {
+    tile_container.appendChild(tile0_card);
+    tile_container.appendChild(tile1_card);
+    tile_container.appendChild(tile2_card);
+
   } else if (tile_data.id == '15') {
     tile_container.appendChild(tile2_card);
   } else if (tile_data.id == '16') {
@@ -1377,6 +1511,11 @@ function positionTile(saved_UI, tile, tile_data, tile_icon, tile_position, tile_
     tile_container.appendChild(tile0_card);
     tile_container.appendChild(tile1_card);
     tile_container.appendChild(tile2_card);
+
+  } else if (tile_data.id == '18') {
+    tile_container.appendChild(tile0_card);
+    tile_container.appendChild(tile1_card);
+
   } else {
     tile_container.appendChild(tile0_card);
     tile_container.appendChild(tile1_card);
@@ -1429,6 +1568,12 @@ function styleTile(saved_UI, tile, tile_data, tile_icon, tile0_card, tile1_card,
 
     tile.style.cssText = 'display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; border: 2px solid black; border-radius: 50%; overflow: hidden';
     tile_icon.style.cssText = 'width: auto; height: 58%; margin-top: 20%;'
+    tile_icon.src = tile_data.icon;
+
+  } else if (tile_data.tile_title == 'Fin') {
+ 
+    tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; border-radius: ${c_r}; overflow: hidden`;
+    tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
     tile_icon.src = tile_data.icon;
 
   } else {
@@ -1819,6 +1964,136 @@ function generateWeatherTile(saved_Temp, saved_Weather, tile) {
   else {
     checkWeather('Osaka')
   }
+}
+
+function generateLinqFin(saved_UI) {
+  /* Preferred Style */
+  let UI = 'android'
+  //container radius
+  let c_r = '1em'
+
+  if (saved_UI == 'android') {
+    UI = saved_UI;
+    c_r = '1em'
+
+  } else if (saved_UI == 'metro') {
+    UI = saved_UI;
+    c_r = '0em'
+
+  } else if (saved_UI == 'apple') {
+    UI = saved_UI;
+    c_r = '0.5em'
+  } else {
+    UI = 'android'
+  }
+
+  let modal_body = document.getElementById('modal-body')
+
+  let linq2_main_container = document.createElement('div')
+  linq2_main_container.style.cssText = 'width: 100%; height: 510px; overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let finSketch = document.createElement('img')
+  finSketch.style.cssText = `height: 510px; width: auto; object-fit: contain, border-radius: ${c_r}`
+  finSketch.src = 'assets/img/fin/IMG_20251101_161932.jpg'
+
+  $(finSketch).click(function () {
+    lastModal = [{type: "img-fin"}]
+    openImgModal(modal, 'landscape', finSketch.src)
+  });
+
+  let linq2_top = document.createElement('div')
+  linq2_top.style.height = '130px'
+  linq2_top.style.width = '100%'
+  linq2_top.style.cssText = 'display: flex; position: absolute; margin-left: -5%; justify-content: center; align-items: center;'
+
+  let img0 = document.createElement('img')
+  img0.src = 'assets/img/fin/different-currency-symbols-including-dollar-sign-euro_172597-2621.avif'
+  img0.style.cssText = 'height: auto; width: 20%; margin-top: 10%; object-fit: cover; border: 2px solid green'
+
+  $(img0).click(function () {
+    lastModal = [{type: "img-fin"}]
+    openImgModal(modal, 'landscape', img0.src)
+  });
+
+  let img1 = document.createElement('img')
+  img1.style.cssText = 'height: auto; width: 20%; margin-top: 5%; border: 2px solid green; object-fit: cover'
+  img1.src = 'assets/img/fin/FinancialTechnology_Final_4196400-3a7fb7e98adf4370b6e493034ade80bd.jpg'
+
+  $(img1).click(function () {
+    lastModal = [{type: "img-fin"}]
+    openImgModal(modal, 'landscape', img1.src)
+  });
+
+  let img2 = document.createElement('img')
+  img2.style.cssText = 'height: auto; width: 20%; object-fit: cover; margin-right: 0.75%; cursor: pointer'
+  //img2.src = 'assets/img/2/original-519329905a3cb894ef7662607b7b5aef.gif'
+
+  img2.onmouseover = function () {
+    //linq2_top.style.height = '130px'
+
+    img2.style.cssText = 'height: auto; width: 20%; object-fit: contain; margin-left: 5px; scale: 0.5; cursor: pointer'
+    img2.src = 'assets/linqs/Linq_Logo_Red_1.png'
+  }
+
+  img2.onmouseleave = function () {
+
+    img2.style.cssText = 'height: 130px; width: 20%; object-fit: cover; margin-right: 0.75%;'
+    img2.src = 'assets/img/2/original-519329905a3cb894ef7662607b7b5aef.gif'
+  }
+
+  let img_URWYE = document.createElement('img')
+  img_URWYE.src = 'assets/img/2/grNDsG4bMJRsI.gif'
+  img_URWYE.style.cssText = `height: auto; width: auto; margin-top: 1%; object-fit: cover; border: 2px solid green; border-radius: ${c_r}; cursor: pointer`
+
+  $(img2).click(function () {
+    lastModal = [{type: "img-fin"}]
+    openImgModal(modal, 'landscape', img2.src)
+  });
+
+  let img3 = document.createElement('img')
+  img3.style.cssText = 'height: auto; width: 20%; border: 2px solid green; object-fit: cover'
+  img3.src = 'assets/img/fin/what-is-fintech_-v1.1.png'
+
+  $(img3).click(function () {
+    lastModal = [{type: "img-fin"}]
+    openImgModal(modal, 'landscape', img3.src)
+  });
+
+  let img4 = document.createElement('img')
+  img4.style.cssText = 'height: auto; width: 20%; border: 2px solid green; object-fit: cover'
+  img4.src = 'assets/img/fin/unnamed.png'
+
+  $(img4).click(function () {
+    lastModal = [{type: "img-fin"}]
+    openImgModal(modal, 'landscape', img4.src)
+  });
+
+  linq2_top.appendChild(img0)
+  linq2_top.appendChild(img1)
+  linq2_top.appendChild(img2)
+  linq2_top.appendChild(img3)
+  linq2_top.appendChild(img4)
+
+  //tu_container_0.appendChild(tu_title_0)
+
+  // tu_container_1.appendChild(tu_title_1)
+  //tu_container_1.appendChild(tu_content_1)
+  //tu_container_2.appendChild(tu_title_2)
+  //tu_container_2.appendChild(tu_content_2)
+
+  //linq2_main_container.appendChild(finSketch)
+
+  /* linq2_main_container.appendChild(linq2_top)
+  linq2_main_container.appendChild(tu_container_0)
+  linq2_main_container.appendChild(tu_container_1)
+  linq2_main_container.appendChild(tu_container_2)
+  linq2_main_container.appendChild(tu_container_3) */
+
+  modal_body.appendChild(linq2_top)
+  //linq2_filters_container.appendChild(linq2_filters_)
+  //linq2_filters_container.appendChild(customize_btn)
+  //modal_body.appendChild(linq2_filters_container)
+  modal_body.appendChild(finSketch)
 }
 
 function generateLinq2(saved_UI) {

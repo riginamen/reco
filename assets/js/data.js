@@ -182,6 +182,15 @@ const tilesData = [
     tile_size: 'S',
     content: ['content_tile', 'content_text0', 'content_text1,', 'content_text2']
   },
+
+  {
+    id: '18',
+    tile_title: 'Fin',
+    icon: 'assets/icons/dollar-regular-36.png',
+    color: 'green',
+    tile_size: 'S',
+    content: ['content_tile', 'content_text0', 'content_text1,', 'content_text2']
+  },
 ];
 
 //TODO: Update id nomenclature
@@ -288,7 +297,7 @@ const tilesContainersData = [
     id: '8',
     tile0: [{ id: '11', position: '0' }],
     tile1: [{ id: '12', position: '1' }],
-    tile2: '',
+    tile2: [{ id: '18', position: '0' }],
     tile3: '',
     tile4: '',
     tile5: '',
