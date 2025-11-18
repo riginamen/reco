@@ -25,7 +25,7 @@ const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
 
-let lastModal= []
+let lastModal = []
 
 overlay.addEventListener('click', () => {
   const modals = document.querySelectorAll('.modal.active')
@@ -34,7 +34,7 @@ overlay.addEventListener('click', () => {
   })
 })
 
-$('#bx-info-circle').click(function () {
+$('#metro-info-circle').click(function () {
   //alert('RECO™ is Under Construction 🚧 \n ➡️ (Allow PopUp) for The Experience \n \n For Inquiries & Job Offers \n Contact The Dev ➡️ amen@rigin.eco \n Looking Forward to Hear From You 🙂')
   let message = metroData[1]
 
@@ -218,6 +218,23 @@ function stopYT() {
   $('.yt-player').hide();
 }
 
+function stopVideo() {
+  let videos = document.getElementsByTagName('video');
+  for (let vid in videos) {
+    if (typeof videos[vid] == 'object') {
+      let srcs = videos[vid].getElementsByTagName('source');
+      videos[vid].pause();
+      for (let xsrc in srcs) {
+        if (srcs[xsrc].src !== undefined) {
+          srcs[xsrc].src = '';
+        }
+      }
+      videos[vid].load();
+      videos[vid].parentNode.removeChild(videos[vid]);
+    }
+  }
+} 
+
 $('.modal-header').empty();
 
 closeModalButtons.forEach(button => {
@@ -232,11 +249,12 @@ function openModal(modal, type, data) {
   modal.classList.add('active')
   overlay.classList.add('active')
 
-  lastModal =[{modal: modal, type: type, data: data}]
+ //lastModal =[{modal: modal, type: type, data: data}]
 
 // let savedModal = JSON.parse(localStorage.getItem("last-modal"));
 
   //let modal = document.getElementById('modal');
+  
   let modal_body = document.getElementById('modal-body');
 
   /* Preferred Style */
@@ -397,9 +415,15 @@ function openModal(modal, type, data) {
 
     } else {
 
-      var video = document.getElementById('main-video');
+      let video = document.createElement('video')
+      video.setAttribute('id', 'main-video');
 
-      $('#main-video').show();
+      let video_loader_img = document.createElement('img')
+      video_loader_img.setAttribute('id', 'vid-loader-img')
+      video_loader_img.style.cssText="height: 200px; width: auto; border-radius: 50%;"
+      video_loader_img.src = '/assets/img/load_wait_process.gif'
+
+      video.appendChild(video_loader_img)
 
       //video.style.width = '100%'
       //video.style.height = '100%'
@@ -422,6 +446,8 @@ function openModal(modal, type, data) {
       source.setAttribute('id', 'main-source');
       source.setAttribute('src', url);
       source.setAttribute('type', 'video/mp4');
+
+      modal.appendChild(video)
 
       video.appendChild(source);
       video.play();
@@ -458,11 +484,19 @@ function openModal(modal, type, data) {
     $('.credit-container').hide();
     $('.btnConfirmModal').hide();
 
+    lastModal =[{modal: modal, type: type, data: data}]
+
     document.getElementById('modal').style.cssText = `width: 95%; max-width: 95%; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`
 
-    var video = document.getElementById('main-video');
+    let video = document.createElement('video')
+      video.setAttribute('id', 'main-video');
 
-    $('#main-video').show();
+    let video_loader_img = document.createElement('img')
+      video_loader_img.setAttribute('id', 'vid-loader-img')
+      video_loader_img.style.cssText="height: 200px; width: auto; border-radius: 50%;"
+      video_loader_img.src = '/assets/img/load_wait_process.gif'
+
+      video.appendChild(video_loader_img)
 
     video.style.width = '100%';
     video.style.height = 'auto';
@@ -484,6 +518,8 @@ function openModal(modal, type, data) {
     source.setAttribute('src', url);
     source.setAttribute('type', 'video/mp4');
 
+    modal.appendChild(video)
+
     video.appendChild(source);
     video.play();
   } else if (type == 'linq2') {
@@ -504,7 +540,7 @@ function openModal(modal, type, data) {
     $('.iframe').hide();
 
     $('.modal-header').show();
-    $('.modal-header').text('LinqFin');
+    $('.modal-header').text('LinqFin™');
 
     $('.modal-body').show();
     $('.settings-container').hide();
@@ -621,23 +657,40 @@ function closeModal(modal) {
   $('.credit-container').hide();
   $('.motto').hide();
 
+  modal.style.cssText = "width: auto; max-width: 95%; height: auto; max-height: 95%; background-color: white; object-fit: contain; border-radius: 1rem;"
+
   //let storingModal = localStorage.setItem("last-modal", JSON.stringify(lastModal));
 
   $('.iframe').hide();
   document.getElementById('iframe').src = '';
 
   modal.classList.remove('active')
-  overlay.classList.remove('active')
-
-  document.getElementById('modal').style.cssText = "width: auto; max-width: 95%; height: auto; max-height: 95%; background-color: white; object-fit: contain; border-radius: 1rem;"
+  overlay.classList.remove('active')  
 
   if (lastModal[0].type == 'img-fin'){
     openModal(modal, 'linqfin', '')
     generateLinqFin(saved_UI);
+
+    lastModal =[{modal: modal, type: 'linqfin', data: ''}]
     
-  } else if (lastModal[0]. type == 'video'){
+  } else if (lastModal[0].type == 'in-linq2'){
   stopVideo();
   stopYT();
+
+  openModal(modal, 'linq2', '')
+  generateLinq2(saved_UI);
+} else if (lastModal[0]. type == 'in-credit'){
+  
+  openModal(modal, 'credit', '');
+  lastModal =[{modal: modal, type: 'credit', data: ''}]
+} else if (lastModal[0].type == 'tile'){
+  stopVideo();
+  
+  var source = document.getElementById('main-source');
+} else if (lastModal[0].type == 'in-site-site'){
+  //TODO: Make return to site after closing 'in-site'
+  openModal(modal, 'site', '');
+  lastModal =[{modal: modal, type: 'site', data: ''}]
 }
 }
 
@@ -1057,7 +1110,7 @@ function generateCV_Filters(saved_UI, cv_flow_data, cv_filters_data) {
 
   let cv_flow_top = document.getElementById('cv-title');
   cv_flow_top.innerText = '';
-  cv_flow_top.style.cssText = 'border: none; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none'
+  cv_flow_top.style.cssText = 'border: none; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none';
   let cv_filters_container = document.createElement('div');
   cv_filters_container.classList.add('cv-filters-container');
   cv_filters_container.style.cssText = 'display: flex; justify-content: space-between'
@@ -1379,21 +1432,4 @@ cv_f_i_c_r = '0em'
     cv_flow_container.appendChild(cv_flow_item_container);
 //    $(".cv-flow-item-container").load(location.href + " .cv-flow-item-container");
   });
-}
-
-function stopVideo() {
-  let videos = document.getElementsByTagName('video');
-  for (let vid in videos) {
-    if (typeof videos[vid] == 'object') {
-      let srcs = videos[vid].getElementsByTagName('source');
-      videos[vid].pause();
-      for (let xsrc in srcs) {
-        if (srcs[xsrc].src !== undefined) {
-          srcs[xsrc].src = '';
-        }
-      }
-      videos[vid].load();
-      //videos[vid].parentNode.removeChild(videos[vid]);
-    }
-  }
 }

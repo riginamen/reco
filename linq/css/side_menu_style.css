@@ -18,13 +18,19 @@
   z-index: 99;
   transition: all 0.5s ease;
 
+  overflow-x: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar.open {
   width: 250px;
+  overflow-x: hidden;
 }
 
 .sidebar .logo-details {
@@ -104,7 +110,14 @@
 .sidebar .nav-list {
   margin-top: 20px;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
+
+.nav-list::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar li {
   position: relative;
   margin: 8px 0;

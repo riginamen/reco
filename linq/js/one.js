@@ -113,6 +113,17 @@ window.onload = function () {
   });  
 };
 
+// For iFrame links to work
+let hosting = (function () {
+  if ((window.location.href).includes('localhost')) {
+    return ''
+  } else if ((window.location.href).includes('github')) {
+    return 'https://riginamen.github.io/reco/'
+  } else {
+    return ''
+  }
+})();
+
 // Initialize Firebase variables
 //const auth = firebase.auth()
 //const database = firebase.database()
@@ -2547,7 +2558,7 @@ function generateMyLinqEdit(linqId) {
 
         whatWhere.push(editDescContainer);
       });
-      document.querySelector('my_linq_edit-description_container').replaceChildren(...whatWhere);
+//      document.querySelector('my_linq_edit-description_container').replaceChildren(...whatWhere);
     });
   menuWhere();
 }
@@ -2762,6 +2773,9 @@ function generateFlavor(taste) {
   { color: 'purle', pair: 2 }
 ]; */
 
+let flavorImgContainer = document.getElementById('flavorsImgContainer');
+        flavorsImgContainer.style.cssText = 'position: relative; display: block; width:100%; margin: 1%; padding: 1%'
+
 function generateFlavorImg(flavor) {
   let flavor_color;
   let flavor_pair;
@@ -2788,8 +2802,9 @@ function generateFlavorImg(flavor) {
       });
 
       let flavors = []
+
       flavorItems.forEach((flavorItem, index) => {
-        let flavorImgContainer = document.getElementById('flavorsImgContainer');
+
         let flavorPairContainer = document.createElement('div');
         flavorPairContainer.classList.add('flavor-pair-container');
         let portraitImg = document.createElement('img');
@@ -2811,7 +2826,7 @@ function generateFlavorImg(flavor) {
         }
         landscapeImg.style.cssText = 'height: 180px; width: 66%; max-width: 67%; margin:1%; border: 2px solid green; border-radius: 5%; object-fit: cover'
 
-        flavorsImgContainer.style.cssText = 'position: relative; display: block; width:100%; margin: 1%; padding: 1%'
+        
 
         flavorPairContainer.style.cssText = 'position: relative; display: flex; width: 98%; justify-content: space-between'
 
@@ -2826,6 +2841,9 @@ function generateFlavorImg(flavor) {
 
             openModalButtons.forEach(button => {
               const modal = document.querySelector(button.dataset.modalTarget)
+              
+              //TODO: Better Design Modal
+              $('.modal-body').text('Apply This Flavor?');
               openModal(modal)
             })
           }, tempo);
@@ -2900,7 +2918,7 @@ function generateFlavorImg(flavor) {
 
         flavors.push(flavorImgContainer);
       });
-      document.querySelector('flavorsImgContainer').replaceChildren(...flavors);
+//      document.querySelector('flavorsImgContainer').replaceChildren(...flavors);
     });
 }
 
@@ -3038,6 +3056,7 @@ function closeModal(modal) {
   /*Reset*/
   $('.modal-header').empty();
   $('.modal-body').empty();
+  $('.btnConfirmModal').empty();
 
   modal.classList.remove('active')
   overlay.classList.remove('active')
@@ -3137,6 +3156,20 @@ function getLinqs() {
                     $('.btnConfirmModal').hide();
 
                     document.getElementById('modal').style.cssText = "content: url(" + infoImg + "); width: 400px; height: 400px; object-fit: contain; border-radius: 5rem;"
+                  } else if (linqItem.id == 'ft85Ac7KTWPu89UseWC1N0nllRt1') {                    
+
+                    //TODO: Make modal reopen 'site' after closing 'in-site'
+                    let lastModal =[{modal: modal, type: 'in-site-site', data: ''}]
+
+                    localStorage.setItem("last-modal", JSON.stringify(lastModal))
+
+                    let url = hosting + 'linq/eco.html';
+
+      let data = [{
+        title: url
+      }]
+      
+                    window.parent.openModal(modal, 'site', data[0])
                   } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");

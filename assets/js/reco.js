@@ -1,10 +1,10 @@
 window.onload = function () {
 }
 //TODO: Check hosting location: GitHub | Firebase | Local
-let hosting = (function() {
-  if ((window.location.href).includes('localhost')){
+let hosting = (function () {
+  if ((window.location.href).includes('localhost')) {
     return ''
-  } else if ((window.location.href).includes('github')){
+  } else if ((window.location.href).includes('github')) {
     return 'https://riginamen.github.io/reco/'
   } else {
     return ''
@@ -97,7 +97,7 @@ function generateCredit(saved_UI, creditData) {
   $('#credit-info-top').click(function () {
 
     let message = 'RECO™ is Being Updated 🙂';
-    
+
     let data = [{
       content: [message]
     }]
@@ -108,7 +108,7 @@ function generateCredit(saved_UI, creditData) {
   $('#credit-info-disclaimer').click(function () {
 
     let message = 'RECO™ is Being Updated 🙂';
-    
+
     let data = [{
       content: [message]
     }]
@@ -119,7 +119,7 @@ function generateCredit(saved_UI, creditData) {
   $('.credit-bottom').click(function () {
 
     let message = 'RECO™ is Being Updated 🙂';
-    
+
     let data = [{
       content: [message]
     }]
@@ -156,7 +156,7 @@ function generateCredit(saved_UI, creditData) {
 
         //credit_flow_item_container.innerText = info_data.imgURL;
         credit_info_flow_container.appendChild(credit_flow_item)
-      } else {
+      } else if (info_data.docType == 'text') {
 
         let credit_flow_item = document.createElement('img')
 
@@ -164,6 +164,8 @@ function generateCredit(saved_UI, creditData) {
 
         credit_flow_item.src = info_data.imgURL;
         credit_info_flow_container.appendChild(credit_flow_item)
+      } else if (info_data.docType == 'post') {
+
       }
     })
   });
@@ -209,7 +211,7 @@ function generateCredit(saved_UI, creditData) {
         media_thumbnail.src = media_data.imgURL
 
         let media_title = document.createElement('div');
-        media_title.style.cssText = 'width: 40%; text-align: center;'
+        media_title.style.cssText = 'width: 40%; text-align: center; '
         media_title.innerText = media_data.title
 
         let linq_btn_container = document.createElement('div')
@@ -223,11 +225,30 @@ function generateCredit(saved_UI, creditData) {
         linq_btn_img.src = 'assets/linqs/Linq_Logo_Green_1.png';
 
         $(media_thumbnail).click(function () {
+          lastModal = [{ modal: modal, type: 'in-credit', data: '' }]
 
           openImgModal(modal, media_data.orientation, media_data.imgURL)
         });
 
+        $(media_title).click(function () {
+          if (media_data.content !== null && media_data.content.link !== null) {
+
+          lastModal =[{modal: modal, type: 'in-credit', data: ''}]
+
+            let url = media_data.content.link;
+
+            let data = [{
+              title: url
+            }]
+
+            openModal(modal, 'site', data[0])
+console.log(lastModal[0].type)
+          } else {
+          }
+        });
+
         $(linq_btn_container).click(function () {
+          lastModal = [{ modal: modal, type: 'in-credit', data: '' }]
 
           $('#credit-container').hide();
           $('.linq-linq-container').show();
@@ -284,6 +305,8 @@ function generateCredit(saved_UI, creditData) {
 
         $(yt_thumbnail).click(function () {
 
+          lastModal = [{ modal: modal, type: 'in-credit', data: '' }]
+
           let data = [
             {
               title: info_data.title,
@@ -296,11 +319,11 @@ function generateCredit(saved_UI, creditData) {
         });
 
         $(yt_title).click(function () {
-
-          //  alert(info_data.title)
         });
 
         $(linq_btn_container).click(function () {
+
+          lastModal = [{ modal: modal, type: 'in-credit', data: '' }]
 
           $('#credit-container').hide();
           $('.linq-linq-container').show();
@@ -726,7 +749,7 @@ function generateMetro(saved_UI, saved_Temp, saved_Weather) {
   }
 
   let metro_container = document.getElementById('metro-container');
-  metro_container.style.display = 'block'  
+  metro_container.style.display = 'block'
   metro_container.style.maxHeight = '657px'
   metro_container.style.borderRadius = c_r;
 
@@ -998,7 +1021,7 @@ function generateTile(saved_UI, saved_Temp, saved_Weather, tile_data, tile_id, t
 
       if (localStorage.getItem('saved-Weather')) {
         let message = 'This is the Weather in ' + saved_Weather;
-        
+
         let data = [{
           content: [message]
         }]
@@ -1097,24 +1120,24 @@ function startTileAnimation(saved_UI, tile, tile_data, tile_icon) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       /* Preferred Style */
-  let UI = 'android'
-  //container radius
-  let c_r = '1em'
+      let UI = 'android'
+      //container radius
+      let c_r = '1em'
 
-  if (saved_UI == 'android') {
-    UI = saved_UI;
-    c_r = '1.4em'
+      if (saved_UI == 'android') {
+        UI = saved_UI;
+        c_r = '1.4em'
 
-  } else if (saved_UI == 'metro') {
-    UI = saved_UI;
-    c_r = '0em'
+      } else if (saved_UI == 'metro') {
+        UI = saved_UI;
+        c_r = '0em'
 
-  } else if (saved_UI == 'apple') {
-    UI = saved_UI;
-    c_r = '0.5em'
-  } else {
-    UI = 'android'
-  }
+      } else if (saved_UI == 'apple') {
+        UI = saved_UI;
+        c_r = '0.5em'
+      } else {
+        UI = 'android'
+      }
       const err = false;
       if (!err) {
         let tile_title = tile_data.tile_title;
@@ -1136,9 +1159,9 @@ function startTileAnimation(saved_UI, tile, tile_data, tile_icon) {
 
           tile_icon.style.cssText = 'height: 100%; width: auto; object-fit: contain'
           tile_icon.src = 'assets/icons/fruit.gif'
-        } else if (tile_title == 'Fin'){
-          
-        startAnimFinTile(c_r, tile, tile_data, tile_icon, isFinAnim)
+        } else if (tile_title == 'Fin') {
+
+          startAnimFinTile(c_r, tile, tile_data, tile_icon, isFinAnim)
         }
         resolve();
       } else {
@@ -1149,7 +1172,7 @@ function startTileAnimation(saved_UI, tile, tile_data, tile_icon) {
 }
 
 //TODO: Fix This | Design This Better
-function startAnimFinTile (c_r, tile, tile_data, tile_icon, isFinAnim){
+function startAnimFinTile(c_r, tile, tile_data, tile_icon, isFinAnim) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const err = false;
@@ -1163,66 +1186,66 @@ function startAnimFinTile (c_r, tile, tile_data, tile_icon, isFinAnim){
   });
 }
 
-function generateFin_Y(c_r, tile, tile_data, tile_icon, isFinAnim){
+function generateFin_Y(c_r, tile, tile_data, tile_icon, isFinAnim) {
 
-  if (isFinAnim == true){
-  tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
-        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
-        tile_icon.src = 'assets/icons/yen-regular-36.png';  
-  
-    setTimeout(() => {       
+  if (isFinAnim == true) {
+    tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
+    tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+    tile_icon.src = 'assets/icons/yen-regular-36.png';
+
+    setTimeout(() => {
       generateFin_E(c_r, tile, tile_data, tile_icon)
-      }, 1000)
+    }, 1000)
 
-    } else if (isFinAnim == false){
-        return false
-      }
+  } else if (isFinAnim == false) {
+    return false
+  }
 }
 
-function generateFin_E(c_r, tile, tile_data, tile_icon){
+function generateFin_E(c_r, tile, tile_data, tile_icon) {
 
   tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
-        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
-        tile_icon.src = 'assets/icons/euro-regular-36.png';  
-  
-    setTimeout(() => {       
-      generateFin_S(c_r, tile, tile_data, tile_icon)
-      }, 1000)
+  tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+  tile_icon.src = 'assets/icons/euro-regular-36.png';
+
+  setTimeout(() => {
+    generateFin_S(c_r, tile, tile_data, tile_icon)
+  }, 1000)
 }
 
-function generateFin_S(c_r, tile, tile_data, tile_icon){
-  
+function generateFin_S(c_r, tile, tile_data, tile_icon) {
+
   tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
-        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
-        tile_icon.src = 'assets/icons/dollar-regular-36.png';  
-  
-    setTimeout(() => {       
-      generateFin_Y(c_r, tile, tile_data, tile_icon)
-      }, 1000)
+  tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+  tile_icon.src = 'assets/icons/dollar-regular-36.png';
+
+  setTimeout(() => {
+    generateFin_Y(c_r, tile, tile_data, tile_icon)
+  }, 1000)
 }
 
 function stopTileAnimation(saved_UI, tile, tile_data, tile_icon) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-       /* Preferred Style */
-  let UI = 'android'
-  //container radius
-  let c_r = '1.4em'
+      /* Preferred Style */
+      let UI = 'android'
+      //container radius
+      let c_r = '1.4em'
 
-  if (saved_UI == 'android') {
-    UI = saved_UI;
-    c_r = '1.4em'
+      if (saved_UI == 'android') {
+        UI = saved_UI;
+        c_r = '1.4em'
 
-  } else if (saved_UI == 'metro') {
-    UI = saved_UI;
-    c_r = '0em'
+      } else if (saved_UI == 'metro') {
+        UI = saved_UI;
+        c_r = '0em'
 
-  } else if (saved_UI == 'apple') {
-    UI = saved_UI;
-    c_r = '0.5em'
-  } else {
-    UI = 'android'
-  }
+      } else if (saved_UI == 'apple') {
+        UI = saved_UI;
+        c_r = '0.5em'
+      } else {
+        UI = 'android'
+      }
 
       const err = false;
       if (!err) {
@@ -1247,10 +1270,10 @@ function stopTileAnimation(saved_UI, tile, tile_data, tile_icon) {
         } else if (tile_title == 'Fin') {
 
           tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; background-color: green; border-radius: ${c_r}; overflow: hidden`;
-        tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
-        tile_icon.src = 'assets/icons/dollar-regular-36.png';
-        
-        generateFin_Y(c_r, tile, tile_data, tile_icon, false)
+          tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
+          tile_icon.src = 'assets/icons/dollar-regular-36.png';
+
+          generateFin_Y(c_r, tile, tile_data, tile_icon, false)
         }
 
         resolve();
@@ -1531,7 +1554,7 @@ function styleTile(saved_UI, tile, tile_data, tile_icon, tile0_card, tile1_card,
   /* Preferred Style */
   let UI = 'android'
   //tile border radius
-  let c_r = '1.4em'
+  let t_b_r = '1.4em'
 
   if (saved_UI == 'android') {
     UI = saved_UI;
@@ -1571,8 +1594,8 @@ function styleTile(saved_UI, tile, tile_data, tile_icon, tile0_card, tile1_card,
     tile_icon.src = tile_data.icon;
 
   } else if (tile_data.tile_title == 'Fin') {
- 
-    tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; border-radius: ${c_r}; overflow: hidden`;
+
+    tile.style.cssText = `display: block; position: relative; height: 44px; width: 44px; margin-left: 4px; border-radius: ${t_b_r}; overflow: hidden`;
     tile_icon.style.cssText = 'scale: 0.9; margin-top: 10%;';
     tile_icon.src = tile_data.icon;
 
@@ -1997,7 +2020,7 @@ function generateLinqFin(saved_UI) {
   finSketch.src = 'assets/img/fin/IMG_20251101_161932.jpg'
 
   $(finSketch).click(function () {
-    lastModal = [{type: "img-fin"}]
+    lastModal = [{ type: "img-fin" }]
     openImgModal(modal, 'landscape', finSketch.src)
   });
 
@@ -2011,7 +2034,7 @@ function generateLinqFin(saved_UI) {
   img0.style.cssText = 'height: auto; width: 20%; margin-top: 10%; object-fit: cover; border: 2px solid green'
 
   $(img0).click(function () {
-    lastModal = [{type: "img-fin"}]
+    lastModal = [{ type: "img-fin" }]
     openImgModal(modal, 'landscape', img0.src)
   });
 
@@ -2020,7 +2043,7 @@ function generateLinqFin(saved_UI) {
   img1.src = 'assets/img/fin/FinancialTechnology_Final_4196400-3a7fb7e98adf4370b6e493034ade80bd.jpg'
 
   $(img1).click(function () {
-    lastModal = [{type: "img-fin"}]
+    lastModal = [{ type: "img-fin" }]
     openImgModal(modal, 'landscape', img1.src)
   });
 
@@ -2046,7 +2069,7 @@ function generateLinqFin(saved_UI) {
   img_URWYE.style.cssText = `height: auto; width: auto; margin-top: 1%; object-fit: cover; border: 2px solid green; border-radius: ${c_r}; cursor: pointer`
 
   $(img2).click(function () {
-    lastModal = [{type: "img-fin"}]
+    lastModal = [{ type: "img-fin" }]
     openImgModal(modal, 'landscape', img2.src)
   });
 
@@ -2055,7 +2078,7 @@ function generateLinqFin(saved_UI) {
   img3.src = 'assets/img/fin/what-is-fintech_-v1.1.png'
 
   $(img3).click(function () {
-    lastModal = [{type: "img-fin"}]
+    lastModal = [{ type: "img-fin" }]
     openImgModal(modal, 'landscape', img3.src)
   });
 
@@ -2064,7 +2087,7 @@ function generateLinqFin(saved_UI) {
   img4.src = 'assets/img/fin/unnamed.png'
 
   $(img4).click(function () {
-    lastModal = [{type: "img-fin"}]
+    lastModal = [{ type: "img-fin" }]
     openImgModal(modal, 'landscape', img4.src)
   });
 
@@ -2120,7 +2143,12 @@ function generateLinq2(saved_UI) {
   let modal_body = document.getElementById('modal-body')
 
   let linq2_main_container = document.createElement('div')
+  linq2_main_container.setAttribute('id', 'linq2-main-container')
   linq2_main_container.style.cssText = 'width: 100%; height: 510px; overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  var linq2_main_container_no_scrollbar = document.createElement("style");
+  linq2_main_container_no_scrollbar.appendChild(document.createTextNode("#linq2-main-container ::-webkit-scrollbar {display: none;}"));
+  linq2_main_container_no_scrollbar.appendChild(linq2_main_container);	
 
   let linq2_top = document.createElement('div')
   linq2_top.style.height = '130px'
@@ -2245,7 +2273,12 @@ function generateLinq2(saved_UI) {
   customize_btn.style.cssText = `height: auto; width: 48px; margin-left: 5px; padding-top: 0.5%; padding-left: 1%; padding-right: 1%; border: 2px solid green; border-radius: ${c_r}; cursor: pointer`
 
   let linq2_filters_container = document.createElement('div')
+  linq2_filters_container.setAttribute('id', 'linq2-filters-container')
   linq2_filters_container.style.cssText = 'display: flex; margin-top: 5px; margin-bottom: 5px; align-items: center;'
+  
+  var styleElement = document.createElement("style");
+styleElement.appendChild(document.createTextNode("#linq2-filters-container ::-webkit-scrollbar {display: none;}"));
+linq2_filters_container.appendChild(styleElement);	
 
   let linq2_filters_ = document.createElement('div')
   linq2_filters_.style.cssText = 'display: flex; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none; '
@@ -2288,13 +2321,15 @@ function generateLinq2(saved_UI) {
   tu_container_3.setAttribute('id', 'tu-container-3')
   tu_container_3.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
 
-  let channelId = 'UCBJycsmduvYEL83R_U4JriQ'
-  let channelUploadsId = 'UUBJycsmduvYEL83R_U4JriQ'
-  let playlistId_0 = 'UUL_f53ZEJxp8TtlOkHwMV9Q'
-  let playlistId_1 = 'PLNJsVJgvYE4Wre4CAxeW5h5vaFjXY1RqK'
-  let playlistId_2 = 'UU8Y-jrV8oR3s2Ix4viDkZtA'
+  let tu_container_4 = document.createElement('div')
+  tu_container_4.setAttribute('id', 'tu-container-4')
+  tu_container_4.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
 
-  let data = [
+  let tu_container_5 = document.createElement('div')
+  tu_container_5.setAttribute('id', 'tu-container-5')
+  tu_container_5.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+    let data = [
     {
       playlistId: 'UUBJycsmduvYEL83R_U4JriQ',
       maxResults: '15',
@@ -2318,6 +2353,18 @@ function generateLinq2(saved_UI) {
       maxResults: '15',
       container_name: 'tu-container-3'
     },
+
+    {
+      playlistId: 'PLNJsVJgvYE4UGbRKZ9B6qervLQCa0E4-v',
+      maxResults: '15',
+      container_name: 'tu-container-4'
+    },
+
+    {
+      playlistId: 'PLNJsVJgvYE4XYx5HIDi5yi4YaCD1tbRok',
+      maxResults: '15',
+      container_name: 'tu-container-5'
+    },
   ]
 
   data.forEach((data) => {
@@ -2339,15 +2386,17 @@ function generateLinq2(saved_UI) {
   //tu_container_0.appendChild(tu_title_0)
 
   // tu_container_1.appendChild(tu_title_1)
-  tu_container_1.appendChild(tu_content_1)
+  //tu_container_1.appendChild(tu_content_1)
   //tu_container_2.appendChild(tu_title_2)
-  tu_container_2.appendChild(tu_content_2)
+  //tu_container_2.appendChild(tu_content_2)
 
   //linq2_main_container.appendChild(linq2_top)
   linq2_main_container.appendChild(tu_container_0)
   linq2_main_container.appendChild(tu_container_1)
   linq2_main_container.appendChild(tu_container_2)
   linq2_main_container.appendChild(tu_container_3)
+  linq2_main_container.appendChild(tu_container_4)
+  linq2_main_container.appendChild(tu_container_5)
 
   modal_body.appendChild(linq2_top)
   linq2_filters_container.appendChild(linq2_filters_)
@@ -2365,6 +2414,9 @@ function getYouTubePlaylist(channelUploadsId, maxResults, tu_container, borderRa
     .then(res => res.json())
     .then(data => {
       data.items.forEach(el => {
+
+        let tuContainer = document.getElementById(tu_container)
+
 
         let tu_content_0 = document.createElement('div')
         tu_content_0.style.cssText = `height: 100px; width: auto; margin: 2px; border: 2px solid green; border-radius: ${borderRadius}`;
@@ -2388,6 +2440,7 @@ function getYouTubePlaylist(channelUploadsId, maxResults, tu_container, borderRa
 
         $(tu_content_img).click(function () {
           // alert(el.snippet.resourceId.videoId)
+          lastModal = [{ modal: modal, type: 'in-linq2', data: '' }]
 
           openModal(modal, 'video', data[0])
         });
@@ -2395,7 +2448,11 @@ function getYouTubePlaylist(channelUploadsId, maxResults, tu_container, borderRa
         tu_content_0.appendChild(tu_content_img)
         tu_content_0.appendChild(tu_content_title)
 
-        document.getElementById(tu_container).appendChild(tu_content_0);
+        tuContainer.appendChild(tu_content_0);
+
+        var tu_container_no_scrollbar = document.createElement("style");
+  tu_container_no_scrollbar.appendChild(document.createTextNode(`#${tu_container} ::-webkit-scrollbar {display: none;}`));
+  tuContainer.appendChild(tu_container_no_scrollbar);
       })
       //console.log(data)
     })

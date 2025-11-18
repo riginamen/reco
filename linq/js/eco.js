@@ -1,3 +1,5 @@
+let lastModal =[{type: 'in-site-site', data: ''}]
+
 const swiper = new Swiper('.swiper', {
     // Optional parameters
 

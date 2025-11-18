@@ -1,20 +1,20 @@
 /* ReDesign Data Structure */
 let metroData = [
-{
-  id: '0',
-  title: 'main',
-  contentType: 'metro',
-  //content: [title text, logo url]
-  content: ['RECO™<br /> &emsp; &emsp; Rigin Eco<br /> &emsp; &emsp; &emsp; &emsp; &emsp; &ensp; Economy 💡 Ecosystems ☀️ Ecology 🌴', 'assets/icons/Eagle_green.png', ',', '']
-}, 
-{
-  id: '1',
-  title: 'info',
-  contentType: 'metro',
-  //content: [text1, text2]
-  content: ['RECO™ is Under Construction 🚧 <br /> (Allow PopUp) for The Experience', 'Optimized For Desktop | Tablet ✅ <br /> Being Optimized For Phone 🕒', 'For Inquiries & Job Offers <br /> Contact The Producer | Developer <br /> amen@rigin.eco ✅ <br /> For RECO™ Site Technical Support <br /> support@rigin.eco ☀️ <br /> Looking Forward to Hear From You 🙂'],
-  contentStyle: ['', 'text-align: center; border: 3px solid green', 'text-align: center']
-}
+  {
+    id: '0',
+    title: 'main',
+    contentType: 'metro',
+    //content: [title text, logo url]
+    content: ['RECO™<br /> &emsp; &emsp; Rigin Eco<br /> &emsp; &emsp; &emsp; &emsp; &emsp; &ensp; Economy 💡 Ecosystems ☀️ Ecology 🌴', 'assets/icons/Eagle_green.png', ',', '']
+  },
+  {
+    id: '1',
+    title: 'info',
+    contentType: 'metro',
+    //content: [text1, text2]
+    content: ['RECO™ is Under Construction 🚧 <br /> (Allow PopUp) for The Experience', 'Optimized For Desktop | Tablet ✅ <br /> Being Optimized For Phone 🕒', 'For Inquiries & Job Offers <br /> Contact The Producer | Developer <br /> amen@rigin.eco ✅ <br /> For RECO™ Site Technical Support <br /> support@rigin.eco ☀️ <br /> Looking Forward to Hear From You 🙂'],
+    contentStyle: ['', 'text-align: center; border: 3px solid green', 'text-align: center']
+  }
 ]
 
 //TODO: All Tile Info
@@ -6558,7 +6558,22 @@ const creditData = [
     orientation: '',
     tags: ['code', 'api', 'youtube'],
     authorId: 'linq-012',
-  }
+  },
+
+  {
+    id: '4',
+    title: 'Not All Money is Created Equal',
+    imgURL: 'assets/img/credit/Fintech-App-Feature.webp',
+    creditType: 'media',
+    docType: 'post',
+    orientation: '',
+    tags: ['fintech', 'pay', 'ai'],
+    authorId: 'linq-013',
+    content: 
+    {
+      'link': 'https://epiprodux.com/blog/10-must-have-fintech-app-features-for-more-sales-and-growth/',
+    },
+  },
 ]
 
 //TODO: Design this better!!
@@ -6568,10 +6583,12 @@ let creditAuthorData = [
     authorId: 'linq-001',
     authorName: 'Amen Min Rigin',
     imgURL: 'assets/img/cv/social/17426346_10154580078977266_3108030594434772733_n_10154580078977266.jpg',
-    profiles: 
-      {'linq': 'linq-001', 
-      'insta':'amen.rigin.eco' , 
-      'fb':'rigin.eco' },
+    profiles:
+    {
+      'linq': 'linq-001',
+      'insta': 'amen.rigin.eco',
+      'fb': 'rigin.eco'
+    },
     pro_pos: ['0', '1', '2']
   },
 
@@ -6579,12 +6596,14 @@ let creditAuthorData = [
     id: '1',
     authorId: 'linq-010',
     authorName: 'Mitali Jadhavrao',
-    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1760018400&v=beta&t=jpEgv7oeVek8I0uH13lYLdDm57zU9pc3BoI31tBngiE',
-    profiles: 
-      {'linq': 'linq-010', 
-      'yt':'codingartist' , 
-      'linkedin':'mitali-jadhavrao',
-    'site':'https://codingartistweb.com/' },
+    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1762873200&v=beta&t=w2OU10TPwdLQdqa4Hk5mWfcJ8ZO4XSUFE8au9EVPTRo',
+    profiles:
+    {
+      'linq': 'linq-010',
+      'yt': 'codingartist',
+      'linkedin': 'mitali-jadhavrao',
+      'site': 'https://codingartistweb.com/'
+    },
     pro_logos: ['assets/icons/codingartist.png'],
     pro_pos: ['0', '1', '2', '3']
   },
@@ -6594,10 +6613,11 @@ let creditAuthorData = [
     authorId: 'linq-011',
     authorName: 'Maria Kislitsina',
     imgURL: 'https://secure.gravatar.com/avatar/23d8438aac23edcc887e39ec607c3829/?s=260&d=https%3A%2F%2Fstatic.thenounproject.com%2Fimg%2Fdefault.jpg',
-    profiles: 
-      {'linq': 'linq-001',
-        'noun': 'bymasha'
-      },
+    profiles:
+    {
+      'linq': 'linq-001',
+      'noun': 'bymasha'
+    },
     pro_pos: ['0']
   },
 
@@ -6605,13 +6625,30 @@ let creditAuthorData = [
     id: '0',
     authorId: 'linq-012',
     authorName: 'Jon Vadar',
-    imgURL: 'https://jonvadar.xyz/images/logo.webp',
-    profiles: 
-      {'linq': 'linq-012',
-        'yt': '@LearnWithJonVadar',
-        'site': 'https://jonvadar.xyz',
-        'github': 'JonVadar',
-      },
+    imgURL: 'https://avatars.githubusercontent.com/u/115555916?v=4',
+    profiles:
+    {
+      'linq': 'linq-012',
+      'yt': '@LearnWithJonVadar',
+      'site': 'https://jonvadar.github.io',
+      'github': 'JonVadar',
+    },
+    pro_logos: ['https://avatars.githubusercontent.com/u/115555916?v=4'],
+    pro_pos: ['0']
+  },
+
+  {
+    id: '0',
+    authorId: 'linq-013',
+    authorName: 'Alar Kolk',
+    imgURL: 'https://secure.gravatar.com/avatar/fa3d32a42b78e136277752cb304a5ee7?s=800&d=mm&r=g',
+    profiles:
+    {
+      'linq': 'linq-013',
+      'linkedin': 'alarkolk',
+      'site': 'https://epiprodux.com/blog/author/alarepiprodux-com/',
+    },
+    pro_logos: ['assets/icons/epiprodux_logo.jpeg'],
     pro_pos: ['0']
   },
 ]

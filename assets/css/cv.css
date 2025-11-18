@@ -219,6 +219,10 @@
     border: 3px solid pink;
 }
 
+.cv-flow-container::-webkit-scrollbar {
+    display: none;
+  }
+
 
 @keyframes animate_01 {
     0% {
@@ -332,6 +336,10 @@
         padding-right: 3%;
         cursor: pointer;
     }
+
+    .cv-title::-webkit-scrollbar {
+        display: none;
+      }
 
     .cv-title-text {
         width: 50px;
@@ -468,6 +476,10 @@
         padding-right: 3%;
         cursor: pointer;
     }
+
+    .cv-title::-webkit-scrollbar {
+        display: none;
+      }
 
     .cv-title-text {
         width: 50px;
