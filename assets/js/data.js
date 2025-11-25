@@ -6596,7 +6596,7 @@ let creditAuthorData = [
     id: '1',
     authorId: 'linq-010',
     authorName: 'Mitali Jadhavrao',
-    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1762873200&v=beta&t=w2OU10TPwdLQdqa4Hk5mWfcJ8ZO4XSUFE8au9EVPTRo',
+    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1764676800&v=beta&t=Nov20i73_VVVTAPLlLG566zkW8vPXLpaplPFdFX4aLs',
     profiles:
     {
       'linq': 'linq-010',

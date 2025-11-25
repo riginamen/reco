@@ -156,7 +156,7 @@ function generateCredit(saved_UI, creditData) {
 
         //credit_flow_item_container.innerText = info_data.imgURL;
         credit_info_flow_container.appendChild(credit_flow_item)
-      } else if (info_data.docType == 'text') {
+      } else if (info_data.docType == 'img') {
 
         let credit_flow_item = document.createElement('img')
 

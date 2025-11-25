@@ -432,7 +432,7 @@ function openModal(modal, type, data) {
         document.getElementById('modal').style.cssText = `width: auto; max-width: 95%; height: 95%; object-fit: contain; border-radius: ${c_b_r};`
         video.style.height = '100%'
       } else {
-        document.getElementById('modal').style.cssText = `width: 95%; max-width: 95%; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`
+        document.getElementById('modal').style.cssText = `width: auto; max-width: 95%; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`
         video.style.width = '100%'
       }
 
@@ -654,7 +654,10 @@ function closeModal(modal) {
   $('.contact-container').hide();
   $('.settings-container').hide();
   $('#linq-linq-container').empty();
+    
   $('.credit-container').hide();
+  $('.credit-container').hide();
+  
   $('.motto').hide();
 
   modal.style.cssText = "width: auto; max-width: 95%; height: auto; max-height: 95%; background-color: white; object-fit: contain; border-radius: 1rem;"
@@ -667,12 +670,19 @@ function closeModal(modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')  
 
+  //TODO: Better Design Closing Modal
   if (lastModal[0].type == 'img-fin'){
     openModal(modal, 'linqfin', '')
     generateLinqFin(saved_UI);
 
     lastModal =[{modal: modal, type: 'linqfin', data: ''}]
     
+  } else if (lastModal[0].type == 'in-cv-video'){
+    stopVideo();
+
+  } else if (lastModal[0].type == 'in-cv-yt'){
+    stopYT();
+
   } else if (lastModal[0].type == 'in-linq2'){
   stopVideo();
   stopYT();
@@ -683,10 +693,11 @@ function closeModal(modal) {
   
   openModal(modal, 'credit', '');
   lastModal =[{modal: modal, type: 'credit', data: ''}]
+
+  stopYT();
+  
 } else if (lastModal[0].type == 'tile'){
   stopVideo();
-  
-  var source = document.getElementById('main-source');
 } else if (lastModal[0].type == 'in-site-site'){
   //TODO: Make return to site after closing 'in-site'
   openModal(modal, 'site', '');
@@ -1391,10 +1402,14 @@ cv_f_i_c_r = '0em'
         openModal(modal, 'pdf', url)
 
       } else if (cv_flow_item_data.docType == 'mp4') {
+        
+        lastModal =[{modal: modal, type: 'in-cv-video', data: ''}]
 
         openModal(modal, 'video', cv_flow_item_data)
 
       } else if (cv_flow_item_data.docType == 'yt') {
+
+        lastModal =[{modal: modal, type: 'in-cv-yt', data: ''}]
 
         openModal(modal, 'video', cv_flow_item_data)
 
