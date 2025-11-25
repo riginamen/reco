@@ -650,7 +650,6 @@ function closeModal(modal) {
   $('.modal-body').empty();
   $('.modal-body-1').empty();
   $('.modal-body-2').empty();
-  //$('#linq-linq-container').empty();
   $('.contact-container').hide();
   $('.settings-container').hide();
   $('#linq-linq-container').empty();
