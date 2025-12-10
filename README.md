@@ -3,7 +3,7 @@
 
 - 🔭 I’m currently working on **RECO™** & **Linq™**
 - Please do no copy or store any personal data in any way, shape or form without the proper permission from Rigin
-- Feel free to used 'code' and give proper credit
+- Feel free to use just 'code' with good intentions and give the proper credit any where it's due
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
