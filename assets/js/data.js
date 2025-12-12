@@ -1123,7 +1123,7 @@ const cvFlowData = [
   {
     id: '0',
     title: '',
-    imgURL: 'assets/docs/cv/Rigin_CV.png',
+    imgURL: 'assets/docs/cv/Rigin_CV_.png',
     docType: 'pdf',
     orientation: 'landscape',
     tags: ['docs'],
