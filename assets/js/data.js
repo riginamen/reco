@@ -2124,7 +2124,7 @@ const cvFlowData = [
   {
     id: '30',
     title: 'https://imagevision.ai/blog/computer-vision-for-retail-shelf-monitoring-optimizing-on-shelf-availability/',
-    imgURL: 'assets/docs/cv/business/_shortages3.png',
+    imgURL: 'assets/docs/cv/business/product_shortages3.png',
     docType: 'link',
     orientation: '',
     tags: ['research', 'b2c'],
