@@ -407,7 +407,7 @@ function openModal(modal, type, data) {
       $(document).ready(function () {
         $.getScript("https://www.youtube.com/iframe_api", function () {
 
-          document.getElementById('modal').style.cssText = `width: auto; max-width: 95%; height: auto; max-height: 95%; background-color: white; object-fit: contain; border-radius: ${c_b_r};`
+          document.getElementById('modal').style.cssText = `width: auto; max-width: 95%; height: 390px; max-height: 95%; background-color: white; object-fit: contain; border-radius: ${c_b_r};`
 
           loadVideo(data);
         });

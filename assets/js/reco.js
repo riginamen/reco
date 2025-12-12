@@ -2144,7 +2144,7 @@ function generateLinq2(saved_UI) {
 
   let linq2_main_container = document.createElement('div')
   linq2_main_container.setAttribute('id', 'linq2-main-container')
-  linq2_main_container.style.cssText = 'width: 100%; height: 510px; overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+  linq2_main_container.style.cssText = 'width: 100%; height: 400px; overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none;'
 
   var linq2_main_container_no_scrollbar = document.createElement("style");
   linq2_main_container_no_scrollbar.appendChild(document.createTextNode("#linq2-main-container ::-webkit-scrollbar {display: none;}"));
@@ -2329,6 +2329,10 @@ linq2_filters_container.appendChild(styleElement);
   tu_container_5.setAttribute('id', 'tu-container-5')
   tu_container_5.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
 
+  let tu_container_6 = document.createElement('div')
+  tu_container_6.setAttribute('id', 'tu-container-6')
+  tu_container_6.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
     let data = [
     {
       playlistId: 'UUBJycsmduvYEL83R_U4JriQ',
@@ -2365,6 +2369,12 @@ linq2_filters_container.appendChild(styleElement);
       maxResults: '15',
       container_name: 'tu-container-5'
     },
+
+    {
+      playlistId: 'PLNJsVJgvYE4WIsULAf7bEPzmejQbqBcbu',
+      maxResults: '15',
+      container_name: 'tu-container-6'
+    }
   ]
 
   data.forEach((data) => {
@@ -2397,6 +2407,7 @@ linq2_filters_container.appendChild(styleElement);
   linq2_main_container.appendChild(tu_container_3)
   linq2_main_container.appendChild(tu_container_4)
   linq2_main_container.appendChild(tu_container_5)
+  linq2_main_container.appendChild(tu_container_6)
 
   modal_body.appendChild(linq2_top)
   linq2_filters_container.appendChild(linq2_filters_)

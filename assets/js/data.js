@@ -2124,7 +2124,7 @@ const cvFlowData = [
   {
     id: '30',
     title: 'https://imagevision.ai/blog/computer-vision-for-retail-shelf-monitoring-optimizing-on-shelf-availability/',
-    imgURL: 'assets/docs/cv/business/_128701641_shortages3.png',
+    imgURL: 'assets/docs/cv/business/_shortages3.png',
     docType: 'link',
     orientation: '',
     tags: ['research', 'b2c'],
@@ -6596,7 +6596,7 @@ let creditAuthorData = [
     id: '1',
     authorId: 'linq-010',
     authorName: 'Mitali Jadhavrao',
-    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1764676800&v=beta&t=Nov20i73_VVVTAPLlLG566zkW8vPXLpaplPFdFX4aLs',
+    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1766152800&v=beta&t=qsjM7Uv6fWqOdKAjzsaqYocA-fcE81iiitx92qSknZg',
     profiles:
     {
       'linq': 'linq-010',
