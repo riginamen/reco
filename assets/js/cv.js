@@ -127,7 +127,7 @@ function generateSettings(saved_UI, saved_Temp, saved_Weather) {
     ui_android.style.cssText = 'border: 2px solid #A4C639; border-radius: 50%; padding: 1%; color: #A4C639; cursor: pointer;'
   } else {
     ui_android.style.cssText = 'border: 2px solid #A4C639; border-radius: 50%; padding: 1%; color: #A4C639; cursor: pointer;'
-  
+
     let saved_UI = 'android'
     localStorage.getItem('saved-UI', saved_UI);
   }
@@ -160,7 +160,7 @@ function generateSettings(saved_UI, saved_Temp, saved_Weather) {
 let players = [];
 
 function loadVideo(data) {
-  
+
   if (data.orientation == 'portrait') {
 
     window.YT.ready(function () {
@@ -233,7 +233,7 @@ function stopVideo() {
       videos[vid].parentNode.removeChild(videos[vid]);
     }
   }
-} 
+}
 
 $('.modal-header').empty();
 
@@ -249,34 +249,34 @@ function openModal(modal, type, data) {
   modal.classList.add('active')
   overlay.classList.add('active')
 
- //lastModal =[{modal: modal, type: type, data: data}]
+  //lastModal =[{modal: modal, type: type, data: data}]
 
-// let savedModal = JSON.parse(localStorage.getItem("last-modal"));
+  // let savedModal = JSON.parse(localStorage.getItem("last-modal"));
 
   //let modal = document.getElementById('modal');
-  
+
   let modal_body = document.getElementById('modal-body');
 
   /* Preferred Style */
   let UI = localStorage.getItem('saved-UI')
   //container border radius
-    let c_b_r = '1em'
+  let c_b_r = '1em'
 
-  if (UI == 'android'){
-    
+  if (UI == 'android') {
+
     c_b_r = '1em'
 
-  } else if (UI == 'metro'){
-    
+  } else if (UI == 'metro') {
+
     c_b_r = '0em'
 
-  } else if (UI == 'apple'){
-    
+  } else if (UI == 'apple') {
+
     c_b_r = '0.5em'
-  } else if (UI == '' || UI == null){
-    
+  } else if (UI == '' || UI == null) {
+
     c_b_r = '1em'
-  } 
+  }
 
   if (type == 'pdf') {
 
@@ -299,7 +299,7 @@ function openModal(modal, type, data) {
     $('.modal-header').show();
     $('.modal-body').show();
 
-    if (data.contentType == 'metro'){
+    if (data.contentType == 'metro') {
       $('.modal-body').html(data.content[0]);
 
       $('.modal-body-1').show();
@@ -314,12 +314,12 @@ function openModal(modal, type, data) {
       $('.modal-body-2').hide();
       $('.modal-body').html(data.content[0]);
     }
-  
+
     $('.contact-container').hide();
     $('.credit-container').hide();
 
     $('.modal-header').text('Info');
-    
+
     $('.btnConfirmModal').show();
     $('#modalYes').show();
     $('#modalCancel').show();
@@ -331,11 +331,16 @@ function openModal(modal, type, data) {
 
     $('.modal-header').hide();
     $('.modal-body').hide();
+    $('.modal-body-1').hide();
+    $('.modal-body-2').hide();
     $('.btnConfirmModal').hide();
     $('#modalYes').hide();
     $('#modalCancel').hide();
     $('.credit-container').hide();
     $('.contact-container').show();
+    $('.settings-container').hide();
+
+    $('.motto').show();
   } else if (type == 'credit') {
     document.getElementById('modal').style.cssText = `width: auto; height: auto; max-height: 95%; object-fit: contain; padding: 3%; border-radius: ${c_b_r};`
 
@@ -420,7 +425,7 @@ function openModal(modal, type, data) {
 
       let video_loader_img = document.createElement('img')
       video_loader_img.setAttribute('id', 'vid-loader-img')
-      video_loader_img.style.cssText="height: 200px; width: auto; border-radius: 50%;"
+      video_loader_img.style.cssText = "height: 200px; width: auto; border-radius: 50%;"
       video_loader_img.src = '/assets/img/load_wait_process.gif'
 
       video.appendChild(video_loader_img)
@@ -459,16 +464,16 @@ function openModal(modal, type, data) {
     let iframe = document.getElementById('iframe');
     iframe.style.cssText = 'width: 100%; height:100%'
 
-      var xhr = $.get(data.title);
-      // TODO:   
-      xhr.always(function () {
-        var frameOption = xhr.getResponseHeader("x-frame-options");
-        if (frameOption == "DENY") {
-          window.open(data.title, '_blank').focus();
-        } else {
-          iframe.src = data.title;
-        }
-      });
+    var xhr = $.get(data.title);
+    // TODO:   
+    xhr.always(function () {
+      var frameOption = xhr.getResponseHeader("x-frame-options");
+      if (frameOption == "DENY") {
+        window.open(data.title, '_blank').focus();
+      } else {
+        iframe.src = data.title;
+      }
+    });
 
     $('.iframe').show();
 
@@ -484,19 +489,19 @@ function openModal(modal, type, data) {
     $('.credit-container').hide();
     $('.btnConfirmModal').hide();
 
-    lastModal =[{modal: modal, type: type, data: data}]
+    lastModal = [{ modal: modal, type: type, data: data }]
 
     document.getElementById('modal').style.cssText = `width: 95%; max-width: 95%; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`
 
     let video = document.createElement('video')
-      video.setAttribute('id', 'main-video');
+    video.setAttribute('id', 'main-video');
 
     let video_loader_img = document.createElement('img')
-      video_loader_img.setAttribute('id', 'vid-loader-img')
-      video_loader_img.style.cssText="height: 200px; width: auto; border-radius: 50%;"
-      video_loader_img.src = '/assets/img/load_wait_process.gif'
+    video_loader_img.setAttribute('id', 'vid-loader-img')
+    video_loader_img.style.cssText = "height: 200px; width: auto; border-radius: 50%;"
+    video_loader_img.src = '/assets/img/load_wait_process.gif'
 
-      video.appendChild(video_loader_img)
+    video.appendChild(video_loader_img)
 
     video.style.width = '100%';
     video.style.height = 'auto';
@@ -534,7 +539,7 @@ function openModal(modal, type, data) {
     $('.credit-container').hide();
     $('.btnConfirmModal').hide();
 
-    modal.style.cssText = `width: 680px; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`  
+    modal.style.cssText = `width: 680px; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`
   } else if (type == 'linqfin') {
 
     $('.iframe').hide();
@@ -547,7 +552,7 @@ function openModal(modal, type, data) {
     $('.credit-container').hide();
     $('.btnConfirmModal').hide();
 
-    modal.style.cssText = `width: auto; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`  
+    modal.style.cssText = `width: auto; height: auto; max-height: 95%; object-fit: contain; border-radius: ${c_b_r};`
   }
 }
 // TODO: Design this better
@@ -647,16 +652,19 @@ function closeModal(modal) {
   if (modal == null) return
   /*Reset*/
   $('.modal-header').hide();
+  $('.modal-body').hide();
   $('.modal-body').empty();
+  $('.modal-body-1').hide();
   $('.modal-body-1').empty();
+  $('.modal-body-2').hide();
   $('.modal-body-2').empty();
   $('.contact-container').hide();
   $('.settings-container').hide();
   $('#linq-linq-container').empty();
-    
+
   $('.credit-container').hide();
   $('.credit-container').hide();
-  
+
   $('.motto').hide();
 
   modal.style.cssText = "width: auto; max-width: 95%; height: auto; max-height: 95%; background-color: white; object-fit: contain; border-radius: 1rem;"
@@ -667,41 +675,41 @@ function closeModal(modal) {
   document.getElementById('iframe').src = '';
 
   modal.classList.remove('active')
-  overlay.classList.remove('active')  
+  overlay.classList.remove('active')
 
   //TODO: Better Design Closing Modal
-  if (lastModal[0].type == 'img-fin'){
+  if (lastModal[0].type == 'img-fin') {
     openModal(modal, 'linqfin', '')
     generateLinqFin(saved_UI);
 
-    lastModal =[{modal: modal, type: 'linqfin', data: ''}]
-    
-  } else if (lastModal[0].type == 'in-cv-video'){
+    lastModal = [{ modal: modal, type: 'linqfin', data: '' }]
+
+  } else if (lastModal[0].type == 'in-cv-video') {
     stopVideo();
 
-  } else if (lastModal[0].type == 'in-cv-yt'){
+  } else if (lastModal[0].type == 'in-cv-yt') {
     stopYT();
 
-  } else if (lastModal[0].type == 'in-linq2'){
-  stopVideo();
-  stopYT();
+  } else if (lastModal[0].type == 'in-linq2') {
+    stopVideo();
+    stopYT();
 
-  openModal(modal, 'linq2', '')
-  generateLinq2(saved_UI);
-} else if (lastModal[0]. type == 'in-credit'){
-  
-  openModal(modal, 'credit', '');
-  lastModal =[{modal: modal, type: 'credit', data: ''}]
+    openModal(modal, 'linq2', '')
+    generateLinq2(saved_UI);
+  } else if (lastModal[0].type == 'in-credit') {
 
-  stopYT();
-  
-} else if (lastModal[0].type == 'tile'){
-  stopVideo();
-} else if (lastModal[0].type == 'in-site-site'){
-  //TODO: Make return to site after closing 'in-site'
-  openModal(modal, 'site', '');
-  lastModal =[{modal: modal, type: 'site', data: ''}]
-}
+    openModal(modal, 'credit', '');
+    lastModal = [{ modal: modal, type: 'credit', data: '' }]
+
+    stopYT();
+
+  } else if (lastModal[0].type == 'tile') {
+    stopVideo();
+  } else if (lastModal[0].type == 'in-site-site') {
+    //TODO: Make return to site after closing 'in-site'
+    openModal(modal, 'site', '');
+    lastModal = [{ modal: modal, type: 'site', data: '' }]
+  }
 }
 
 const cvSliderDataImgCount =
@@ -789,17 +797,17 @@ function generateCV(saved_UI) {
   /* Preferred Style */
   let UI = 'android'
   //_item_container radius
-    let i_c_r = '1em'
+  let i_c_r = '1em'
 
-  if (saved_UI == 'android'){
+  if (saved_UI == 'android') {
     UI = saved_UI;
     i_c_r = '1em'
 
-  } else if (saved_UI == 'metro'){
+  } else if (saved_UI == 'metro') {
     UI = saved_UI;
     i_c_r = '0em'
 
-  } else if (saved_UI == 'apple'){
+  } else if (saved_UI == 'apple') {
     UI = saved_UI;
     i_c_r = '0.5em'
   }
@@ -818,7 +826,7 @@ function generateCV(saved_UI) {
   let cv_text_btn = document.createElement('div');
   cv_text_btn.classList.add('cv-title-text');
   cv_text_btn.setAttribute('id', 'cv-title-text')
-  
+
   cv_title.style.borderRadius = i_c_r;
   cv_text_btn.style.borderRadius = i_c_r;
 
@@ -1128,17 +1136,17 @@ function generateCV_Filters(saved_UI, cv_flow_data, cv_filters_data) {
   /* Preferred Style */
   let UI = 'android'
   //cv_flow_item_container radius
-    let cv_f_i_c_r = '1em'
+  let cv_f_i_c_r = '1em'
 
-  if (saved_UI == 'android'){
+  if (saved_UI == 'android') {
     UI = saved_UI;
     cv_f_i_c_r = '1em'
 
-  } else if (saved_UI == 'metro'){
+  } else if (saved_UI == 'metro') {
     UI = saved_UI;
-cv_f_i_c_r = '0em'
+    cv_f_i_c_r = '0em'
 
-  } else if (saved_UI == 'apple'){
+  } else if (saved_UI == 'apple') {
     UI = saved_UI;
     cv_f_i_c_r = '0.5em'
   }
@@ -1165,15 +1173,15 @@ cv_f_i_c_r = '0em'
 
       if (cv_filter != allFilters[previous_filter]) {
         cv_filter.style.cssText = `white-space: nowrap; color: green; background-color: white; border: 2px solid green; margin-right: 1%; padding-top: 0.75%; padding-bottom: 0.25%; padding-left: 2%; padding-right: 2%; border-radius: ${cv_f_i_c_r}`
-      }      
+      }
     });
 
-    cv_filter.addEventListener("mouseleave", (event) => {    
+    cv_filter.addEventListener("mouseleave", (event) => {
       let allFilters = document.querySelectorAll('.cv-filter');
 
       if (cv_filter != allFilters[previous_filter]) {
         cv_filter.style.cssText = `white-space: nowrap; border: 2px solid green; margin-right: 1%; padding-top: 0.75%; padding-bottom: 0.25%; padding-left: 2%; padding-right: 2%; border-radius: ${cv_f_i_c_r}`
-      }    
+      }
     });
 
     cv_filters_container.appendChild(cv_filter);
@@ -1223,23 +1231,23 @@ function selectFilter(saved_UI, cv_flow_data, cv_filter_data, cv_filter, next_fi
   return new Promise((resolve, reject) => {
     setTimeout(() => {
 
-       /* Preferred Style */
-  let UI = 'android'
-  //filter_item_container radius
-    let f_i_c_r = '1em'
+      /* Preferred Style */
+      let UI = 'android'
+      //filter_item_container radius
+      let f_i_c_r = '1em'
 
-  if (saved_UI == 'android'){
-    UI = saved_UI;
-    f_i_c_r = '1em'
+      if (saved_UI == 'android') {
+        UI = saved_UI;
+        f_i_c_r = '1em'
 
-  } else if (saved_UI == 'metro'){
-    UI = saved_UI;
-f_i_c_r = '0em'
+      } else if (saved_UI == 'metro') {
+        UI = saved_UI;
+        f_i_c_r = '0em'
 
-  } else if (saved_UI == 'apple'){
-    UI = saved_UI;
-    f_i_c_r = '0.5em'
-  }
+      } else if (saved_UI == 'apple') {
+        UI = saved_UI;
+        f_i_c_r = '0.5em'
+      }
 
       cv_filter.style.cssText = `white-space: nowrap; color: green; background-color: white; border: 2px solid green; margin-right: 1%; padding-top: 0.75%; padding-bottom: 0.25%; padding-left: 2%; padding-right: 2%; border-radius: ${f_i_c_r}`
 
@@ -1262,22 +1270,22 @@ function unselectFilter(saved_UI, previous_filter) {
     setTimeout(() => {
 
       /* Preferred Style */
-  let UI = 'android'
-  //filter_item_container radius
-    let f_i_c_r = '1em'
+      let UI = 'android'
+      //filter_item_container radius
+      let f_i_c_r = '1em'
 
-  if (saved_UI == 'android'){
-    UI = saved_UI;
-    cv_f_i_c_r = '1em'
+      if (saved_UI == 'android') {
+        UI = saved_UI;
+        cv_f_i_c_r = '1em'
 
-  } else if (saved_UI == 'metro'){
-    UI = saved_UI;
-f_i_c_r = '0em'
+      } else if (saved_UI == 'metro') {
+        UI = saved_UI;
+        f_i_c_r = '0em'
 
-  } else if (saved_UI == 'apple'){
-    UI = saved_UI;
-    f_i_c_r = '0.5em'
-  }
+      } else if (saved_UI == 'apple') {
+        UI = saved_UI;
+        f_i_c_r = '0.5em'
+      }
 
       let allFilters = document.querySelectorAll('.cv-filter');
       allFilters[previous_filter].style.cssText = `white-space: nowrap; border: 2px solid green; margin-right: 1%; padding-top: 0.75%; padding-bottom: 0.25%; padding-left: 2%; padding-right: 2%; border-radius: ${f_i_c_r}`
@@ -1314,25 +1322,25 @@ function generateCV_Flow(saved_UI, cv_flow_items_data) {
 
   let cv_flow_container = document.getElementById('cv-flow-container');
   cv_flow_container.style.cssText = 'display: flex; height: 85%; width: 100%; flex-direction: row; flex-wrap: wrap; padding-left: 1%; overflow-y: scroll'
-  
+
   /* Preferred Style */
   let UI = 'android'
   //cv_flow_item_container radius
-    let cv_f_i_c_r = '1em'
+  let cv_f_i_c_r = '1em'
 
-  if (saved_UI == 'android'){
+  if (saved_UI == 'android') {
     UI = saved_UI;
     cv_f_i_c_r = '1em'
 
-  } else if (saved_UI == 'metro'){
+  } else if (saved_UI == 'metro') {
     UI = saved_UI;
-cv_f_i_c_r = '0em'
+    cv_f_i_c_r = '0em'
 
-  } else if (saved_UI == 'apple'){
+  } else if (saved_UI == 'apple') {
     UI = saved_UI;
     cv_f_i_c_r = '0.5em'
   }
-  
+
   cv_flow_items_data.forEach((cv_flow_item_data) => {
 
     let cv_flow_item_container = document.createElement('div');
@@ -1363,14 +1371,14 @@ cv_f_i_c_r = '0em'
 
       if (ratio_img_container <= ratio_img) {
         cv_flow_item_container.style.cssText = `height: 300px; width:200px; border: 2px solid green; margin: 1%;  border-radius: ${cv_f_i_c_r}; overflow: hidden; z-index: 100; cursor: pointer;`
-      
+
         cv_flow_item_img.style.cssText = 'height: auto; width: 100%; object-fit: cover'
         cv_flow_item_container.appendChild(cv_flow_item_img)
       } else {
         cv_flow_item_container.style.cssText = `height: 300px; width:200px; border: 2px solid green; margin: 1%;  border-radius: ${cv_f_i_c_r}; overflow: hidden; z-index: 100; cursor: pointer;`
         cv_flow_item_img.style.cssText = 'height: 100%; width: auto; object-fit: cover'
-        
-      //  cv_flow_item_container.appendChild(cv_flow_item_linq)
+
+        //  cv_flow_item_container.appendChild(cv_flow_item_linq)
         cv_flow_item_container.appendChild(cv_flow_item_img)
       }
 
@@ -1378,9 +1386,9 @@ cv_f_i_c_r = '0em'
       cv_flow_item_container.style.cssText = `height: 200px; width: 300px; border: 2px solid green; margin: 1%;  border-radius: ${cv_f_i_c_r}; overflow: hidden; z-index: 100; cursor: pointer;`
 
       cv_flow_item_img.style.cssText = 'height: 100%; width: 100%; object-fit: cover'
-      
-    //  cv_flow_item_container.appendChild(cv_flow_item_linq)
-      cv_flow_item_container.appendChild(cv_flow_item_img)      
+
+      //  cv_flow_item_container.appendChild(cv_flow_item_linq)
+      cv_flow_item_container.appendChild(cv_flow_item_img)
     }
     //cv_flow_item_container.appendChild(cv_flow_item_img)
 
@@ -1401,14 +1409,14 @@ cv_f_i_c_r = '0em'
         openModal(modal, 'pdf', url)
 
       } else if (cv_flow_item_data.docType == 'mp4') {
-        
-        lastModal =[{modal: modal, type: 'in-cv-video', data: ''}]
+
+        lastModal = [{ modal: modal, type: 'in-cv-video', data: '' }]
 
         openModal(modal, 'video', cv_flow_item_data)
 
       } else if (cv_flow_item_data.docType == 'yt') {
 
-        lastModal =[{modal: modal, type: 'in-cv-yt', data: ''}]
+        lastModal = [{ modal: modal, type: 'in-cv-yt', data: '' }]
 
         openModal(modal, 'video', cv_flow_item_data)
 
@@ -1427,7 +1435,7 @@ cv_f_i_c_r = '0em'
     });
 
     if (cv_flow_item_data.docType == 'mp4' || cv_flow_item_data.docType == 'yt') {
-      
+
       cv_flow_item_container.style.border = '4px solid green'
 
       // Border fade animation
@@ -1444,6 +1452,6 @@ cv_f_i_c_r = '0em'
       cv_flow_container.appendChild(cv_flow_item_container);
     };
     cv_flow_container.appendChild(cv_flow_item_container);
-//    $(".cv-flow-item-container").load(location.href + " .cv-flow-item-container");
+    //    $(".cv-flow-item-container").load(location.href + " .cv-flow-item-container");
   });
 }

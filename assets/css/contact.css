@@ -3,7 +3,9 @@
     height: 500px;
     width: 400px;
     display: block;
-    border-top: 2px solid green;
+
+    margin-top: -4%;
+
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
@@ -11,15 +13,27 @@
     scrollbar-width: none;
 }
 
+.contact-container::-webkit-scrollbar {
+    display: none;
+  }
+
 .contact-form {
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 20px;
-    padding: 2%;
+    padding: 0%, 2%, 2%;
 
     margin: 0;
+
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+
+.contact-form::-webkit-scrollbar {
+    display: none;
+  }
 
 .contact-form-title h2 {
     font-weight: 600;
@@ -65,7 +79,7 @@
 .contact-message-submit {
     position: relative;
     height: 85px;
-    margin-left: 30%;
+    margin-left: 38%;
     padding: 15px;
     font-size: 16px;
     color: white;
