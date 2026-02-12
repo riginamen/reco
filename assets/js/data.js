@@ -191,6 +191,15 @@ const tilesData = [
     tile_size: 'S',
     content: ['content_tile', 'content_text0', 'content_text1,', 'content_text2']
   },
+
+  {
+    id: '19',
+    tile_title: 'Learn',
+    icon: 'assets/icons/octopus.png',
+    color: 'white',
+    tile_size: 'S',
+    content: ['content_tile', 'content_text0', 'content_text1,', 'content_text2']
+  }
 ];
 
 //TODO: Update id nomenclature
@@ -4426,14 +4435,34 @@ const cvFlowData = [
   //AI
   {
     id: '128',
-    title: '',
-    imgURL: 'assets/docs/cv/ai_ethics.png',
-    docType: '',
+    title: 'dfvWIH1fUoc',
+    imgURL: 'assets/docs/cv/research/12_AI_Tools.webp',
+    docType: 'yt',
     orientation: '',
     tags: ['research', 'ai'],
     position: 128
   },
 
+  {
+    id: '128',
+    title: '',
+    imgURL: 'assets/docs/cv/ai_ethics.png',
+    docType: 'yt',
+    orientation: '',
+    tags: ['research', 'ai'],
+    position: 128
+  },
+
+  {
+    id: '128',
+    title: '8W5A7fIuA-A',
+    imgURL: 'assets/docs/cv/research/11_AI_Tools.webp',
+    docType: 'yt',
+    orientation: '',
+    tags: ['research', 'ai'],
+    position: 128
+  },
+  
   //Edu
   {
     id: '128',
@@ -6596,7 +6625,7 @@ let creditAuthorData = [
     id: '1',
     authorId: 'linq-010',
     authorName: 'Mitali Jadhavrao',
-    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1766152800&v=beta&t=qsjM7Uv6fWqOdKAjzsaqYocA-fcE81iiitx92qSknZg',
+    imgURL: 'https://media.licdn.com/dms/image/v2/D4D35AQEm65jVelFiSQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1698476293043?e=1767376800&v=beta&t=1o2jxJZ-XY92LNXR3J9O7Sms4b42Lju4PuL0zYYcnzE',
     profiles:
     {
       'linq': 'linq-010',

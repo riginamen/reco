@@ -35,8 +35,8 @@
         <img id="img_side_nav" src="/img/icons/menu_back_green.png">
     </div> -->
 
-    <!-- <div class="metro-container" id="metro-container" data-tilt> -->
-    <div class="metro-container" id="metro-container">
+  <!-- <div class="metro-container" id="metro-container" data-tilt> -->
+  <div class="metro-container" id="metro-container">
     <div class="metro" id="metro" style="display: none;">
       <div class="metro-title" id="metro-title">
         <img class="reco-logo" id="reco-logo">
@@ -85,6 +85,48 @@
     </div>
   </div>
 
+  <div class="side-nav-container" id="side-nav-container" style="max-width: 275px; max-height: 500px;">
+
+    <div class="side-nav-top" id="side-nav-top" style="display: none; width: 225px; justify-content: space-between;">
+      <i class="bx bx-info-circle" id="btn-nav-info" style="font-size: 1.5em; color: white; cursor: pointer;"></i>
+      <i class='bx bx-left-top-arrow-circle' id="btn-nav-max"
+        style="font-size: 1.5em; color: white; cursor: pointer;"></i>
+      <i class='bx bx-x' id="btn-nav-close" style="font-size: 1.5em; color: red; cursor: pointer;"></i>
+    </div>
+
+    <div class="side-nav-window" id="side-nav-window"
+      style="display: none; height: 150px; width: 225px; border: 2px solid green; margin: 0; border-radius: 1em;">
+    </div>
+
+    <div class="pal_chatbase_container" id="pal_chatbase_container">
+
+      <div class="pal_chatbase_header" id="pal_chatbase_header" style="display: none; position: absolute; height: 80px; width: 275px; border-radius: 1em;"></div>
+
+    <iframe id="pal_chatbase_window" src="https://www.chatbase.co/chatbot-iframe/oaBEwQDaU8NCVCjWNokxp" width="100%"
+      style="display: none; height: 500px; min-height: 500px; width: 275px; border: 2px solid green; border-radius: 1em;"
+      frameborder="0"></iframe>
+    </div>
+
+    <div class="nav-quick-btns-container" id="nav-quick-btns-container" style="display: flex; justify-content: center;">
+      <div class="nav-quick-btns" id="nav-quick-btns" style="display: none">
+        <img src="assets/icons/youtube-logo-48.png" id="btn-nav-quick-yt"
+          style="background-color: red; border-radius: 2em; padding: 5px; margin: 1%; cursor: pointer;" alt="">
+        <img src="assets/icons/bxs-message-rounded-dots.svg" id="btn-nav-quick-chat"
+          style="background-color: green; border: 2px solid green; border-radius: 2em; padding: 5px; margin: 1%; cursor: pointer;"
+          alt="">
+        <img src="assets/linqs/Linq_Logo_Green_1.png"
+          style="background-color: grey; border: 2px solid grey; border-radius: 2em; padding: 5px; margin: 1%; cursor: pointer;"
+          alt="">
+      </div>
+
+      <div class="btn-side-nav-linq-container" id="btn-side-nav-linq-container">
+      <div class="btn-side-nav-linq" id="btn-side-nav-linq">
+        <img src="assets/linqs/Linq_Logo_White_1.png" style="cursor: pointer; scale: 0.9;" draggable="false" alt="">
+      </div>
+    </div>
+    </div>
+  </div>
+ 
   <button data-modal-target="#modal" style="display: none;">Open Modal</button>
   <div class="modal" id="modal">
     <div class="modal-header" id="modal-header"></div>
@@ -121,6 +163,15 @@
 
     <!--Settings-->
     <div class="settings-container" id="settings-container" style="display: none;">
+
+      <div class="language-container">
+        <div class="language-options-container" style="display: flex;">
+          <h3>Language: &emsp;🇯🇵 日本語</h3>
+          <i class='bx bxs-down-arrow'></i>
+        </div>
+      </div>
+
+      <div class="separator" id="separator-0"></div>
 
       <div class="location-weather-container">
         <div class="location-weather-title"></div>
@@ -162,16 +213,20 @@
         </div>
       </div>
 
-      <div class="separator" id="separator-2"></div>
+      <div class="separator" id="separator-3"></div>
 
-      <div class="language-container">
-        <div class="language-options-container" style="display: flex;">
-          <h3>Language: &emsp;🇯🇵 日本語</h3>
-          <i class='bx bxs-down-arrow'></i>
+      <div class="pal-settings-container">
+        <div class="pal-settings-title"> LinqPal (Experimental)</div>
+        <div class="pal-settings-options-container" style="width: 100%; margin-bottom: 2%; justify-content: center;">
+          <div class="pal-settings-options" style="display: flex; width: 100%; justify-content: center;">
+            <input type="checkbox" id="check1" class="toggle">
+            <label for="check1" style="margin-right: 7%;">Enabled?</label>
+
+            <input disabled checked type="checkbox" id="check3" class="toggle">
+            <label for="check3">AI?</label>
+          </div>
         </div>
       </div>
-
-      <div class="separator" id="separator-3" style="display: none;"></div>
 
     </div>
 
@@ -203,9 +258,12 @@
 
         <div class="credit-body">
 
-          <div id="credit-info-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;"></div>
-          <div id="credit-media-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;"></div>
-          <div id="credit-code-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;"></div>
+          <div id="credit-info-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;">
+          </div>
+          <div id="credit-media-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;">
+          </div>
+          <div id="credit-code-flow-container" style="display:none; width: 100%; height: 350px; overflow-y: scroll;">
+          </div>
         </div>
       </div>
 

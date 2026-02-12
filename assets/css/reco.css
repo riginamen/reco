@@ -27,21 +27,26 @@
   z-index: 0;
 }
 
-.side_nav {
-  position: fixed;
-  top: -12%;
-  right: 50%;
-  width: 85%;
-  z-index: 1000;
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  transform: scale(0.1);
+/* Side Nav */
+.btn-side-nav-linq {
+  padding: 10px 8px 0px 7px;
+  border: 2px solid white;
+  border-radius: 2.5em;
+  scale: 0.7;
+}
+
+.nav-quick-btns {
+  margin-top: 7%;
+  height: 50px;
+  width: 145px;
+  background-color: pink;
+  border: 2px solid white;
+  border-radius: 2em;
 }
 
 .metro {
   position: relative;
-  justify-content:space-between;
+  justify-content: space-between;
 
   overflow-x: hidden;
   -ms-overflow-style: none;
@@ -159,7 +164,7 @@
 
 .info_b:hover {
   position: relative;
-  margin-top: 3%;  
+  margin-top: 3%;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -168,7 +173,7 @@
 
   animation-name: hbeat;
   animation-duration: 1s;
-    animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 .text_a {
@@ -215,7 +220,7 @@
 
   animation-name: hbeat;
   animation-duration: 1s;
-    animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 .info_c .bxs-cog {
@@ -235,7 +240,7 @@
 
   animation-name: hbeat;
   animation-duration: 1s;
-    animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 @keyframes shine {
@@ -530,42 +535,119 @@
   opacity: 0.5;
 }
 
+/* LinqPal */
+.pal-settings-title {
+  position: relative;
+  margin-bottom: 4%;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  align-items: center;
+  justify-content: center;
+}
+input[type="checkbox"].toggle {
+  opacity: 0;
+  position: absolute;
+  left: -9000px;
+  top: -9000px;
+}
+
+input[type="checkbox"].toggle + label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="checkbox"].toggle + label::before {
+  content: "";
+  width: 2em;
+  height: 1em;
+  background-color: hsl(0, 80%, 90%);
+  border-radius: 1em;
+  margin-right: .25em;
+  transition: background-color 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle + label::after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  content: "\2715";
+  font-size: .5em;
+  height: .9em;
+  left: .2em;
+  width: 1.8em;
+  height: 1.8em;
+  background-color: hsl(0, 80%, 60%);
+  color: white;
+  border-radius: 1em;
+  transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle:focus + label::before {
+  outline: 1px solid black;
+}
+
+input[type="checkbox"].toggle:checked + label::before {
+  background-color: hsl(100, 70%, 90%);
+}
+
+input[type="checkbox"].toggle:checked + label::after {
+  content: "\2713";
+  transform: translateX(100%);
+  background-color: hsl(100, 70%, 60%);
+}
+
+input[type="checkbox"].toggle:disabled + label {
+  color: #777;
+}
+
+input[type="checkbox"].toggle:disabled + label::before {
+  background-color: #CCC;
+}
+
+input[type="checkbox"].toggle:disabled + label::after {
+  background-color: #777;
+}
+
 /* Credit */
-.credit-logo-container{
+.credit-logo-container {
   padding-top: 2.5%;
   padding-left: 2%;
   padding-right: 2%;
   padding-bottom: 1%;
 
   margin: 2%;
-border: 2px solid turquoise;
-border-radius: 50%;
+  border: 2px solid turquoise;
+  border-radius: 50%;
 }
 
-#credit-info-top{
-font-size: 1.5em;
-cursor: pointer;
+#credit-info-top {
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
-#credit-info-disclaimer{
-font-size: 1.5em;
-cursor: pointer;
+#credit-info-disclaimer {
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
-.credit-btn:hover{
+.credit-btn:hover {
   background-color: green;
   color: white;
   border: 2px solid green;
   border-radius: 1em;
-  padding-top: 1%; 
-  padding-left: 2%; 
-  padding-right: 2%; 
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
   padding-bottom: 1%;
 
   font-weight: bold;
   cursor: pointer;
 }
-
 
 @media (max-width: 455.3px) {
   .background {

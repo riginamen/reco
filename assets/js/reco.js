@@ -233,7 +233,7 @@ function generateCredit(saved_UI, creditData) {
         $(media_title).click(function () {
           if (media_data.content !== null && media_data.content.link !== null) {
 
-          lastModal =[{modal: modal, type: 'in-credit', data: ''}]
+            lastModal = [{ modal: modal, type: 'in-credit', data: '' }]
 
             let url = media_data.content.link;
 
@@ -242,7 +242,7 @@ function generateCredit(saved_UI, creditData) {
             }]
 
             openModal(modal, 'site', data[0])
-console.log(lastModal[0].type)
+            console.log(lastModal[0].type)
           } else {
           }
         });
@@ -2148,7 +2148,7 @@ function generateLinq2(saved_UI) {
 
   var linq2_main_container_no_scrollbar = document.createElement("style");
   linq2_main_container_no_scrollbar.appendChild(document.createTextNode("#linq2-main-container ::-webkit-scrollbar {display: none;}"));
-  linq2_main_container_no_scrollbar.appendChild(linq2_main_container);	
+  linq2_main_container_no_scrollbar.appendChild(linq2_main_container);
 
   let linq2_top = document.createElement('div')
   linq2_top.style.height = '130px'
@@ -2214,6 +2214,11 @@ function generateLinq2(saved_UI) {
     },
 
     {
+      name: 'AI',
+      icon: '',
+    },
+
+    {
       name: 'Quality',
       icon: '',
     },
@@ -2275,10 +2280,10 @@ function generateLinq2(saved_UI) {
   let linq2_filters_container = document.createElement('div')
   linq2_filters_container.setAttribute('id', 'linq2-filters-container')
   linq2_filters_container.style.cssText = 'display: flex; margin-top: 5px; margin-bottom: 5px; align-items: center;'
-  
+
   var styleElement = document.createElement("style");
-styleElement.appendChild(document.createTextNode("#linq2-filters-container ::-webkit-scrollbar {display: none;}"));
-linq2_filters_container.appendChild(styleElement);	
+  styleElement.appendChild(document.createTextNode("#linq2-filters-container ::-webkit-scrollbar {display: none;}"));
+  linq2_filters_container.appendChild(styleElement);
 
   let linq2_filters_ = document.createElement('div')
   linq2_filters_.style.cssText = 'display: flex; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none; '
@@ -2333,7 +2338,45 @@ linq2_filters_container.appendChild(styleElement);
   tu_container_6.setAttribute('id', 'tu-container-6')
   tu_container_6.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
 
-    let data = [
+  let tu_container_7 = document.createElement('div')
+  tu_container_7.setAttribute('id', 'tu-container-7')
+  tu_container_7.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let tu_container_8 = document.createElement('div')
+  tu_container_8.setAttribute('id', 'tu-container-8')
+  tu_container_8.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let tu_container_9 = document.createElement('div')
+  tu_container_9.setAttribute('id', 'tu-container-9')
+  tu_container_9.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let tu_container_10 = document.createElement('div')
+  tu_container_10.setAttribute('id', 'tu-container-10')
+  tu_container_10.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let tu_container_11 = document.createElement('div')
+  tu_container_11.setAttribute('id', 'tu-container-11')
+  tu_container_11.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let tu_container_12 = document.createElement('div')
+  tu_container_12.setAttribute('id', 'tu-container-12')
+  tu_container_12.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+
+  let data = [
+    {
+      playlistId: 'PLNJsVJgvYE4U59-SBXafY3oZ1GNFBRWvz',
+      maxResults: '15',
+      container_name: 'tu-container-8'
+    },
+
+    {
+      playlistId: 'PLNJsVJgvYE4XDUl0YEsOF-3fe-ib1V4Q7',
+      maxResults: '25',
+      container_name: 'tu-container-12'
+    },
+
+
     {
       playlistId: 'UUBJycsmduvYEL83R_U4JriQ',
       maxResults: '15',
@@ -2374,6 +2417,30 @@ linq2_filters_container.appendChild(styleElement);
       playlistId: 'PLNJsVJgvYE4WIsULAf7bEPzmejQbqBcbu',
       maxResults: '15',
       container_name: 'tu-container-6'
+    },
+
+    {
+      playlistId: 'PLRV0MUkz6INJJTd8nboQ8zSUtzKA7gOky',
+      maxResults: '15',
+      container_name: 'tu-container-7'
+    },
+
+    {
+      playlistId: 'PLNJsVJgvYE4UL5n6hMhB5NhalKGyl0IOx',
+      maxResults: '15',
+      container_name: 'tu-container-9'
+    },
+
+    {
+      playlistId: 'PLtJw5IaPeCheJT2XkYpPtAbsA191v42kB',
+      maxResults: '30',
+      container_name: 'tu-container-10'
+    },
+
+    {
+      playlistId: 'PLNJsVJgvYE4WV4ZQs5gclePFUzJeteSOU',
+      maxResults: '25',
+      container_name: 'tu-container-11'
     }
   ]
 
@@ -2401,6 +2468,7 @@ linq2_filters_container.appendChild(styleElement);
   //tu_container_2.appendChild(tu_content_2)
 
   //linq2_main_container.appendChild(linq2_top)
+  linq2_main_container.appendChild(tu_container_8)
   linq2_main_container.appendChild(tu_container_0)
   linq2_main_container.appendChild(tu_container_1)
   linq2_main_container.appendChild(tu_container_2)
@@ -2408,6 +2476,11 @@ linq2_filters_container.appendChild(styleElement);
   linq2_main_container.appendChild(tu_container_4)
   linq2_main_container.appendChild(tu_container_5)
   linq2_main_container.appendChild(tu_container_6)
+  linq2_main_container.appendChild(tu_container_7)
+  linq2_main_container.appendChild(tu_container_9)
+  linq2_main_container.appendChild(tu_container_10)
+  linq2_main_container.appendChild(tu_container_11)
+  linq2_main_container.appendChild(tu_container_12)
 
   modal_body.appendChild(linq2_top)
   linq2_filters_container.appendChild(linq2_filters_)
@@ -2426,48 +2499,56 @@ function getYouTubePlaylist(channelUploadsId, maxResults, tu_container, borderRa
     .then(data => {
       data.items.forEach(el => {
 
-        let tuContainer = document.getElementById(tu_container)
+        if (typeof el.snippet.thumbnails.medium !== 'undefined') {
+          let tuContainer = document.getElementById(tu_container)
 
+          let tu_content_0 = document.createElement('div')
+          tu_content_0.style.cssText = `height: 100px; width: auto; margin: 2px; border: 2px solid green; border-radius: ${borderRadius}`;
 
-        let tu_content_0 = document.createElement('div')
-        tu_content_0.style.cssText = `height: 100px; width: auto; margin: 2px; border: 2px solid green; border-radius: ${borderRadius}`;
+          let tu_content_img = document.createElement('img')
+          tu_content_img.style.cssText = 'height: auto; width: 170px; object-fit: cover; cursor: pointer'
+          let tu_content_title = document.createElement('div')
 
-        let tu_content_img = document.createElement('img')
-        tu_content_img.style.cssText = 'height: auto; width: 170px; object-fit: cover; cursor: pointer'
-        let tu_content_title = document.createElement('div')
+          tu_content_img.src = el.snippet.thumbnails.medium.url
+          tu_content_title.innerText = el.snippet.title.substring(0, 46) + '...'
+          tu_content_title.style.fontWeight = '0.55em';
 
-        tu_content_img.src = el.snippet.thumbnails.medium.url
-        tu_content_title.innerText = el.snippet.title.substring(0, 46) + '...'
-        tu_content_title.style.fontWeight = '0.55em';
+          let data = [
+            {
+              title: el.snippet.resourceId.videoId,
+              imgURL: '',
+              docType: 'yt',
+              orientation: 'landscape'
+            }
+          ]
 
-        let data = [
-          {
-            title: el.snippet.resourceId.videoId,
-            imgURL: '',
-            docType: 'yt',
-            orientation: 'landscape'
-          }
-        ]
+          $(tu_content_img).click(function () {
 
-        $(tu_content_img).click(function () {
-          // alert(el.snippet.resourceId.videoId)
-          lastModal = [{ modal: modal, type: 'in-linq2', data: '' }]
+            let side_nav_window = document.getElementById('side-nav-window')
+            let el_yt_player_pal = document.getElementById('yt-player-pal')
 
-          openModal(modal, 'video', data[0])
-        });
+            if (palPlayerState == 'playing') {
+              //From pal_video in cv.js
+              //yt_player_pal.pauseVideo()
+              stopYT_Pal()              
+            }
 
-        tu_content_0.appendChild(tu_content_img)
-        tu_content_0.appendChild(tu_content_title)
+            lastModal = [{ modal: modal, type: 'in-linq2', data: data[0] }]
 
-        tuContainer.appendChild(tu_content_0);
+            openModal(modal, 'video', data[0])
+          });
 
-        var tu_container_no_scrollbar = document.createElement("style");
-  tu_container_no_scrollbar.appendChild(document.createTextNode(`#${tu_container} ::-webkit-scrollbar {display: none;}`));
-  tuContainer.appendChild(tu_container_no_scrollbar);
+          tu_content_0.appendChild(tu_content_img)
+          tu_content_0.appendChild(tu_content_title)
+
+          tuContainer.appendChild(tu_content_0);
+
+          var tu_container_no_scrollbar = document.createElement("style");
+          tu_container_no_scrollbar.appendChild(document.createTextNode(`#${tu_container} ::-webkit-scrollbar {display: none;}`));
+          tuContainer.appendChild(tu_container_no_scrollbar);
+        }
       })
-      //console.log(data)
     })
-
 }
 
 //let textToSave = document.getElementById('credit-trademark').innerText;

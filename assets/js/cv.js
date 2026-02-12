@@ -3,6 +3,7 @@ window.onload = function () {
   let saved_UI = localStorage.getItem('saved-UI');
   let saved_Temp = localStorage.getItem('temperature-unit');
   let saved_Weather = localStorage.getItem('saved-Weather');
+  let pal_enabled = localStorage.getItem('pal-enabled');
 
   if (saved_UI == '' || saved_UI == null) {
     saved_UI = 'android';
@@ -14,6 +15,15 @@ window.onload = function () {
     saved_Weather = 'Philipsburg';
   }
 
+  if (pal_enabled == '' || pal_enabled == null) {
+    pal_enabled = 'true';
+
+    document.getElementById('side-nav-container').style.display = 'block'
+  } else if (pal_enabled == 'true') {
+
+    document.getElementById('side-nav-container').style.display = 'block'
+  }
+
   //document.getElementById('metro-container').style.cssText = 'position: fixed; justify-content: center; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: none; scrollbar-width: none; height: 92%; width: 90%; top: 4%; margin-left: auto; margin-right: auto;border: 3px solid green; border-radius: 0.75rem; left: 0; right: 0; z-index: 20;'
   //let flavorDoc = 'position: fixed; background-image: url(assets/img/20241120_072550.jpg); background-repeat: no-repeat; justify-content: center; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: none; scrollbar-width: none; height: 92%; width: 90%; top: 4%; margin-left: auto; margin-right: auto; left: 0; right: 0; z-index: 20;';
   generateImgBackground('');
@@ -21,6 +31,110 @@ window.onload = function () {
   //document.getElementById('metro').style.display = 'none';
   generateCredit(saved_UI, creditData);
 }
+//Pal Global Variables
+let pal_container = document.getElementById('side-nav-container')
+let pal_nav_quick_btns = document.getElementById('nav-quick-btns-container')
+
+let chatbase = document.getElementById('pal_chatbase_window')
+let chatbase_header = document.getElementById('pal_chatbase_header')
+let side_nav_window = document.getElementById('side-nav-window')
+let player_pal;
+
+let nav_quick_btns_container = document.getElementById('nav-quick-btns-container')
+let btn_nav_quick_yt = document.getElementById('btn-nav-quick-yt')
+let btn_side_nav_linq = document.getElementById('btn-side-nav-linq')
+
+//screen width
+let s_width = $(window).width()
+//screen height
+let s_height = $(window).height()
+//metro container width
+let m_c_width = $('#metro-container').width()
+//metro container height
+let m_c_height = $('#metro-container').height()
+//metro container distance from left
+let m_c_d_left = $('#metro-container').offset().left
+//metro container distance from bottom
+let metroRect = document.getElementById('metro-container').getBoundingClientRect();
+let m_c_d_bottom = window.innerHeight - metroRect.bottom;
+//pal container width
+let p_c_width = pal_container.getBoundingClientRect().width
+//pal container height
+let p_c_height = pal_container.getBoundingClientRect().height
+//pal distance from metro left
+let p_d_m = ((m_c_d_left - p_c_width) / 2)
+//pal offset left
+let p_left = ((p_d_m + (m_c_width + m_c_d_left)) / s_width) * 100
+
+//pal offset from top
+let p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+pal_container.style.cssText = `position: fixed; top: ${p_top}%; left: ${p_left}%; z-index: 1000;`
+
+window.addEventListener('resize', function (event) {
+
+  p_c_width = pal_container.getBoundingClientRect().width
+  p_c_height = pal_container.getBoundingClientRect().height
+
+  p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+  pal_container.style.cssText = `position: fixed; top: ${p_top}%; left: ${p_left}%; z-index: 1000;`
+}, true);
+
+function onPalLinqDrag({ movementX, movementY }) {
+  let getStyle = window.getComputedStyle(pal_container);
+  let leftVal = parseInt(getStyle.left);
+  let topVal = parseInt(getStyle.top);
+  pal_container.style.left = `${leftVal + movementX}px`;
+  pal_container.style.top = `${topVal + movementY}px`;
+}
+
+pal_nav_quick_btns.addEventListener("mousedown", () => {
+  //chatbase_headerr.classList.add("active");
+  // Source - https://stackoverflow.com/a/210345
+  // Posted by samjudson, modified by community. See post 'Timeline' for change history
+  // Retrieved 2026-02-06, License - CC BY-SA 3.0
+
+  //$('#btn-side-nav-linq').unbind('click');
+
+  pal_nav_quick_btns.addEventListener("mousemove", onPalLinqDrag);
+});
+
+document.addEventListener("mouseup", () => {
+  //chatbase_header.classList.remove("active");
+  pal_nav_quick_btns.removeEventListener("mousemove", onPalLinqDrag);
+
+  /* $('#btn-side-nav-linq').click(function () {
+    onNavLinqClick ()  
+  }) */
+});
+
+function onDrag({ movementX, movementY }) {
+  let getStyle = window.getComputedStyle(pal_container);
+  let leftVal = parseInt(getStyle.left);
+  let topVal = parseInt(getStyle.top);
+  pal_container.style.left = `${leftVal + movementX}px`;
+  pal_container.style.top = `${topVal + movementY}px`;
+}
+
+chatbase_header.addEventListener("mousedown", () => {
+  //chatbase_headerr.classList.add("active");
+  chatbase_header.addEventListener("mousemove", onDrag);
+});
+
+document.addEventListener("mouseup", () => {
+  //chatbase_header.classList.remove("active");
+  chatbase_header.removeEventListener("mousemove", onDrag);
+});
+
+let yt_player;
+let yt_player_pal = document.getElementById('yt-player-pal');
+let yt_player_pal_currentTime;
+let palPlayerState = ''
+let pal_data = [];
+
+let yt_video_currentTime;
+
 const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
@@ -52,6 +166,8 @@ $('.bxs-cog').click(function () {
   let saved_UI = localStorage.getItem('saved-UI');
   let saved_Temp = localStorage.getItem('temperature-unit');
 
+  let pal_enabled = localStorage.getItem('pal-enabled');
+
   /* let text;
   let person;
 
@@ -67,17 +183,19 @@ $('.bxs-cog').click(function () {
 
   openModal(modal, 'settings', '');
 
-  generateSettings(saved_UI, saved_Temp, saved_Weather);
+  generateSettings(saved_UI, saved_Temp, saved_Weather, pal_enabled);
 });
 
 //TODO: Move to reco.js
-function generateSettings(saved_UI, saved_Temp, saved_Weather) {
+function generateSettings(saved_UI, saved_Temp, saved_Weather, isPalEnabled) {
 
   let settings_container = document.getElementById('settings-container');
 
   let location_input = document.getElementById('location-input');
   let celcius_radio = document.getElementById('weather-celcius-btn');
   let fahrenheit_radio = document.getElementById('weather-fahrenheit-btn');
+
+  let pal_enabled_toggle = document.getElementById('check1');
 
   let ui_apple = document.getElementById('bxl-apple');
   let ui_metro = document.getElementById('bxl-metro');
@@ -155,16 +273,45 @@ function generateSettings(saved_UI, saved_Temp, saved_Weather) {
 
     localStorage.setItem('saved-UI', 'android')
   })
+
+  $(pal_enabled_toggle).click(function () {
+
+    let pal_enabled;
+
+    if (pal_enabled_toggle.checked == false) {
+
+      pal_enabled_toggle.checked = true;
+      pal_enabled = 'true';
+
+      pal_container.style.display = 'block'
+
+    } else if (pal_enabled_toggle.checked == true) {
+
+      pal_enabled_toggle.checked = false;
+      pal_enabled = 'false';
+
+      pal_container.style.display = 'none'
+
+    };
+
+    localStorage.setItem('pal-enabled', pal_enabled)
+  })
 }
 
-let players = [];
+function loadVideo(data, c_b_r) {
 
-function loadVideo(data) {
+  let startTime;
+
+  if (data.time !== null) {
+    startTime = data.time;
+  } else {
+    startTime = 0;
+  }
 
   if (data.orientation == 'portrait') {
 
     window.YT.ready(function () {
-      players[0] = new window.YT.Player("yt-player", {
+      yt_player = new window.YT.Player("yt-player", {
         height: "640",
         width: "390",
         videoId: data.title,
@@ -182,11 +329,16 @@ function loadVideo(data) {
   } else {
 
     window.YT.ready(function () {
-      players[1] = new window.YT.Player("yt-player", {
+
+      //To remove unresolved white bottom padding
+      document.getElementById('modal').style.cssText = `width: auto; max-width: 95%; height: 390px; max-height: 95%; background-color: white; object-fit: contain; border-radius: ${c_b_r};`
+
+      yt_player = new window.YT.Player("yt-player", {
         height: "390",
         width: "640",
         videoId: data.title,
         playerVars: {
+          'start': startTime,
           'playsinline': 1,
           'enablejsapi': 1
         },
@@ -195,6 +347,7 @@ function loadVideo(data) {
           onStateChange: onPlayerStateChange
         }
       });
+
     });
   }
   function onPlayerReady(event) {
@@ -214,8 +367,12 @@ function stopYT() {
   let yt_player = document.getElementById('yt-player');
 
   modal.removeChild(yt_player);
+}
 
-  $('.yt-player').hide();
+function stopYT_Pal() {
+  let yt_player_pal = document.getElementById('yt-player-pal');
+
+  side_nav_window.removeChild(yt_player_pal);
 }
 
 function stopVideo() {
@@ -407,14 +564,10 @@ function openModal(modal, type, data) {
       yt_player.appendChild(yt_loader_img);
       modal.appendChild(yt_player);
 
-      //  $('.yt-player').show();
-
       $(document).ready(function () {
         $.getScript("https://www.youtube.com/iframe_api", function () {
 
-          document.getElementById('modal').style.cssText = `width: auto; max-width: 95%; height: 390px; max-height: 95%; background-color: white; object-fit: contain; border-radius: ${c_b_r};`
-
-          loadVideo(data);
+          loadVideo(data, c_b_r);
         });
       });
 
@@ -690,9 +843,16 @@ function closeModal(modal) {
   } else if (lastModal[0].type == 'in-cv-yt') {
     stopYT();
 
-  } else if (lastModal[0].type == 'in-linq2') {
-    stopVideo();
-    stopYT();
+  } else if (lastModal[0].type == 'in-linq2' || lastModal[0].type == 'from-pal') {
+
+    if (yt_player !== null) {
+      yt_player.pauseVideo()
+
+      startPalYT(lastModal[0].data, Math.round(yt_player.getCurrentTime())).then(stopYT())
+
+    } else {
+      startPalYT(lastModal[0].data, 0)
+    }
 
     openModal(modal, 'linq2', '')
     generateLinq2(saved_UI);
@@ -710,6 +870,317 @@ function closeModal(modal) {
     openModal(modal, 'site', '');
     lastModal = [{ modal: modal, type: 'site', data: '' }]
   }
+
+  console.log(pal_data[0].time)
+}
+
+function onNavLinqClick() {
+  if ($("#nav-quick-btns").is(":visible")) {
+    $("#nav-quick-btns").hide();
+    //$("#side-nav-top").hide();
+    //$(side_nav_window).hide();
+
+    chatbase.style.display = 'none'
+    $(".pal_chatbase_header").hide();
+
+    p_c_height = pal_container.getBoundingClientRect().height
+    p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+    pal_container.style.cssText = `position: fixed; top: ${p_top}%; left: ${p_left}%; z-index: 1000;`
+  } else {
+
+    $("#nav-quick-btns").css('display', 'flex');
+
+    p_c_height = pal_container.getBoundingClientRect().height
+    p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+    pal_container.style.cssText = `position: fixed; top: ${p_top}%; left: ${p_left}%; z-index: 1000;`
+  }
+}
+
+function onNavYTClick() {
+
+  chatbase.style.display = 'none'
+  $(".pal_chatbase_header").hide();
+
+  $("#side-nav-top").css('display', 'flex');
+  $(side_nav_window).show();
+
+  //pal container height
+  p_c_height = pal_container.getBoundingClientRect().height
+  p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+  pal_container.style.cssText = `position: fixed; top: ${p_top}%; left: ${p_left}%; z-index: 1000;`
+  nav_quick_btns_container.style.cssText = 'display: flex;'
+}
+
+var timer;
+let start;
+//Time of the long press
+const tempo = 1500; //Time 1000ms = 1s
+let timeLeft = 0;
+
+btn_side_nav_linq.onmousedown = () => {
+
+  start = performance.now();
+
+  timer = setTimeout(function () {
+  }, tempo);
+};
+
+btn_side_nav_linq.onmouseup = () => {
+
+  timeLeft = (performance.now() - start);
+
+  if (timeLeft < tempo) {
+    
+    btn_side_nav_linq.style.border = '2px solid white'
+
+    onNavLinqClick();
+  } else {
+  
+    btn_side_nav_linq.style.border = '3px solid green'
+
+    btn_side_nav_linq.animate([
+      { borderColor: "green", offset: 0 },
+      { borderColor: "white", offset: 0.5 },
+      { borderColor: "green", offset: 1 },
+    ], {
+      duration: 2000,
+      'animation-timing-function': 'linear',
+      iterations: Infinity,
+    })    
+  }
+
+  clearTimeout(timer);
+};
+
+$('#btn-nav-info').click(function () {
+
+  $(yt_player_pal).hide();
+})
+
+$('#btn-nav-max').click(function () {
+
+  btn_nav_quick_yt.style.border = ''
+
+  if (yt_player_pal !== null) {
+
+    let startTime = !yt_player_pal.getCurrentTime ? 0.0 : yt_player_pal.getCurrentTime();
+
+    /* if (typeof yt_player_pal.getCurrentTime() === 'function') {
+      startTime = yt_player_pal.getCurrentTime();
+    } else {
+      startTime = 0;
+    } */
+
+    pal_data = [
+
+      {
+        title: lastModal[0].data.title,
+        time: Math.round(startTime),
+        imgURL: '',
+        docType: 'yt',
+        orientation: 'landscape'
+      }
+    ]
+
+    //yt_player_pal.pauseVideo()
+
+    startFromPal(pal_data[0]).then(stopYT_Pal)
+  } else if (lastModal[0].type == 'in-linq2' || lastModal[0].type == 'from-pal') {
+
+    pal_data = [
+
+      {
+        title: lastModal[0].data.title,
+        time: 0,
+        imgURL: '',
+        docType: 'yt',
+        orientation: 'landscape'
+      }
+    ]
+
+    startFromPal(pal_data[0])
+  }
+})
+
+$('#btn-nav-close').click(function () {
+
+  chatbase.style.display = 'none'
+
+  $("#side-nav-top").hide();
+  $(side_nav_window).hide();
+
+  //pal container height
+  p_c_height = pal_container.getBoundingClientRect().height
+  p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+  pal_container.style.cssText = `position: fixed; top: 85%; left: ${p_left}%; z-index: 1000;`
+
+  stopYT_Pal()
+})
+
+$('#btn-nav-quick-yt').click(function () {
+
+  onNavYTClick();
+})
+
+$('#btn-nav-quick-chat').click(function () {
+
+  if ($(side_nav_window).is(":visible")) {
+    $("#side-nav-top").hide();
+    $(side_nav_window).hide();
+  }
+
+  chatbase.style.display = 'block'
+  $(".pal_chatbase_header").show();
+
+  //pal container height
+  p_c_height = pal_container.getBoundingClientRect().height
+  p_top = Math.floor(((s_height - (m_c_d_bottom + p_c_height)) / s_height) * 100)
+
+  pal_container.style.cssText = `position: fixed; top: ${p_top}%; left: ${p_left}%; z-index: 1000;`
+  nav_quick_btns_container.style.cssText = 'display: flex; margin-left: 15%'
+
+  //side_nav_window.appendChild(chatbase)https://sflix.ps/cast/hayden-panat
+
+  //pal_container.appendChild(side_nav_window)
+})
+
+function startPalYT(data, current_time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+
+      const err = false;
+      if (!err) {
+
+        player_pal = document.createElement('div');
+        player_pal.setAttribute('id', 'yt-player-pal');
+
+        player_pal.style.cssText = 'height: 148px; width: 223px; border-radius: 1em'
+
+        pal_data = [
+
+          {
+            title: data.title,
+            time: current_time,
+            imgURL: '',
+            docType: 'yt',
+            orientation: 'landscape'
+          }
+        ]
+
+        /* if (side_nav_window.contains(player_pal)) {
+          //side_nav_window.removeChild(player_pal)
+
+          yt_player_pal.loadVideoById(pal_data[0].title, pal_data.time)
+        } else {          
+
+          pal_video(pal_data[0], player_pal, side_nav_window)
+        } */
+
+        pal_video(pal_data[0], player_pal, side_nav_window)
+
+        onNavYTClick();
+
+        resolve();
+      } else {
+        reject();
+      }
+    }, 200)
+  });
+}
+
+function startFromPal(pal_data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+
+      const err = false;
+      if (!err) {
+
+        if (modal.contains(document.getElementById('yt-player'))) {
+          yt_player.pauseVideo()
+
+          //          lastModal = [{ modal: modal, type: 'from-pal', data: pal_data }]
+
+          yt_player.loadVideoById(pal_data.title, pal_data.time)
+        } else {
+
+          //             lastModal = [{ modal: modal, type: 'from-pal', data: pal_data }]
+
+          openModal(modal, 'video', pal_data)
+        }
+
+        resolve();
+      } else {
+        reject();
+      }
+    }, 200)
+  });
+}
+
+function pal_video(pal_data, player_pal, side_nav_window) {
+
+  $(document).ready(function () {
+
+    $.getScript("https://www.youtube.com/iframe_api", function () {
+
+      window.YT.ready(function () {
+        yt_player_pal = new window.YT.Player("yt-player-pal", {
+          height: "148",
+          width: "223",
+          videoId: pal_data.title,
+          playerVars: {
+            'start': pal_data.time,
+            'playsinline': 1,
+            'enablejsapi': 1
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+          }
+        });
+
+      });
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      function onPlayerStateChange(event) {
+        var videoStatuses = Object.entries(window.YT.PlayerState)
+        console.log(videoStatuses.find(status => status[1] === event.data)[0])
+
+        yt_player_pal_currentTime = !yt_player_pal.getCurrentTime ? 0.0 : yt_player_pal.getCurrentTime();
+
+        if (event.data == YT.PlayerState.PLAYING) {
+          palPlayerState = 'playing'
+
+          btn_nav_quick_yt.style.border = '3px solid green'
+
+          btn_nav_quick_yt.animate([
+            { borderColor: "green", offset: 0 },
+            { borderColor: "white", offset: 0.5 },
+            { borderColor: "green", offset: 1 },
+          ], {
+            duration: 2000,
+            'animation-timing-function': 'linear',
+            iterations: Infinity,
+          })
+
+        } else if (event.data == YT.PlayerState.PAUSED) {
+          palPlayerState = 'paused'
+
+          btn_nav_quick_yt.style.border = ''
+        } else if (event.data == YT.PlayerState.ENDED) {
+          btn_nav_quick_yt.style.border = ''
+        }
+
+      }
+    });
+  });
+  side_nav_window.appendChild(player_pal)
 }
 
 const cvSliderDataImgCount =
