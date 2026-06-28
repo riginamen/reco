@@ -89,24 +89,17 @@ function onPalLinqDrag({ movementX, movementY }) {
   pal_container.style.top = `${topVal + movementY}px`;
 }
 
+//Desktop Mouse
 pal_nav_quick_btns.addEventListener("mousedown", () => {
-  //chatbase_headerr.classList.add("active");
-  // Source - https://stackoverflow.com/a/210345
-  // Posted by samjudson, modified by community. See post 'Timeline' for change history
-  // Retrieved 2026-02-06, License - CC BY-SA 3.0
-
-  //$('#btn-side-nav-linq').unbind('click');
 
   pal_nav_quick_btns.addEventListener("mousemove", onPalLinqDrag);
 });
 
 document.addEventListener("mouseup", () => {
-  //chatbase_header.classList.remove("active");
+
   pal_nav_quick_btns.removeEventListener("mousemove", onPalLinqDrag);
 
-  /* $('#btn-side-nav-linq').click(function () {
-    onNavLinqClick ()  
-  }) */
+  chatbase_header.removeEventListener("mousemove", onDrag);
 });
 
 function onDrag({ movementX, movementY }) {
@@ -122,9 +115,27 @@ chatbase_header.addEventListener("mousedown", () => {
   chatbase_header.addEventListener("mousemove", onDrag);
 });
 
-document.addEventListener("mouseup", () => {
+/* document.addEventListener("mouseup", () => {
   //chatbase_header.classList.remove("active");
   chatbase_header.removeEventListener("mousemove", onDrag);
+}); */
+
+//Mobile Touch
+pal_nav_quick_btns.addEventListener("touchstart", () => {
+
+  pal_nav_quick_btns.addEventListener("touchmove", onPalLinqDrag);
+});
+
+document.addEventListener("touchend", () => {
+
+  pal_nav_quick_btns.removeEventListener("touchmove", onPalLinqDrag);
+
+  chatbase_header.removeEventListener("touchmove", onDrag);
+});
+
+chatbase_header.addEventListener("touchend", () => {
+  //chatbase_headerr.classList.add("active");
+  chatbase_header.addEventListener("touchmove", onDrag);
 });
 
 let yt_player;
@@ -919,6 +930,9 @@ let start;
 //Time of the long press
 const tempo = 1500; //Time 1000ms = 1s
 let timeLeft = 0;
+let btn_side_nav_linq_anim = false;
+
+let btn_side_nav_linq_style = window.getComputedStyle(btn_side_nav_linq);
 
 btn_side_nav_linq.onmousedown = () => {
 
@@ -933,23 +947,37 @@ btn_side_nav_linq.onmouseup = () => {
   timeLeft = (performance.now() - start);
 
   if (timeLeft < tempo) {
-    
-    btn_side_nav_linq.style.border = '2px solid white'
+
+    btn_side_nav_linq.style.border = '3px solid white'
 
     onNavLinqClick();
   } else {
-  
-    btn_side_nav_linq.style.border = '3px solid green'
 
-    btn_side_nav_linq.animate([
-      { borderColor: "green", offset: 0 },
-      { borderColor: "white", offset: 0.5 },
-      { borderColor: "green", offset: 1 },
-    ], {
-      duration: 2000,
-      'animation-timing-function': 'linear',
-      iterations: Infinity,
-    })    
+    if (btn_side_nav_linq_anim == true) {
+
+      btn_side_nav_linq_anim = false
+
+      btn_side_nav_linq.style.border = '3px solid white'
+
+      btn_side_nav_linq.getAnimations()[0].cancel()
+
+    } else {
+
+      btn_side_nav_linq_anim = true
+
+      btn_side_nav_linq.style.border = '3px solid rgb(0, 128, 0)'
+
+      btn_side_nav_linq.animate([
+        { borderColor: "green", offset: 0 },
+        { borderColor: "white", offset: 0.5 },
+        { borderColor: "green", offset: 1 },
+      ], {
+        duration: 2000,
+        'animation-timing-function': 'linear',
+        iterations: Infinity,
+      })
+
+    }
   }
 
   clearTimeout(timer);

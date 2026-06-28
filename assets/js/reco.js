@@ -2362,6 +2362,14 @@ function generateLinq2(saved_UI) {
   tu_container_12.setAttribute('id', 'tu-container-12')
   tu_container_12.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
 
+  let tu_container_13 = document.createElement('div')
+  tu_container_13.setAttribute('id', 'tu-container-13')
+  tu_container_13.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
+  let tu_container_14 = document.createElement('div')
+  tu_container_14.setAttribute('id', 'tu-container-14')
+  tu_container_14.style.cssText = 'display: flex; height: 200px; width: auto; overflow-x: scroll; -ms-overflow-style: none; scrollbar-width: none;'
+
 
   let data = [
     {
@@ -2441,6 +2449,18 @@ function generateLinq2(saved_UI) {
       playlistId: 'PLNJsVJgvYE4WV4ZQs5gclePFUzJeteSOU',
       maxResults: '25',
       container_name: 'tu-container-11'
+    },
+
+    {
+      playlistId: 'UUHnyfMqiRRG1u-2MsSQLbXA',
+      maxResults: '25',
+      container_name: 'tu-container-13'
+    },
+
+    {
+      playlistId: 'PLJFi6nvWXjVM',
+      maxResults: '25',
+      container_name: 'tu-container-14'
     }
   ]
 
@@ -2476,11 +2496,13 @@ function generateLinq2(saved_UI) {
   linq2_main_container.appendChild(tu_container_4)
   linq2_main_container.appendChild(tu_container_5)
   linq2_main_container.appendChild(tu_container_6)
+  linq2_main_container.appendChild(tu_container_13)
   linq2_main_container.appendChild(tu_container_7)
   linq2_main_container.appendChild(tu_container_9)
   linq2_main_container.appendChild(tu_container_10)
   linq2_main_container.appendChild(tu_container_11)
   linq2_main_container.appendChild(tu_container_12)
+  linq2_main_container.appendChild(tu_container_14)
 
   modal_body.appendChild(linq2_top)
   linq2_filters_container.appendChild(linq2_filters_)
