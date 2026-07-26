@@ -2377,7 +2377,7 @@ function generateLinq2(saved_UI) {
   let data = [
     {
       playlistId: 'PLNJsVJgvYE4U59-SBXafY3oZ1GNFBRWvz',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-8'
     },
 
@@ -2390,55 +2390,55 @@ function generateLinq2(saved_UI) {
 
     {
       playlistId: 'UUBJycsmduvYEL83R_U4JriQ',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-0'
     },
 
     {
       playlistId: 'UUL_f53ZEJxp8TtlOkHwMV9Q',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-1'
     },
 
     {
       playlistId: 'PLNJsVJgvYE4Wre4CAxeW5h5vaFjXY1RqK',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-2'
     },
 
     {
       playlistId: 'UU8Y-jrV8oR3s2Ix4viDkZtA',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-3'
     },
 
     {
       playlistId: 'PLNJsVJgvYE4UGbRKZ9B6qervLQCa0E4-v',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-4'
     },
 
     {
       playlistId: 'PLNJsVJgvYE4XYx5HIDi5yi4YaCD1tbRok',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-5'
     },
 
     {
       playlistId: 'PLNJsVJgvYE4WIsULAf7bEPzmejQbqBcbu',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-6'
     },
 
     {
       playlistId: 'PLRV0MUkz6INJJTd8nboQ8zSUtzKA7gOky',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-7'
     },
 
     {
       playlistId: 'PLNJsVJgvYE4UL5n6hMhB5NhalKGyl0IOx',
-      maxResults: '15',
+      maxResults: '25',
       container_name: 'tu-container-9'
     },
 
